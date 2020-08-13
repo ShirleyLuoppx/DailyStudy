@@ -21,7 +21,6 @@ class BlueToothListAdapter(data: MutableList<BluetoothDevice>) :
     override fun convert(holder: BaseViewHolder, item: BluetoothDevice) {
         holder.setText(R.id.device_name, item.name ?: "未知设备")
         holder.setText(R.id.device_address, item.address)
-
         when (item.type) {
             0 -> {
                 holder.setText(R.id.device_type, "未知类型")
