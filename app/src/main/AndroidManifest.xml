@@ -2,6 +2,18 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ppx.dailystudy">
 
+    <!--    //所有手机需要的权限，蓝牙功能才能正常使用-->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <!--    除了BLUETOOTH和BLUETOOTH_ADMIN权限外，还将以下内容添加到您应用的清单文件中，以使用蓝牙连接和配对API：-->
+    <uses-permission android:name="com.google.android.things.permission.MANAGE_BLUETOOTH" />
+    <!--    //部分手机（如小米等）需要将下面两个权限添加进去，蓝牙功能才能正常使用-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!--    用于收集用户的位置信息如果是Android9 API28 或更低版本 则声明ACCESS_COARSE_LOCATION权限-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+<!--    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />-->
+
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,7 +21,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".bluetooth.BlueToothTest">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,7 +29,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".MenuResourcesActivity"/>
+        <activity android:name=".MenuResourcesActivity" />
+<!--        <activity android:name=".bluetooth.BlueToothMainActivity" />-->
     </application>
 
 </manifest>

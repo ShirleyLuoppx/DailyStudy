@@ -1,5 +1,6 @@
 package com.ppx.dailystudy
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -8,6 +9,7 @@ import android.view.View
 import android.view.ViewTreeObserver
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.ppx.dailystudy.bluetooth.BlueToothMainActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 /**
@@ -123,6 +125,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initEvent() {
+        bt_start_search_blue_tooth.setOnClickListener {
+            startActivity(Intent(this,BlueToothMainActivity::class.java))
+        }
+
         et_test_hide.setOnClickListener {
             hide()
         }
