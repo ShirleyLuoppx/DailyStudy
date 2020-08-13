@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+
+    <color name="colorLightBlue00E">#00EFEC</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorTransparentWhite">#00FFFFFF</color>
+    <color name="colorWhiteDF">#DFDFE1</color>
+    <color name="colorGrayEB">#EBEBEB</color>
+    <color name="colorGrayED">#EDEDED</color>
+    <color name="colorGrayD7">#D7D7D7</color>
+    <color name="colorGrayD6">#D6D6D6</color>
+    <color name="colorGray66D6">#66D6D6D6</color>
+    <color name="colorGrayC2">#C2C2C2</color>
+    <color name="colorGrayC1">#C1C1C1</color>
+    <color name="colorGrayE1">#DFDFE1</color>
+    <color name="colorGray6F72">#6D6F72</color>
+    <color name="colorDarkBG354">#35455C</color>
+    <color name="colorDark1ABG354">#1A35455C</color>
+    <color name="colorDarkBG243">#24344A</color>
+    <color name="colorDarkBG1F2">#1F2E43</color>
+    <color name="colorDarkBG455">#455A77</color>
+    <color name="colorDarkBG263">#26354C</color>
+    <color name="colorDarkBG212">#212D46</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorTranslucent">#80000000</color>
+    <color name="colorTransGray">#80354355</color>
+    <color name="colorBlueAEAC">#00AEAC</color>
+    <color name="colorDividerBlue779A">#5F779A</color>
+    <color name="colorBlue00ADAB">#00ADAB</color>
+    <color name="colorSongSheetMask">#E637465A</color>
+    <color name="colorBlue5D6A7D">#5D6A7D</color>
+    <color name="colorRedFF55">#FF5555</color>
+
+</resources>

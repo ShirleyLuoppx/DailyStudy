@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?><!--    innerRadius 内圆半径；thickness圆环宽度；useLevel false的时候才是圆环 true的时候不知道是个啥 -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:innerRadius="200px"
+    android:shape="ring"
+    android:thickness="30px"
+    android:useLevel="false">
+
+    <!--    stroke 的时候圆环内外有描边，width stroke的时候的描边的宽度，solid 的时候没有，所以solid的时候也不用width了-->
+    <solid
+        android:width="5px"
+        android:color="@color/colorDarkBG354" />
+    <!--    gradient 渐变这些自己设置就好了吖  开始颜色 结束颜色  角度 90的倍数   -->
+    <gradient
+        android:angle="360"
+        android:centerColor="@color/colorLightBlue00E"
+        android:endColor="@color/colorBlueAEAC"
+        android:startColor="@color/colorDarkBG354" />
+</shape>
