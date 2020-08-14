@@ -3,6 +3,17 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
+    // 签名证书配置
+    signingConfigs {
+        config4{
+            keyAlias 'flyaudio-android-releasekey'
+            keyPassword 'flyaudio2019'
+            storeFile file('key/Flyaudio-Android-Releasekey.jks')
+            storePassword 'flyaudio2019'
+        }
+
+    }
+
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
 
@@ -17,6 +28,10 @@ android {
     }
 
     buildTypes {
+        debug{
+            // 使用的是第二个签名配置文件
+            signingConfig signingConfigs.config4
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'

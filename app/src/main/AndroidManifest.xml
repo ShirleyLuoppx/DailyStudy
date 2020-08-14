@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ppx.dailystudy">
+    package="com.ppx.dailystudy"
+    android:sharedUserId="android.uid.system">
 
     <!--    //所有手机需要的权限，蓝牙功能才能正常使用-->
     <uses-permission android:name="android.permission.BLUETOOTH" />
