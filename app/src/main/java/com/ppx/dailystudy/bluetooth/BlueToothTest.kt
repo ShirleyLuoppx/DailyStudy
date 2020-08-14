@@ -40,8 +40,6 @@ class BlueToothTest : AppCompatActivity() {
     private var devicesList = mutableListOf<BluetoothDevice>()
     private var blueToothListAdapter: BlueToothListAdapter = BlueToothListAdapter(mutableListOf())
 
-    private lateinit var MY_UUID: UUID
-
     private  var mA2dp: BluetoothA2dp?=null
 
 
@@ -50,13 +48,6 @@ class BlueToothTest : AppCompatActivity() {
         setContentView(R.layout.activity_blue_tooth)
 
         checkPermission()
-        initEvent()
-
-
-        //获取A2DP代理对象
-        //getProfileProxy并不会直接返回A2DP代理对象，而是通过mListener中回调获取。
-
-
     }
 
     private val mListener: ServiceListener = object : ServiceListener {
@@ -70,22 +61,20 @@ class BlueToothTest : AppCompatActivity() {
             if (profile == BluetoothProfile.A2DP) {
                 mA2dp = proxy as BluetoothA2dp //转换
                 connectA2dp(mConnectDevice)
+                Log.d(TAG,"ok==========成功")
             }
         }
     }
 
     //要操作的设备
     private lateinit var mConnectDevice: BluetoothDevice
-    private fun initEvent() {
-        Log.d(TAG, "okin======1")
-    }
 
     /**
      * A2DP连接
      */
     private fun connectA2dp(device: BluetoothDevice) {
 
-        setPriority(device, 100) //设置priority
+//        setPriority(device, 100) //设置priority
         try {
             //通过反射获取BluetoothA2dp中connect方法（hide的），进行连接。
             val connectMethod: Method = BluetoothA2dp::class.java.getMethod(
@@ -114,76 +103,6 @@ class BlueToothTest : AppCompatActivity() {
         } catch (e: java.lang.Exception) {
             e.printStackTrace()
         }
-    }
-
-    private inner class ConnectThread(device: BluetoothDevice) : Thread() {
-
-//
-//        private var mmSocket: BluetoothSocket? = null
-//        private var mmDevice: BluetoothDevice? = null
-//
-//        fun ConnectThread(device: BluetoothDevice) {
-//            mmDevice = device
-//            var tmp: BluetoothSocket? = null
-//            try {
-//                tmp = device.createRfcommSocketToServiceRecord(
-//                    MY_UUID
-//                )
-//            } catch (e: IOException) {
-//            }
-//            mmSocket = tmp
-//        }
-//
-//        override fun run() {
-//            name = "ConnectThread"
-//            bluetoothAdapter?.cancelDiscovery()
-//            try {
-//                mmSocket!!.connect()
-//            } catch (e: IOException) {
-//                try {
-//                    mmSocket!!.close()
-//                } catch (e2: IOException) {
-//                }
-//                return
-//            }
-//            synchronized(this) { mConnectThread = null }
-//            connected(mmSocket, mmDevice)
-//        }
-//
-//        fun cancel() {
-//            try {
-//                mmSocket!!.close()
-//            } catch (e: IOException) {
-//            }
-//        }
-//        private val mmSocket: BluetoothSocket? by lazy(LazyThreadSafetyMode.NONE) {
-//            device.createRfcommSocketToServiceRecord(MY_UUID)
-//        }
-//
-//        public override fun run() {
-//            // Cancel discovery because it otherwise slows down the connection.
-//            bluetoothAdapter?.cancelDiscovery()
-//
-//            mmSocket?.use { socket ->
-//                // Connect to the remote device through the socket. This call blocks
-//                // until it succeeds or throws an exception.
-//                //通过调用 connect() 发起连接。请注意，此方法为阻塞调用。
-//                socket.connect()
-//
-//                // The connection attempt succeeded. Perform work associated with
-//                // the connection in a separate thread.
-//                manageMyConnectedSocket(socket)
-//            }
-//        }
-//
-//        // Closes the client socket and causes the thread to finish.
-//        fun cancel() {
-//            try {
-//                mmSocket?.close()
-//            } catch (e: IOException) {
-//                Log.e(TAG, "Could not close the client socket", e)
-//            }
-//        }
     }
 
     /**
@@ -325,7 +244,7 @@ class BlueToothTest : AppCompatActivity() {
         mConnectDevice.createBond()
 
         Log.d(TAG, "当前点击的设备名称：${mConnectDevice.name}，MAC:${mConnectDevice.address}")
-//        bluetoothAdapter?.getProfileProxy(this, mListener, BluetoothProfile.A2DP)
+        bluetoothAdapter?.getProfileProxy(this, mListener, BluetoothProfile.A2DP)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
