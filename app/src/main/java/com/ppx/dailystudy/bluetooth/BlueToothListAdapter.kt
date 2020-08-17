@@ -22,28 +22,28 @@ class BlueToothListAdapter(data: MutableList<BluetoothDevice>) :
         holder.setText(R.id.device_name, item.name ?: "未知设备")
         holder.setText(R.id.device_address, item.address)
         when (item.type) {
-            0 -> {
+            BluetoothDevice.DEVICE_TYPE_UNKNOWN -> {
                 holder.setText(R.id.device_type, "未知类型")
             }
-            1 -> {
+            BluetoothDevice.DEVICE_TYPE_CLASSIC -> {
                 holder.setText(R.id.device_type, "传统蓝牙")
             }
-            2 -> {
+            BluetoothDevice.DEVICE_TYPE_LE -> {
                 holder.setText(R.id.device_type, "低功耗蓝牙")
             }
-            3 -> {
+            BluetoothDevice.DEVICE_TYPE_DUAL -> {
                 holder.setText(R.id.device_type, "双模蓝牙")
             }
         }
 
         when (item.bondState) {
-            10 -> {
+            BluetoothDevice.BOND_NONE -> {
                 holder.setText(R.id.device_state, "未匹配")
             }
-            11 -> {
+            BluetoothDevice.BOND_BONDING -> {
                 holder.setText(R.id.device_state, "绑定中")
             }
-            12 -> {
+            BluetoothDevice.BOND_BONDED -> {
                 holder.setText(R.id.device_state, "已绑定")
             }
         }
