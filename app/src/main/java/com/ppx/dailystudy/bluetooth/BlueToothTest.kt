@@ -26,7 +26,6 @@ import com.ppx.dailystudy.R
 import kotlinx.android.synthetic.main.activity_blue_tooth.*
 import java.lang.reflect.Method
 
-
 /**
  * Author: luoxia
  * Date: 2020/8/13 14:11
@@ -36,9 +35,7 @@ class BlueToothTest : AppCompatActivity() {
 
     private val TAG: String = "BlueToothTest"
     private val bluetoothAdapter: BluetoothAdapter? = BluetoothAdapter.getDefaultAdapter()
-    private val REQUEST_ENABLE_BT = 1
     private var devicesList = mutableListOf<BluetoothDevice>()
-    private var tempList = mutableListOf<BluetoothDevice>()
     private var blueToothListAdapter: BlueToothListAdapter = BlueToothListAdapter(mutableListOf())
 
     private var mA2dp: BluetoothProfile? = null
@@ -50,78 +47,6 @@ class BlueToothTest : AppCompatActivity() {
         checkPermission()
         devicesList.clear()
         initEvent()
-    }
-
-    private fun initEvent() {
-        bt_search_again.setOnClickListener {
-            devicesList.clear()
-            searchDevices()
-        }
-    }
-
-    /**
-     * 通过监听回调来获取a2dp对象
-     */
-    private val mListener: ServiceListener = object : ServiceListener {
-        override fun onServiceDisconnected(profile: Int) {
-            if (profile == BluetoothProfile.A2DP) {
-                mA2dp = null
-                Log.d(TAG, "ok==========连接失败")
-            }
-        }
-
-        override fun onServiceConnected(profile: Int, proxy: BluetoothProfile) {
-            if (profile ==11) {
-                mA2dp = proxy  //转换
-                connectA2dp(mConnectDevice)
-            }
-        }
-    }
-
-    //要操作的设备
-    private lateinit var mConnectDevice: BluetoothDevice
-
-    /**
-     * A2DP连接
-     */
-    private fun connectA2dp(device: BluetoothDevice) {
-
-//        setPriority(device, 100) //设置priority
-        try {
-            //通过反射获取BluetoothA2dp中connect方法（hide的），进行连接。
-//            val connectMethod: Method = BluetoothA2dp::class.java.getMethod(
-//                "connect",
-//                BluetoothDevice::class.java
-//            )
-          val clas=   ClassLoader.getSystemClassLoader().loadClass("android.bluetooth.BluetoothA2dpSink")
-           val connmethod= clas.getMethod("connect",BluetoothDevice::class.java)
-
-            connmethod.invoke(mA2dp, device)
-            //获取a2dp连接状态
-            Log.d(TAG, "当前的a2dp的链接状态：${mA2dp?.getConnectionState(device)}")
-
-            //返回值类型boolean，表示设备是否在通过A2DP发送音频流。
-//            Log.d(TAG, "查询设备是否在通过A2DP发送音频流：${mA2dp?.isA2dpPlaying(device)}")
-
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-    }
-
-    /**
-     * 设置优先级
-     */
-    fun setPriority(device: BluetoothDevice?, priority: Int) {
-        if (mA2dp == null) return
-        try { //通过反射获取BluetoothA2dp中setPriority方法（hide的），设置优先级
-            val connectMethod: Method = BluetoothA2dp::class.java.getMethod(
-                "setPriority",
-                BluetoothDevice::class.java, Int::class.javaPrimitiveType
-            )
-            connectMethod.invoke(mA2dp, device, priority)
-        } catch (e: java.lang.Exception) {
-            e.printStackTrace()
-        }
     }
 
     /**
@@ -141,6 +66,16 @@ class BlueToothTest : AppCompatActivity() {
         }
     }
 
+    private fun initEvent() {
+        bt_search_again.setOnClickListener {
+            devicesList.clear()
+            searchDevices()
+        }
+    }
+
+    /**
+     * 请求权限的结果
+     */
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
@@ -166,15 +101,12 @@ class BlueToothTest : AppCompatActivity() {
      */
     private fun initBlueTooth() {
         if (bluetoothAdapter == null) {
-            // Device doesn't support Bluetooth
             Toast.makeText(this, "设备不支持蓝牙", Toast.LENGTH_SHORT).show()
         } else {
             //启动蓝牙
             if (!bluetoothAdapter.isEnabled) {
                 //如果没有开启蓝牙 的话 就强行启动....
                 bluetoothAdapter.enable()
-//                val enableBtIntent = Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE)
-//                startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT)
             }
             Log.d(TAG, "蓝牙已启动")
 
@@ -190,8 +122,6 @@ class BlueToothTest : AppCompatActivity() {
         val filter = IntentFilter()
 
         filter.apply {
-            //a2dp的链接状态改变
-            addAction(BluetoothA2dp.ACTION_CONNECTION_STATE_CHANGED)
             addAction("android.bluetooth.a2dp-sink.profile.action.CONNECTION_STATE_CHANGED")
             //找到设备的广播
             addAction(BluetoothDevice.ACTION_FOUND)
@@ -218,18 +148,6 @@ class BlueToothTest : AppCompatActivity() {
         override fun onReceive(context: Context, intent: Intent) {
             val action: String? = intent.action
             when (action) {
-
-                /**
-                 * 连接蓝牙的广播
-                 */
-                //A2DP连接状态改变
-                BluetoothA2dp.ACTION_CONNECTION_STATE_CHANGED -> {
-                    val state = intent.getIntExtra(
-                        BluetoothA2dp.EXTRA_STATE,
-                        BluetoothA2dp.STATE_DISCONNECTED
-                    )
-                    Log.i(TAG, "ACTION_CONNECTION_STATE_CHANGED--connect state=$state")
-                }
                 //A2DP播放状态改变
                 BluetoothA2dp.ACTION_PLAYING_STATE_CHANGED -> {
                     val state = intent.getIntExtra(
@@ -262,12 +180,10 @@ class BlueToothTest : AppCompatActivity() {
                 BluetoothAdapter.ACTION_DISCOVERY_STARTED -> {
                     Log.d(TAG, "正在扫描..........")
                 }
-                "android.bluetooth.a2dp-sink.profile.action.CONNECTION_STATE_CHANGED"->{
-                    Log.d(TAG, "onReceive: huyou")
+                "android.bluetooth.a2dp-sink.profile.action.CONNECTION_STATE_CHANGED" -> {
                     val device: BluetoothDevice =
                         intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE)
                     Log.d(TAG, "当前的a2dp的链接状态：${mA2dp?.getConnectionState(device)}")
-
                 }
             }
         }
@@ -295,41 +211,65 @@ class BlueToothTest : AppCompatActivity() {
     ) {
         //连接前先关闭搜索
         bluetoothAdapter?.cancelDiscovery()
-        Log.d(TAG, "initAdapterEvent: ${position}")
-        mConnectDevice = devicesList.get(position)
+        mConnectDevice = devicesList[position]
 
-//        if (mConnectDevice.bondState != BluetoothDevice.BOND_BONDED) {
-//            mConnectDevice.createBond()
-//        }
         mConnectDevice.fetchUuidsWithSdp()
-        if (mConnectDevice.createBond()) {
-            Log.d(TAG, "initAdapterEvent: true ")
-        }else{
 
-            Log.d(TAG, "initAdapterEvent: false")
+        /**
+         * 绑定设备
+         * 一：反射
+         * 二：官方API createBond，API>19 4.4
+         * 目前车机系统版本6 API23，测试手机系统版本9 28
+         */
+
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
+            Log.d(TAG, "initAdapterEvent1: 绑定，${mConnectDevice.createBond()}")
+        } else {
+            val method: Method =
+                BluetoothDevice::class.java.getMethod("createBond", BluetoothDevice::class.java)
+            Log.d(TAG, "initAdapterEvent2: ${method.invoke(mConnectDevice)}")
         }
-
-
-
-        //发起配对  BOND_NONE10,BOND_BONDING11,BOND_BONDED12
-//        if (mConnectDevice.bondState == BOND_NONE) {
-        //        }
-
-//        val createBondMethod: Method = BluetoothDevice::class.java.getMethod("createBond", BluetoothDevice::class.java)
-//        createBondMethod.invoke(mConnectDevice,1)
-//            mConnectDevice.createBond()
-
-
 
         Log.d(TAG, "当前点击的设备名称：${mConnectDevice.name}，MAC:${mConnectDevice.address}")
         bluetoothAdapter?.getProfileProxy(this, mListener, 11)
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == REQUEST_ENABLE_BT && resultCode == Activity.RESULT_OK) {
-            //开始搜索周围蓝牙设备..
-            searchDevices()
+    /**
+     * 通过监听回调来获取a2dp对象
+     */
+    private val mListener: ServiceListener = object : ServiceListener {
+        override fun onServiceDisconnected(profile: Int) {
+            if (profile == BluetoothProfile.A2DP) {
+                mA2dp = null
+                Log.d(TAG, "ok==========连接失败")
+            }
+        }
+
+        override fun onServiceConnected(profile: Int, proxy: BluetoothProfile) {
+            if (profile == 11) {
+                mA2dp = proxy  //转换
+                connectA2dp(mConnectDevice)
+            }
+        }
+    }
+
+    //要操作的设备
+    private lateinit var mConnectDevice: BluetoothDevice
+
+    /**
+     * A2DP连接
+     */
+    private fun connectA2dp(device: BluetoothDevice) {
+        //设置priority
+//        setPriority(device, 100)
+        try {
+            val clas =
+                ClassLoader.getSystemClassLoader().loadClass("android.bluetooth.BluetoothA2dpSink")
+            val connmethod = clas.getMethod("connect", BluetoothDevice::class.java)
+
+            connmethod.invoke(mA2dp, device)
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
     }
 
@@ -344,6 +284,22 @@ class BlueToothTest : AppCompatActivity() {
             val deviceName = device.name
             val deviceHardwareAddress = device.address // MAC address
             Log.d(TAG, "已配对设备的name:$deviceName，MAC address :$deviceHardwareAddress")
+        }
+    }
+
+    /**
+     * 设置优先级
+     */
+    fun setPriority(device: BluetoothDevice?, priority: Int) {
+        if (mA2dp == null) return
+        try { //通过反射获取BluetoothA2dp中setPriority方法（hide的），设置优先级
+            val connectMethod: Method = BluetoothA2dp::class.java.getMethod(
+                "setPriority",
+                BluetoothDevice::class.java, Int::class.javaPrimitiveType
+            )
+            connectMethod.invoke(mA2dp, device, priority)
+        } catch (e: java.lang.Exception) {
+            e.printStackTrace()
         }
     }
 

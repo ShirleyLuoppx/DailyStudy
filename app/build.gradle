@@ -29,7 +29,6 @@ android {
 
     buildTypes {
         debug{
-            // 使用的是第二个签名配置文件
             signingConfig signingConfigs.config4
         }
         release {
