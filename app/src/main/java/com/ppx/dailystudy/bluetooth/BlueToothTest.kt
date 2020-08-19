@@ -268,6 +268,7 @@ class BlueToothTest : AppCompatActivity() {
             val connmethod = clas.getMethod("connect", BluetoothDevice::class.java)
 
             connmethod.invoke(mA2dp, device)
+            Log.d(TAG, "connectA2dp: clas:${clas.name}")
         } catch (e: Exception) {
             e.printStackTrace()
         }
@@ -306,5 +307,6 @@ class BlueToothTest : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         unregisterReceiver(receiver)
+        bluetoothAdapter?.cancelDiscovery()
     }
 }
