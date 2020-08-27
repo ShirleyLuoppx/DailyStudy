@@ -27,6 +27,8 @@ class MainActivity : AppCompatActivity() {
     var width: Int = 0
     var measuredWidth: Int = 0
 
+    private val testFinishFunction : TestFinishFunction = TestFinishFunction()
+
     //    var seekBar: SeekBar? = SeekBar(this)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -125,6 +127,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initEvent() {
+        click_finish.setOnClickListener {
+            testFinishFunction.finishActivity()
+        }
+
         bt_start_search_blue_tooth.setOnClickListener {
             startActivity(Intent(this,BlueToothMainActivity::class.java))
         }
@@ -176,5 +182,15 @@ class MainActivity : AppCompatActivity() {
             measuredWidth = iv_image.measuredWidth
             Log.d("ippx", "在onWindowFocusChanged中获取:${width}----measuredWidth:${measuredWidth}")
         }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d(TAG, "onStop: ======================")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d(TAG, "onDestroy: ======================")
     }
 }
