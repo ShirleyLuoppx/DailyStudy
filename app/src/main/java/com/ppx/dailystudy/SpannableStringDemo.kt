@@ -3,6 +3,7 @@ package com.ppx.dailystudy
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.Spanned
+import android.text.style.AbsoluteSizeSpan
 import android.text.style.ForegroundColorSpan
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -24,9 +25,14 @@ class SpannableStringDemo : AppCompatActivity() {
         val spannableString = SpannableString(tv_test_span.text)
         spannableString.apply {
             setSpan(ForegroundColorSpan(resources.getColor(R.color.colorAccent)),0,tv_test_span.text.length,Spanned.SPAN_INCLUSIVE_EXCLUSIVE)
+            setSpan(AbsoluteSizeSpan(70),0,tv_test_span.text.length,Spanned.SPAN_INCLUSIVE_EXCLUSIVE)
         }
-        tv_test_span.text = spannableString
 
         tv_test_span.setTextColor(resources.getColor(R.color.colorBlack))
+        tv_test_span.textSize =1f
+
+        tv_test_span.text = spannableString
+
+
     }
 }
