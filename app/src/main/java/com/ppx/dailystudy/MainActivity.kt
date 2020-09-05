@@ -150,15 +150,24 @@ class MainActivity : AppCompatActivity() {
 
 
     private val receiver = SelfDefinedBroadCastReceiver()
+    private val selfDefinedIntentFilter = IntentFilter("intent_filter")
     private fun initEvent() {
-        //点击发song一个自定义广播 “intent_filter”
+        //点击发送一个自定义的有序广播
+        bt_send_self_defined_orderedbroadcast.setOnClickListener {
+            selfDefinedIntentFilter.priority = 100
+            registerReceiver(receiver, selfDefinedIntentFilter)
+
+            //参数一：action，参数二：权限相关字符串，这里传空
+            sendOrderedBroadcast(Intent("intent_filter"), null)
+        }
+
+        //点击发song一个自定义的标准广播 “intent_filter”
         bt_send_self_defined_broadcast.setOnClickListener {
             //动态注册的广播接收器
-            val intentFilter = IntentFilter("intent_filter")
-            registerReceiver(receiver, intentFilter)
+            registerReceiver(receiver, selfDefinedIntentFilter)
 
             val intent = Intent("intent_filter")
-            intent.putExtra("data","ppx will be better and better!")
+            intent.putExtra("data", "ppx will be better and better!")
             sendBroadcast(intent)
         }
 

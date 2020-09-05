@@ -112,6 +112,16 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/click_to_start_fragment" />
 
+    <Button
+        android:id="@+id/bt_send_self_defined_orderedbroadcast"
+        android:layout_width="140dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="20dp"
+        android:text="click to send a self defined ordered broadcast"
+        android:textAllCaps="false"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bt_send_self_defined_broadcast" />
+
 
     <FrameLayout
         android:id="@+id/fl_show_hide"
