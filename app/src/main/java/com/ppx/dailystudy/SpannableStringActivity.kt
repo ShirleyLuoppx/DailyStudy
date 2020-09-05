@@ -8,6 +8,7 @@ import android.text.style.ForegroundColorSpan
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_spannable_string.*
 
 /**
  * Author: luoxia
@@ -16,12 +17,12 @@ import kotlinx.android.synthetic.main.activity_main.*
  *
  * 结论：使用SpannableString设置了文字的前景色之后是不能使用settextcolor来修改的
  */
-class SpannableStringDemo : AppCompatActivity() {
+class SpannableStringActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
+        setContentView(R.layout.activity_main)
         val spannableString = SpannableString(tv_test_span.text)
         spannableString.apply {
             setSpan(
@@ -42,13 +43,5 @@ class SpannableStringDemo : AppCompatActivity() {
         tv_test_span.textSize = 1f
 
         tv_test_span.text = spannableString
-
-        //TODO  不知道这个为啥蹦 哈哈
-        click_to_start_fragment.setOnClickListener {
-
-            supportFragmentManager.beginTransaction().remove(ShowHideFragment())
-                .add(R.id.fl_show_hide, FragmentDemo()).commit()
-        }
-
     }
 }

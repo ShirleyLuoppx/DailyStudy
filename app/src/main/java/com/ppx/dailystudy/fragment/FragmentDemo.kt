@@ -1,4 +1,4 @@
-package com.ppx.dailystudy
+package com.ppx.dailystudy.fragment
 
 import android.content.Context
 import android.os.Bundle
@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import java.lang.ref.WeakReference
+import com.ppx.dailystudy.R
 
 /**
  * Author: luoxia
@@ -33,6 +33,7 @@ class FragmentDemo : Fragment() {
     }
 
     //创建布局的时候调用
+    //除了onCreateView，，其他的方法，如果重写了之后，都要去调用父类的实现方法，也就是super
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -40,10 +41,10 @@ class FragmentDemo : Fragment() {
     ): View? {
         Log.d(TAG, "onCreateView: ")
 
-        return inflater.inflate(R.layout.fragment_show_hide,container,false)
+        return inflater.inflate(R.layout.fragment_demo,container,false)
     }
 
-    //确保与碎片相关联的活动一定已经创建完毕的时候调用
+    //确保与碎片相关联的活动一定已经创建完毕的时候调用（当activity的onCreate()返回时调用）
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         Log.d(TAG, "onActivityCreated: ")
@@ -69,7 +70,7 @@ class FragmentDemo : Fragment() {
         Log.d(TAG, "onStop: ")
     }
 
-    //当与碎片关联的视图被移除的饿时候调用
+    //当与碎片关联的视图被移除的时候调用（与onCreateView相对应）
     override fun onDestroyView() {
         super.onDestroyView()
         Log.d(TAG, "onDestroyView: ")
@@ -80,7 +81,7 @@ class FragmentDemo : Fragment() {
         Log.d(TAG, "onDestroy: ")
     }
 
-    //当碎片和活动解除关联的时候调用
+    //当碎片和活动解除关联的时候调用（与onAttach相对应）
     override fun onDetach() {
         super.onDetach()
         Log.d(TAG, "onDetach: ")

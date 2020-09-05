@@ -1,15 +1,16 @@
 package com.ppx.dailystudy
 
+import android.content.BroadcastReceiver
+import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import android.view.ViewTreeObserver
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.ppx.dailystudy.bluetooth.BlueToothMainActivity
+import com.ppx.dailystudy.fragment.FragmentDemo
 import kotlinx.android.synthetic.main.activity_main.*
 
 /**
@@ -27,7 +28,11 @@ class MainActivity : AppCompatActivity() {
     var width: Int = 0
     var measuredWidth: Int = 0
 
-    private val testFinishFunction : TestFinishFunction = TestFinishFunction()
+    private val testFinishFunction: TestFinishFunction = TestFinishFunction()
+
+    private lateinit var intentFilter: IntentFilter
+    private lateinit var myBroadCastReceiver: MyBroadCastReceiver
+
 
     //    var seekBar: SeekBar? = SeekBar(this)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,6 +46,21 @@ class MainActivity : AppCompatActivity() {
         initEvent()
         getDataByPost()
         getDataByViewTreeObserver()
+
+        intentFilter = IntentFilter()
+        intentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE")
+        myBroadCastReceiver = MyBroadCastReceiver()
+        registerReceiver(myBroadCastReceiver, intentFilter)
+    }
+
+    /**
+     * 新建一个广播接收器
+     */
+    class MyBroadCastReceiver : BroadcastReceiver() {
+        override fun onReceive(context: Context?, intent: Intent?) {
+            Log.d("ippx", "onReceive: okin=====")
+        }
+
     }
 
 
@@ -116,12 +136,15 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    fun show(){
+    fun show() {
         fl_show_hide.visibility = View.VISIBLE
-        supportFragmentManager.beginTransaction().add(R.id.fl_show_hide,FragmentDemo()).commit()
+        supportFragmentManager.beginTransaction().add(
+            R.id.fl_show_hide,
+            FragmentDemo()
+        ).commit()
     }
 
-    fun hide(){
+    fun hide() {
         fl_show_hide.visibility = View.GONE
 //        supportFragmentManager.beginTransaction().hide(ShowHideFragment()).commit()
     }
@@ -132,7 +155,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         bt_start_search_blue_tooth.setOnClickListener {
-            startActivity(Intent(this,BlueToothMainActivity::class.java))
+            startActivity(Intent(this, BlueToothMainActivity::class.java))
         }
 
         et_test_hide.setOnClickListener {
@@ -192,5 +215,7 @@ class MainActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         Log.d(TAG, "onDestroy: ======================")
+
+        unregisterReceiver(myBroadCastReceiver)
     }
 }
