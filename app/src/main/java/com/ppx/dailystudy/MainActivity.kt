@@ -157,7 +157,9 @@ class MainActivity : AppCompatActivity() {
             val intentFilter = IntentFilter("intent_filter")
             registerReceiver(receiver, intentFilter)
 
-            sendBroadcast(Intent("intent_filter"))
+            val intent = Intent("intent_filter")
+            intent.putExtra("data","ppx will be better and better!")
+            sendBroadcast(intent)
         }
 
         click_finish.setOnClickListener {

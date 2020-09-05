@@ -12,6 +12,9 @@ class SelfDefinedBroadCastReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent) {
         // This method is called when the BroadcastReceiver is receiving an Intent broadcast.
-        Log.d("ippx", "onReceive: receive a self defined broadcast ")
+
+        val data = intent.getStringExtra("data")
+
+        Log.d("ippx", "onReceive: receive a self defined broadcast $data")
     }
 }
