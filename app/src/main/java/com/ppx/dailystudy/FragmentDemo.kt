@@ -12,7 +12,7 @@ import java.lang.ref.WeakReference
 /**
  * Author: luoxia
  * Date: 2020/9/4 22:07
- * Description: 此类主要是用于了解fragment的各个生命周期的
+ * Description: 此类主要是用于了解fragment的各个生命周期的   test
  */
 class FragmentDemo : Fragment() {
 
