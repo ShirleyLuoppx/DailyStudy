@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity() {
 
     private val testFinishFunction: TestFinishFunction = TestFinishFunction()
 
+    //意图过滤器
     private lateinit var intentFilter: IntentFilter
     private lateinit var myBroadCastReceiver: MyBroadCastReceiver
 
@@ -47,10 +48,9 @@ class MainActivity : AppCompatActivity() {
         getDataByPost()
         getDataByViewTreeObserver()
 
-        intentFilter = IntentFilter()
-        intentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE")
         myBroadCastReceiver = MyBroadCastReceiver()
-        registerReceiver(myBroadCastReceiver, intentFilter)
+        //注册了一个监听网络变化的广播，断网和连接网络的时候，就会在onReceive()中收到消息，处理逻辑也在这个里面处理
+        registerReceiver(myBroadCastReceiver, IntentFilter("android.net.conn.CONNECTIVITY_CHANGE"))
     }
 
     /**
@@ -60,7 +60,6 @@ class MainActivity : AppCompatActivity() {
         override fun onReceive(context: Context?, intent: Intent?) {
             Log.d("ippx", "onReceive: okin=====")
         }
-
     }
 
 
@@ -216,6 +215,7 @@ class MainActivity : AppCompatActivity() {
         super.onDestroy()
         Log.d(TAG, "onDestroy: ======================")
 
+        //销毁的时候，需要反注册这个广播接收器
         unregisterReceiver(myBroadCastReceiver)
     }
 }
