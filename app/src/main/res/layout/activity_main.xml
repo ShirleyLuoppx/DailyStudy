@@ -77,10 +77,10 @@
         android:id="@+id/tv_test_span"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="测试SpannableString"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/bt_start_search_blue_tooth"
-        android:layout_marginTop="20dp"/>
+        app:layout_constraintTop_toBottomOf="@id/bt_start_search_blue_tooth" />
 
     <Button
         android:id="@+id/click_finish"
@@ -91,10 +91,22 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_test_hide" />
 
+    <!--    textAllCaps 设置文字都是大写-->
+    <Button
+        android:id="@+id/click_to_start_fragment"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:layout_marginTop="20dp"
+        android:text="click to start fragment"
+        android:textAllCaps="false"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_test_span" />
+
+
     <FrameLayout
         android:id="@+id/fl_show_hide"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -24,15 +24,31 @@ class SpannableStringDemo : AppCompatActivity() {
 
         val spannableString = SpannableString(tv_test_span.text)
         spannableString.apply {
-            setSpan(ForegroundColorSpan(resources.getColor(R.color.colorAccent)),0,tv_test_span.text.length,Spanned.SPAN_INCLUSIVE_EXCLUSIVE)
-            setSpan(AbsoluteSizeSpan(70),0,tv_test_span.text.length,Spanned.SPAN_INCLUSIVE_EXCLUSIVE)
+            setSpan(
+                ForegroundColorSpan(resources.getColor(R.color.colorAccent)),
+                0,
+                tv_test_span.text.length,
+                Spanned.SPAN_INCLUSIVE_EXCLUSIVE
+            )
+            setSpan(
+                AbsoluteSizeSpan(70),
+                0,
+                tv_test_span.text.length,
+                Spanned.SPAN_INCLUSIVE_EXCLUSIVE
+            )
         }
 
         tv_test_span.setTextColor(resources.getColor(R.color.colorBlack))
-        tv_test_span.textSize =1f
+        tv_test_span.textSize = 1f
 
         tv_test_span.text = spannableString
 
+        //TODO  不知道这个为啥蹦 哈哈
+        click_to_start_fragment.setOnClickListener {
+
+            supportFragmentManager.beginTransaction().remove(ShowHideFragment())
+                .add(R.id.fl_show_hide, FragmentDemo()).commit()
+        }
 
     }
 }

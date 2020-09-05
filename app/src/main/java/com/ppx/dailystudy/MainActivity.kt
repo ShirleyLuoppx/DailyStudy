@@ -118,7 +118,7 @@ class MainActivity : AppCompatActivity() {
 
     fun show(){
         fl_show_hide.visibility = View.VISIBLE
-        supportFragmentManager.beginTransaction().add(R.id.fl_show_hide,ShowHideFragment()).commit()
+        supportFragmentManager.beginTransaction().add(R.id.fl_show_hide,FragmentDemo()).commit()
     }
 
     fun hide(){
