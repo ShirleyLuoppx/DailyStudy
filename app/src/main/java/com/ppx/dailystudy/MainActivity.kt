@@ -1,9 +1,6 @@
 package com.ppx.dailystudy
 
-import android.content.BroadcastReceiver
-import android.content.Context
-import android.content.Intent
-import android.content.IntentFilter
+import android.content.*
 import android.net.ConnectivityManager
 import android.os.Bundle
 import android.util.Log
@@ -11,6 +8,7 @@ import android.view.View
 import android.view.ViewTreeObserver
 import androidx.appcompat.app.AppCompatActivity
 import com.ppx.dailystudy.bluetooth.BlueToothMainActivity
+import com.ppx.dailystudy.broadcast.SelfDefinedBroadCastReceiver
 import com.ppx.dailystudy.fragment.FragmentDemo
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -150,7 +148,18 @@ class MainActivity : AppCompatActivity() {
 //        supportFragmentManager.beginTransaction().hide(ShowHideFragment()).commit()
     }
 
+
+    private val receiver = SelfDefinedBroadCastReceiver()
     private fun initEvent() {
+        //点击发song一个自定义广播 “intent_filter”
+        bt_send_self_defined_broadcast.setOnClickListener {
+            //动态注册的广播接收器
+            val intentFilter = IntentFilter("intent_filter")
+            registerReceiver(receiver, intentFilter)
+
+            sendBroadcast(Intent("intent_filter"))
+        }
+
         click_finish.setOnClickListener {
             testFinishFunction.finishActivity()
         }
@@ -219,5 +228,6 @@ class MainActivity : AppCompatActivity() {
 
         //销毁的时候，需要反注册这个广播接收器
         unregisterReceiver(myBroadCastReceiver)
+        unregisterReceiver(receiver)
     }
 }
