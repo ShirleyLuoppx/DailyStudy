@@ -24,7 +24,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".broadcast.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -34,6 +34,7 @@
 
         <activity android:name=".MenuResourcesActivity" />
         <activity android:name=".TestFinishFunction" />
+        <activity android:name=".broadcast.ForceOffLineActivity" />
 
         <receiver
             android:name=".broadcast.MyReceiver"
