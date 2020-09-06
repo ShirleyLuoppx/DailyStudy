@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import android.view.ViewTreeObserver
 import androidx.appcompat.app.AppCompatActivity
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.ppx.dailystudy.bluetooth.BlueToothMainActivity
 import com.ppx.dailystudy.broadcast.SelfDefinedBroadCastReceiver
 import com.ppx.dailystudy.fragment.FragmentDemo
@@ -32,7 +33,6 @@ class MainActivity : AppCompatActivity() {
     //意图过滤器
     private lateinit var intentFilter: IntentFilter
     private lateinit var myBroadCastReceiver: MyBroadCastReceiver
-
 
     //    var seekBar: SeekBar? = SeekBar(this)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -151,10 +151,19 @@ class MainActivity : AppCompatActivity() {
 
     private val receiver = SelfDefinedBroadCastReceiver()
     private val selfDefinedIntentFilter = IntentFilter("intent_filter")
+
+    private lateinit var localBroadcastManager: LocalBroadcastManager
     private fun initEvent() {
+        //点击发送一个本地广播
+        localBroadcastManager = LocalBroadcastManager.getInstance(this)
+        bt_send_local_broadcast.setOnClickListener {
+            localBroadcastManager.registerReceiver(receiver, selfDefinedIntentFilter)
+            localBroadcastManager.sendBroadcast(Intent("intent_filter"))
+        }
+
         //点击发送一个自定义的有序广播
         bt_send_self_defined_orderedbroadcast.setOnClickListener {
-            selfDefinedIntentFilter.priority = 100
+//            selfDefinedIntentFilter.priority = 100
             registerReceiver(receiver, selfDefinedIntentFilter)
 
             //参数一：action，参数二：权限相关字符串，这里传空
@@ -240,5 +249,6 @@ class MainActivity : AppCompatActivity() {
         //销毁的时候，需要反注册这个广播接收器
         unregisterReceiver(myBroadCastReceiver)
         unregisterReceiver(receiver)
+        localBroadcastManager.unregisterReceiver(receiver)
     }
 }

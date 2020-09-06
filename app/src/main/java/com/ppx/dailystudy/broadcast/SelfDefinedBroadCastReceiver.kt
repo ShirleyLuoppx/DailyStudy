@@ -15,6 +15,6 @@ class SelfDefinedBroadCastReceiver : BroadcastReceiver() {
         val data = intent.getStringExtra("data")
 
         Log.d("ippx", "onReceive: receive a self defined broadcast $data")
-        abortBroadcast()
+//        abortBroadcast()
     }
 }
