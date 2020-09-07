@@ -7,6 +7,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ppx.dailystudy.R
 import kotlinx.android.synthetic.main.activity_sqlite.*
+import org.litepal.LitePal
+import org.litepal.crud.LitePalSupport
+import org.litepal.tablemanager.Connector
+import java.nio.channels.FileLock
 
 /**
  * Author: luoxia
@@ -31,10 +35,61 @@ class SQLiteActivity : AppCompatActivity() {
         bt_update_data.setOnClickListener { updateData() }
         bt_delete_data.setOnClickListener { deleteData() }
         bt_query_data.setOnClickListener { queryData() }
+
         bt_add_data_by_sql.setOnClickListener { insertBySql() }
         bt_update_data_by_sql.setOnClickListener { updateBySql() }
         bt_delete_data_by_sql.setOnClickListener { deleteBySql() }
         bt_query_data_by_sql.setOnClickListener { queryBySql() }
+
+        bt_create_table_by_litepal.setOnClickListener {
+            //创建数据库
+            Connector.getDatabase()
+        }
+        bt_add_data_by_litepal.setOnClickListener { insertByLitePal() }
+        bt_update_data_by_litepal.setOnClickListener { updateByLitePal() }
+        bt_delete_data_by_litepal.setOnClickListener { deleteByLitePal() }
+        bt_query_data_by_litepal.setOnClickListener { queryByLitePal() }
+        bt_set_default_by_litepal.setOnClickListener { updateToDefault() }
+
+    }
+
+    /**
+     * 通过litepal的CRUD
+     */
+    private fun insertByLitePal() {
+        val flowerBean = FlowerBean()
+        flowerBean.name = "水仙花"
+        flowerBean.number = 123
+        flowerBean.save()
+
+        val flowerBean1 = FlowerBean()
+        flowerBean1.name = "塑料花"
+        flowerBean1.number = 996
+        flowerBean1.save()
+    }
+
+    private fun updateByLitePal() {
+        val flowerBean = FlowerBean()
+        flowerBean.number = 666
+        flowerBean.updateAll("name =?", "水仙花")
+    }
+
+    /**
+     * 将所有的FlowerBean的number列设置为默认值，number是int类型的，默认值为0，updateAll不传参，默认修改所有的FlowerBean的number
+     */
+    private fun updateToDefault() {
+        val flowerBean = FlowerBean()
+        flowerBean.setToDefault("number")
+        flowerBean.updateAll()
+    }
+
+    private fun deleteByLitePal() {
+        LitePal.deleteAll(FlowerBean::class.java, "number < 100")
+    }
+
+    private fun queryByLitePal() {
+        val flowerList = LitePal.findAll(FlowerBean::class.java)
+        initRV(flowerList)
     }
 
     /**
@@ -88,7 +143,11 @@ class SQLiteActivity : AppCompatActivity() {
             it.close()
         }
 
-        sqliteAdapter = SqliteAdapter(flowerList)
+        initRV(flowerList)
+    }
+
+    private fun initRV(dataList: MutableList<FlowerBean>) {
+        sqliteAdapter = SqliteAdapter(dataList)
         rv_sqlite_data.layoutManager = LinearLayoutManager(this)
         rv_sqlite_data.adapter = sqliteAdapter
         sqliteAdapter.notifyDataSetChanged()
@@ -130,8 +189,4 @@ class SQLiteActivity : AppCompatActivity() {
     }
 
 
-    class FlowerBean {
-        var name: String = ""
-        var number: Int = 0
-    }
 }

@@ -53,4 +53,5 @@ dependencies {
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4'
 
     compile files('libs/flysdk_V1.0.jar')
+    implementation 'org.litepal.guolindev:core:3.2.1'
 }
