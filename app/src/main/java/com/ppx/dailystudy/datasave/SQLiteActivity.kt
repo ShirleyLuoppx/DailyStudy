@@ -88,8 +88,25 @@ class SQLiteActivity : AppCompatActivity() {
     }
 
     private fun queryByLitePal() {
+
+        //偏移量 offset，查询偏移量为1的前两条数据，也就是从第二条开始，查询2、3条数据
+        val offsetData = LitePal.limit(2).offset(1).find(FlowerBean::class.java)
+
+        //前几条 limit
+        val limitData = LitePal.limit(2).find(FlowerBean::class.java)
+
+        //排列方式 order desc 从高到低
+        val orderData = LitePal.order("number desc").find(FlowerBean::class.java)
+
+        //查询几列   select
+        val selectDatas = LitePal.select("number").find(FlowerBean::class.java)
+
+        //条件查询  where
+        val data = LitePal.where("name=?", "水仙花").find(FlowerBean::class.java)
+
+        //全查询
         val flowerList = LitePal.findAll(FlowerBean::class.java)
-        initRV(flowerList)
+        initRV(offsetData)
     }
 
     /**
