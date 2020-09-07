@@ -38,6 +38,7 @@ class FileSaveActivity : AppCompatActivity() {
         var bufferedReader: BufferedReader? = null
 
         try {
+            //fileSave 文件名
             val fileInputString = openFileInput("fileSave")
             bufferedReader = BufferedReader(InputStreamReader(fileInputString))
 

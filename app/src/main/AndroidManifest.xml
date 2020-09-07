@@ -24,7 +24,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".datasave.FileSaveActivity">
+        <activity android:name=".datasave.SQLiteActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
