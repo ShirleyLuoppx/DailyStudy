@@ -1,6 +1,7 @@
 package com.ppx.dailystudy.datasave
 
 import android.content.ContentValues
+import android.database.Cursor
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -30,12 +31,48 @@ class SQLiteActivity : AppCompatActivity() {
         bt_update_data.setOnClickListener { updateData() }
         bt_delete_data.setOnClickListener { deleteData() }
         bt_query_data.setOnClickListener { queryData() }
+        bt_add_data_by_sql.setOnClickListener { insertBySql() }
+        bt_update_data_by_sql.setOnClickListener { updateBySql() }
+        bt_delete_data_by_sql.setOnClickListener { deleteBySql() }
+        bt_query_data_by_sql.setOnClickListener { queryBySql() }
     }
 
+    /**
+     * 直接写sql的CRUD
+     */
+    private fun insertBySql() {
+        val db = sqLiteDBHelper?.writableDatabase
+        db?.execSQL("insert into Flower (name,number) values(?,?)", arrayOf("霸王花", 1))
+        db?.execSQL("insert into Flower (name,number) values(?,?)", arrayOf("皮皮花", 238))
+    }
+
+    private fun updateBySql() {
+        val db = sqLiteDBHelper?.writableDatabase
+        db?.execSQL("update Flower set number =? where name =?", arrayOf(20000, "皮皮花"))
+    }
+
+    private fun deleteBySql() {
+        val db = sqLiteDBHelper?.writableDatabase
+        db?.execSQL("delete from Flower where name =?", arrayOf("霸王花"))
+    }
+
+    private fun queryBySql() {
+        val db = sqLiteDBHelper?.writableDatabase
+        val cursor = db?.rawQuery("select * from Flower", null)
+        setData(cursor)
+    }
+
+    /**
+     * 查询数据
+     */
     private fun queryData() {
         val sqLiteDatabase = sqLiteDBHelper?.writableDatabase
         //查询全部
         val dataCursor = sqLiteDatabase?.query("Flower", null, "", null, "", "", "")
+        setData(dataCursor)
+    }
+
+    private fun setData(dataCursor: Cursor?) {
         flowerList.clear()
         dataCursor?.let {
             if (it.moveToNext()) {
@@ -57,11 +94,17 @@ class SQLiteActivity : AppCompatActivity() {
         sqliteAdapter.notifyDataSetChanged()
     }
 
+    /**
+     * 删除数据
+     */
     private fun deleteData() {
         val sqLiteDatabase = sqLiteDBHelper?.writableDatabase
         sqLiteDatabase?.delete("Flower", "name=?", arrayOf("玫瑰花"))
     }
 
+    /**
+     * 修改数据
+     */
     private fun updateData() {
         val sqLiteDatabase = sqLiteDBHelper?.writableDatabase
         val updatedFlowerData = ContentValues()
@@ -69,6 +112,9 @@ class SQLiteActivity : AppCompatActivity() {
         sqLiteDatabase?.update("Flower", updatedFlowerData, "name=?", arrayOf("玫瑰花"))
     }
 
+    /**
+     * 添加数据
+     */
     private fun addData() {
         val sqLiteDatabase = sqLiteDBHelper?.writableDatabase
 

@@ -25,7 +25,14 @@ open class SQLiteDBHelper(
 
     private var mContext: Context? = context
 
-    //    构建一个sql
+    /**
+     * 构建一个sql
+     * Android中的sqlite数据库的类型有以下几种
+     * integer 整形
+     * text 字符型
+     * real 浮点型
+     * blob 二进制型
+     */
     val CREATE_FLOWER =
         "create table Flower (id integer primary key autoincrement,name text,number real)"
 
