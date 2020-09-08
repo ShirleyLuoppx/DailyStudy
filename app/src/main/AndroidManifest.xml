@@ -6,6 +6,8 @@
     <!-- //所有手机需要的权限，蓝牙功能才能正常使用 -->
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" /> <!-- 除了BLUETOOTH和BLUETOOTH_ADMIN权限外，还将以下内容添加到您应用的清单文件中，以使用蓝牙连接和配对API： -->
+    <!--    添加打电话的权限-->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="com.google.android.things.permission.MANAGE_BLUETOOTH" /> <!-- //部分手机（如小米等）需要将下面两个权限添加进去，蓝牙功能才能正常使用 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- 用于收集用户的位置信息如果是Android9 API28 或更低版本 则声明ACCESS_COARSE_LOCATION权限 -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> -->
@@ -24,7 +26,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".datasave.SQLiteActivity">
+        <activity android:name=".contentprovider.CallActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
