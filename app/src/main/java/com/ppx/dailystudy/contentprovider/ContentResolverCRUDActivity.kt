@@ -1,10 +1,16 @@
 package com.ppx.dailystudy.contentprovider
 
+import android.Manifest
 import android.content.ContentValues
+import android.content.pm.PackageManager
 import android.database.Cursor
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.provider.ContactsContract
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ppx.dailystudy.R
 import com.ppx.dailystudy.datasave.FlowerBean
@@ -31,6 +37,74 @@ class ContentResolverCRUDActivity : AppCompatActivity() {
         bt_add_data.setOnClickListener { addByContentResolver() }
         bt_update_data.setOnClickListener { updateByContentResolver() }
         bt_delete_data.setOnClickListener { deleteByContentResolver() }
+        bt_query_contacts.setOnClickListener { getContacts() }
+    }
+
+    /**
+     * 使用现有的内容提供器来获取手机通讯录的数据
+     */
+    private fun getContacts() {
+        if (Build.VERSION.SDK_INT >= 23) {
+            //注意这里的Manifest是android包下的 不要导错了
+            if (ActivityCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.READ_CONTACTS
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                ActivityCompat.requestPermissions(
+                    this,
+                    arrayOf(Manifest.permission.READ_CONTACTS),
+                    1
+                )
+            } else {
+                queryContacts()
+            }
+        } else {
+            queryContacts()
+        }
+    }
+
+    var contentResolverAdapter = ContentResolverAdapter(mutableListOf())
+    var contentResolverContactsList = mutableListOf<String>()
+    private fun queryContacts() {
+        val contactsCusor = contentResolver.query(
+            ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+            null,
+            null,
+            null,
+            null
+        )
+        contactsCusor?.let {
+            while (it.moveToNext()) {
+                val name =
+                    it.getString(it.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME))
+                val number =
+                    it.getString(it.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))
+                val str = "$name :  $number"
+                contentResolverContactsList.add(str)
+            }
+        }
+
+        contentResolverAdapter = ContentResolverAdapter(contentResolverContactsList)
+        rv_content_resolver_data.layoutManager = LinearLayoutManager(this)
+        rv_content_resolver_data.adapter = contentResolverAdapter
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when (requestCode) {
+            1 -> {
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    queryContacts()
+                } else {
+                    Toast.makeText(this, "refuse", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
     }
 
     /**
@@ -60,7 +134,6 @@ class ContentResolverCRUDActivity : AppCompatActivity() {
 
     private fun queryByContentResolver() {
         val cursor = contentResolver.query(uri, null, null, null, null)
-
         setData(cursor)
     }
 
@@ -78,6 +151,7 @@ class ContentResolverCRUDActivity : AppCompatActivity() {
                     flowerList.add(flowerBean)
                 } while (it.moveToNext())
             }
+            //记得要关掉哟
             it.close()
         }
 
