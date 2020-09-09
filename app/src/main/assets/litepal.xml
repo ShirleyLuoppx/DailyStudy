@@ -6,5 +6,7 @@
     <list>
         <mapping class="com.ppx.dailystudy.datasave.FlowerBean"></mapping>
         <mapping class="com.ppx.dailystudy.datasave.GrassBean"></mapping>
+        <mapping class="com.ppx.dailystudy.contentprovider.FlowerBeanWithId"></mapping>
+        <mapping class="com.ppx.dailystudy.contentprovider.GrassBeanWithId"></mapping>
     </list>
 </litepal>

@@ -39,16 +39,26 @@ open class SQLiteDBHelper(
     val CREATE_GRASS =
         "create table Grass (id integer primary key autoincrement,name text,number real)"
 
+    val CREATE_FLOWER_WITH_ID =
+        "create table FlowerBeanWithId (id integer primary key autoincrement,name text,number real)"
+
+    val CREATE_GRASS_WITH_ID =
+        "create table GrassBeanWithId (id integer primary key autoincrement,name text,number real)"
+
     override fun onCreate(db: SQLiteDatabase?) {
         //执行创建表
         db?.execSQL(CREATE_FLOWER)
         db?.execSQL(CREATE_GRASS)
-        Toast.makeText(mContext, "创建成功", Toast.LENGTH_SHORT).show()
+        db?.execSQL(CREATE_FLOWER_WITH_ID)
+        db?.execSQL(CREATE_GRASS_WITH_ID)
+//        Toast.makeText(mContext, "创建成功", Toast.LENGTH_SHORT).show()
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
         db?.execSQL("drop table if exists Flower")
         db?.execSQL("drop table if exists Grass")
+        db?.execSQL("drop table if exists FlowerBeanWithId")
+        db?.execSQL("drop table if exists GrassBeanWithId")
         onCreate(db)
     }
 
