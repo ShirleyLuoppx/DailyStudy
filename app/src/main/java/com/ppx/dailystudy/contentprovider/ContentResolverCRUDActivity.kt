@@ -83,6 +83,8 @@ class ContentResolverCRUDActivity : AppCompatActivity() {
                 val str = "$name :  $number"
                 contentResolverContactsList.add(str)
             }
+            //记得关闭！！！
+            it.close()
         }
 
         contentResolverAdapter = ContentResolverAdapter(contentResolverContactsList)
