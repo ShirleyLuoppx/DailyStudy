@@ -28,6 +28,7 @@ class MyApplication : Application() {
                 FlyAirManager.getInstance().registerCallBackListener()
                 FlyCarInfoManager.getInstance().registerCallBackListener()
                 FlyBluetoothManager.getInstance().registerCallBackListener()
+                FlyNewEnergyManager.getInstance().registerCallBackListener()
             }
         })
     }

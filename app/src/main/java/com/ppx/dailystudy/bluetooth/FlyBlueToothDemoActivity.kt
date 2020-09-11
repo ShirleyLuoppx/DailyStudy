@@ -15,6 +15,7 @@ import kotlinx.android.synthetic.main.activity_fly_bluetooth.*
  * Date: 2020/8/17 16:42
  * Description: DESCRIPTION
  */
+@SuppressLint("LongLogTag")
 class FlyBlueToothDemoActivity : AppCompatActivity() {
 
     private val TAG = "FlyBlueToothDemoActivity"
@@ -23,8 +24,9 @@ class FlyBlueToothDemoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fly_bluetooth)
 
+        initEvent()
 
-        FlyBluetoothManager.getInstance().bluetoothListener = object : BluetoothListener{
+        FlyBluetoothManager.getInstance().bluetoothListener = object : BluetoothListener {
             override fun onCallInfo(p0: Int, p1: Contact?) {
             }
 
@@ -49,12 +51,37 @@ class FlyBlueToothDemoActivity : AppCompatActivity() {
             override fun onPhoneAcceptTypeChanged(p0: Boolean) {
             }
 
-            @SuppressLint("LongLogTag")
             override fun onBtMusicInfo(p0: String?, p1: String?, p2: String?) {
-                Log.e(TAG, "onBtMusicInfo: okin==============$p0----$p1")
             }
 
+            override fun onScanDeviceChange(p0: String?, p1: String?) {
+                Log.d(TAG, "onScanDeviceChange: $p0，$p1")
+            }
+
+            override fun onConnectPingStatus(p0: String?, p1: String?) {
+                Log.d(TAG, "onConnectPingStatus: $p0---$p1")
+                //那这个是拿来干什么的？？
+//                FlyBluetoothManager.getInstance().connectPingCodeStatus(true)
+            }
         }
 
+    }
+
+    private fun initEvent() {
+        bt_open.setOnClickListener {
+            FlyBluetoothManager.getInstance().enableBTPower(true)
+        }
+        bt_close.setOnClickListener {
+            FlyBluetoothManager.getInstance().enableBTPower(false)
+        }
+        bt_startscan.setOnClickListener {
+            FlyBluetoothManager.getInstance().startBTScan()
+        }
+        bt_stopscan.setOnClickListener {
+            FlyBluetoothManager.getInstance().stopBTScan()
+        }
+        try_connect.setOnClickListener {
+            FlyBluetoothManager.getInstance().tryConnectDevice("8035c163902e")
+        }
     }
 }
