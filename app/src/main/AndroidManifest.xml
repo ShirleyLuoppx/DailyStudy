@@ -42,6 +42,7 @@
         <activity android:name=".MenuResourcesActivity" />
         <activity android:name=".TestFinishFunction" />
         <activity android:name=".broadcast.ForceOffLineActivity" />
+        <activity android:name=".multimedia.NotificationLayoutActivity" />
 
         <receiver
             android:name=".broadcast.MyReceiver"

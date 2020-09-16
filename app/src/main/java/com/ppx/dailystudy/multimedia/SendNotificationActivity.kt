@@ -2,7 +2,9 @@ package com.ppx.dailystudy.multimedia
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.app.PendingIntent
 import android.content.Context
+import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.Build
 import android.os.Bundle
@@ -45,6 +47,9 @@ class SendNotificationActivity : AppCompatActivity() {
         }
 
         bt_send_notification.setOnClickListener {
+
+            val pendingIntent = PendingIntent.getActivity(this,0, Intent(this,NotificationLayoutActivity::class.java),0)
+
             val notificationManager =
                 getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             val notification = NotificationCompat.Builder(this, "chat")//只传context的那种方法以及被废弃啦~
@@ -52,7 +57,10 @@ class SendNotificationActivity : AppCompatActivity() {
                 .setContentText("您有一条新消息")
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setLargeIcon(BitmapFactory.decodeResource(resources, R.mipmap.ic_launcher_round))
+                .setContentIntent(pendingIntent)
+                .setAutoCancel(true)//设置点击状态栏中的通知后自动在通知栏中取消这个通知
                 .build()
+//            notificationManager.cancel(1)   不知道这个为哈不行。
             notificationManager.notify(1, notification)
         }
 
