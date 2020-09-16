@@ -32,7 +32,7 @@
             android:enabled="true"
             android:exported="true"></provider>
 
-        <activity android:name=".bluetooth.FlyBlueToothDemoActivity">
+        <activity android:name=".multimedia.SendNotificationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

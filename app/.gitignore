@@ -15,3 +15,4 @@
 .cxx
 *.aar
 *.jar
+/libs
