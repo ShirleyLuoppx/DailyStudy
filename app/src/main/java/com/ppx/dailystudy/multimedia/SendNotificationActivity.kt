@@ -27,6 +27,16 @@ class SendNotificationActivity : AppCompatActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val id = "chat"
             val name = "聊天消息"
+            /**
+             * 通知的重要程度：
+             * IMPORTANCE_UNSPECIFIED：这个翻译貌似是从来不会被通知到
+             * IMPORTANCE_NONE：不会展示在通知栏？、？
+             * IMPORTANCE_MIN：只会显示在通知栏
+             * IMPORTANCE_LOW：会显示在通知栏和状态栏
+             * IMPORTANCE_DEFAULT：默认的重要程度，随便哪里都会显示，但是没有声音
+             * IMPORTANCE_HIGH：高级的重要程度，随便哪里都会显示，会有声音和震动，也可能会全屏显示
+             * IMPORTANCE_MAX：没用过？？
+             */
             createNotificationChannel(id, name, NotificationManager.IMPORTANCE_HIGH)
 
             val id2 = "subscribe"
