@@ -50,8 +50,16 @@ class SendNotificationActivity : AppCompatActivity() {
 
             val pendingIntent = PendingIntent.getActivity(this,0, Intent(this,NotificationLayoutActivity::class.java),0)
 
+            /**
+             * NotificationManager是状态栏通知的管理类，负责发通知、清楚通知等
+             * 是一个系统Service，必须通过 getSystemService()方法来获取
+             */
             val notificationManager =
                 getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+            /**
+             * notification是具体的状态栏通知对象，可以设置icon、文字、提示声音、振动等等参数
+             */
             val notification = NotificationCompat.Builder(this, "chat")//只传context的那种方法以及被废弃啦~
                 .setContentTitle("this is a chat for ppx")
                 .setContentText("您有一条新消息")
