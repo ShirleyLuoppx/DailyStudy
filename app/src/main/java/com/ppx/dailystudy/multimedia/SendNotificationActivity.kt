@@ -44,11 +44,11 @@ class SendNotificationActivity : AppCompatActivity() {
              * 通知的重要程度：
              * IMPORTANCE_UNSPECIFIED：这个翻译貌似是从来不会被通知到
              * IMPORTANCE_NONE：不会展示在通知栏？、？
-             * IMPORTANCE_MIN：只会显示在通知栏
-             * IMPORTANCE_LOW：会显示在通知栏和状态栏
-             * IMPORTANCE_DEFAULT：默认的重要程度，随便哪里都会显示，但是没有声音
-             * IMPORTANCE_HIGH：高级的重要程度，随便哪里都会显示，会有声音和震动，也可能会全屏显示
-             * IMPORTANCE_MAX：没用过？？
+             * IMPORTANCE_MIN：最低的重要程度，只会显示在通知栏
+             * IMPORTANCE_LOW：较低的重要程度，可能会被改变通知的顺序，放在重要的后面，会显示在通知栏和状态栏
+             * IMPORTANCE_DEFAULT：默认的重要程度，随便哪里都会显示，但是没有声音，和不设置是一样的
+             * IMPORTANCE_HIGH：较高的重要程度，通知的排序可能会比较靠前，随便哪里都会显示，会有声音和震动，也可能会全屏显示
+             * IMPORTANCE_MAX：最高的重要程度，展示在最前面，是需要用户立即看到，且可以及时作出响应的
              */
             createNotificationChannel(true, id, name, NotificationManager.IMPORTANCE_HIGH)
 
@@ -77,7 +77,8 @@ class SendNotificationActivity : AppCompatActivity() {
                 builder = NotificationCompat.Builder(this)
             }
             val notification = builder//只传context的那种方法以及被废弃啦~
-                .setContentTitle("this is a chat for ppx")
+                //如果文本过长，会自动变成单行且ellipsis=end的形式哟，if u want to set  big text，u should use setStyle function like ..
+                .setContentTitle("this is a chat for ppx,and balabalabala this is a chat for ppx,and balabalabala this is a chat for ppx,and balabalabala this is a chat for ppx,and balabalabala this is a chat for ppx,and balabalabala miss u ppx")
                 .setContentText("您有一条新消息")
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setLargeIcon(BitmapFactory.decodeResource(resources, R.mipmap.ic_launcher_round))
@@ -93,8 +94,15 @@ class SendNotificationActivity : AppCompatActivity() {
                         1000
                     )
                 )//设置振动的频率，第一个参数为通知来临时静止的时间，第二个表示振动的时间，第三个表示静止的时间，第四个表示振动的时间，以此类推
-                    //本来想设置个led的的颜色和闪烁的频率的，但是好像是因为版本问题，这个方法也没用，不过也可能是手机型号的问题呢
+                //本来想设置个led的的颜色和闪烁的频率的，但是好像是因为版本问题，这个方法也没用，不过也可能是手机型号的问题呢
                 .setDefaults(NotificationCompat.DEFAULT_ALL)
+                //使用setStyle 可以设置消息通知内容为长文本
+//                .setStyle(
+//                    NotificationCompat.BigTextStyle()
+//                        .bigText("this is a chat for ppx,and balabalabala this is a chat for ppx,and balabalabala this is a chat for ppx,and balabalabala this is a chat for ppx,and balabalabala this is a chat for ppx,and balabalabala miss u ppx")
+//                )
+                    //也许你希望用一张超级大图来展示你的盛世美颜呢？这时候你需要使用setStyle给你的消息通知的内容里面放一张大图哟，ps：坚决打击hdd
+                .setStyle(NotificationCompat.BigPictureStyle().bigPicture(BitmapFactory.decodeResource(resources,R.mipmap.ic_launcher_round)))
                 .build()
 //            notificationManager.cancel(1)   不知道这个为哈不行。
             notificationManager?.notify(1, notification)
