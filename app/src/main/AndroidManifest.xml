@@ -34,7 +34,20 @@
             android:enabled="true"
             android:exported="true"></provider>
 
-        <activity android:name=".multimedia.SendNotificationActivity">
+        <!--        拍照片用的哟-->
+        <!--        name固定值，authorities就是FileProvider.getUriForFile的第二个参数，要一直，他才知道是在这里provider里面找数据-->
+        <!--        exported，是否可导出，grantUriPermissions，授权uri-->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.ppx.dailystudy.multimedia.takecameraorphoto"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <activity android:name=".multimedia.TakeCameraOrPhotoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
