@@ -84,7 +84,7 @@ class SendNotificationActivity : AppCompatActivity() {
                 .setContentIntent(pendingIntent)
                 .setAutoCancel(true)//设置点击状态栏中的通知后自动在通知栏中取消这个通知
                 .setSound(Uri.fromFile(File("")))//可以设置通知的时间
-                //所以，这里表示，通知来临时，立即振动一秒，然后静止一秒，然后再振动一秒
+                //所以，这里表示，通知来临时，立即振动一秒，然后静止一秒，然后再振动一秒，虽然这里直接这样写没得效果
                 .setVibrate(
                     longArrayOf(
                         0,
@@ -93,6 +93,8 @@ class SendNotificationActivity : AppCompatActivity() {
                         1000
                     )
                 )//设置振动的频率，第一个参数为通知来临时静止的时间，第二个表示振动的时间，第三个表示静止的时间，第四个表示振动的时间，以此类推
+                    //本来想设置个led的的颜色和闪烁的频率的，但是好像是因为版本问题，这个方法也没用，不过也可能是手机型号的问题呢
+                .setDefaults(NotificationCompat.DEFAULT_ALL)
                 .build()
 //            notificationManager.cancel(1)   不知道这个为哈不行。
             notificationManager?.notify(1, notification)
