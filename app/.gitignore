@@ -13,6 +13,6 @@
 /captures
 .externalNativeBuild
 .cxx
-*.aar
+/app/libs
 *.jar
 /libs
