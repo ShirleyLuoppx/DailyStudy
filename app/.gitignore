@@ -1,3 +1,5 @@
+*.aar
+/app/libs/*
 *.iml
 .gradle
 /.idea
@@ -12,7 +14,5 @@
 /build
 /captures
 .externalNativeBuild
-.cxx
-/app/libs
 *.jar
 /libs
