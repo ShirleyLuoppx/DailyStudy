@@ -6,10 +6,14 @@ import kotlinx.android.synthetic.main.activity_okhttp.*
 import okhttp3.FormBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
+import org.xml.sax.InputSource
+import org.xml.sax.XMLReader
 import org.xmlpull.v1.XmlPullParser
 import org.xmlpull.v1.XmlPullParserFactory
+import java.io.InputStream
 import java.io.StringReader
 import java.lang.Exception
+import javax.xml.parsers.SAXParserFactory
 
 /**
  * Author: LuoXia
@@ -52,6 +56,7 @@ class OkHttpActivity : AppCompatActivity() {
 
             postResponse.body?.string()?.let {
                 parseXmlWithPull(it)
+//                saxParseXmlData(it)
             }
 
         }).start()
@@ -107,5 +112,16 @@ class OkHttpActivity : AppCompatActivity() {
         } catch (e: Exception) {
             e.printStackTrace()
         }
+    }
+
+    /**
+     * sax方式解析xml数据，还有dom解析，这些都是java的基础知识了，我还依稀记得以前上课的时候老师讲过的，只不过上班以后没用过就忘记了
+     */
+    private fun saxParseXmlData(xmlData: String) {
+        val saxParserFactory = SAXParserFactory.newInstance()
+        val xmlReader = saxParserFactory.newSAXParser().xmlReader
+
+        xmlReader.contentHandler = SaxParseDefaultHandler()
+        xmlReader.parse(InputSource(StringReader(xmlData)))
     }
 }
