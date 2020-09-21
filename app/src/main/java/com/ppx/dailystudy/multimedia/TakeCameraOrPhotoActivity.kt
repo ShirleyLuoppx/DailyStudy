@@ -86,12 +86,10 @@ class TakeCameraOrPhotoActivity : AppCompatActivity() {
                         BitmapFactory.decodeStream(contentResolver.openInputStream(it))
                     iv_photo.setImageBitmap(imageBitmap)
                 }
-
             }
         } else if (requestCode == 3) {
-            var imagePath: String = ""
             if (resultCode == Activity.RESULT_OK) {
-                //4.4以上处理图片的方法
+                //4.4以上处理图片的方法，因为4.4以上的系统选中的图片返回的不是一个直接的uri，而是封装后的，所以需要解析
                 if (Build.VERSION.SDK_INT >= 19) {
                     handleImgOnKitkat(data)
                 } else {
@@ -113,6 +111,7 @@ class TakeCameraOrPhotoActivity : AppCompatActivity() {
         //如果是document类型
         if (DocumentsContract.isDocumentUri(this, uri)) {
             val docId = DocumentsContract.getDocumentId(uri)
+            //如果的media格式
             if ("com.android.providers.media.documents" == uri?.authority) {
                 //解析出数字格式的id
                 val id = docId.split(":")[1]
@@ -143,6 +142,7 @@ class TakeCameraOrPhotoActivity : AppCompatActivity() {
      * 展示图片
      */
     private fun displayImage(imagePath: String) {
+//        AudioManager
         if (imagePath.isNotEmpty()) {
             val bitmap = BitmapFactory.decodeFile(imagePath)
             iv_photo.setImageBitmap(bitmap)
