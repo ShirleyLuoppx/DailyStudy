@@ -48,7 +48,7 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity android:name=".multimedia.MusicPlayerActivity">
+        <activity android:name=".cha09internet.WebViewActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -20,7 +20,7 @@ import java.io.File
  */
 class MusicPlayerActivity : AppCompatActivity() {
 
-    private var mediaPlayer : MediaPlayer?= null
+    private var mediaPlayer: MediaPlayer? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,8 +51,7 @@ class MusicPlayerActivity : AppCompatActivity() {
 
     private fun initPlayer() {
         mediaPlayer = MediaPlayer()
-//        val file = File(Environment.getExternalStorageDirectory(), "南拳妈妈 - 下雨天.mp3")
-        mediaPlayer?.setDataSource("http://music.baidu.com/data/music/file? link=http://yinyueshiting.baidu.com/data2/music/3566287/29237101437253261128.mp3? xcode=fc3ef977c9fa9bdf4394f800f7f2550e&song_id=2923710")
+        mediaPlayer?.setDataSource("")
         mediaPlayer?.prepare()
     }
 
@@ -65,7 +64,7 @@ class MusicPlayerActivity : AppCompatActivity() {
         if (requestCode == 1) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 initPlayer()
-            }else{
+            } else {
                 Log.d("ippx", "onRequestPermissionsResult: 没有读写权限哟")
             }
         }
