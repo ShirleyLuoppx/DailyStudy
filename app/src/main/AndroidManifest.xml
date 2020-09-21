@@ -48,7 +48,7 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity android:name=".multimedia.TakeCameraOrPhotoActivity">
+        <activity android:name=".multimedia.MusicPlayerActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
