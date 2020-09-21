@@ -6,6 +6,7 @@ import kotlinx.android.synthetic.main.activity_okhttp.*
 import okhttp3.FormBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
+import org.json.JSONArray
 import org.xml.sax.InputSource
 import org.xml.sax.XMLReader
 import org.xmlpull.v1.XmlPullParser
@@ -123,5 +124,23 @@ class OkHttpActivity : AppCompatActivity() {
 
         xmlReader.contentHandler = SaxParseDefaultHandler()
         xmlReader.parse(InputSource(StringReader(xmlData)))
+    }
+
+    /**
+     * jsonObject的简单用法
+     */
+    private fun parseJsonDataByJsonObject(jsonString: String) {
+        try {
+            val jsonArray = JSONArray(jsonString)
+            for (i in 0..jsonArray.length()) {
+                val jsonObject = jsonArray.getJSONObject(i)
+                val id = jsonObject.getString("id")
+                val name = jsonObject.getString("name")
+                val version = jsonObject.getString("version")
+                Log.d("ippx", "parseJsonDataByJsonObject: id=$id,name=$name,version=$version")
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 }
