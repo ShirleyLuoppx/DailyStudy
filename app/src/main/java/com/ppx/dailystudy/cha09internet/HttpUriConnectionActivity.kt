@@ -72,8 +72,13 @@ class HttpUriConnectionActivity : AppCompatActivity() {
     }
 
     private fun showText(content: String) {
-        runOnUiThread {
+        //切回主线程修改ui
+        tv_content.post {
             tv_content.text = content
         }
+        //或者使用这种方法
+//        runOnUiThread {
+//            tv_content.text = content
+//        }
     }
 }
