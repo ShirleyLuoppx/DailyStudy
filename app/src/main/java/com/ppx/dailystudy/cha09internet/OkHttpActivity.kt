@@ -1,6 +1,8 @@
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.ppx.dailystudy.R
 import kotlinx.android.synthetic.main.activity_okhttp.*
 import okhttp3.FormBody
@@ -127,7 +129,7 @@ class OkHttpActivity : AppCompatActivity() {
     }
 
     /**
-     * jsonObject的简单用法
+     * jsonObject的简单用法，之前用这个还被周工嘲讽 了...所以我也要用Gson
      */
     private fun parseJsonDataByJsonObject(jsonString: String) {
         try {
@@ -141,6 +143,21 @@ class OkHttpActivity : AppCompatActivity() {
             }
         } catch (e: Exception) {
             e.printStackTrace()
+        }
+    }
+
+    /**
+     * gson解析string类型的json串
+     */
+    private fun parseJsonDataByGson(jsonString: String) {
+        val gson = Gson()
+        //如果是一个实体
+        val bean = gson.fromJson(jsonString, AppBean::class.java)
+        //如果是一个集合
+        val beanList = gson.fromJson(jsonString, Array<AppBean>::class.java).toMutableList()
+
+        beanList.forEach {
+            Log.d("ippx", "parseJsonDataByGson: id=${it.id},name=${it.name},version=${it.version}")
         }
     }
 }
