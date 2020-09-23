@@ -1,5 +1,6 @@
 package com.ppx.dailystudy.cha09internet
 
+import HttpCallBackListener
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.ppx.dailystudy.R
@@ -25,6 +26,16 @@ class HttpUriConnectionActivity : AppCompatActivity() {
         bt_send_request.setOnClickListener {
             sendRequest()
         }
+    }
+
+    private fun sendRequestByHttpUtil() {
+        val dataString = HttpUtil.sendHttpRequest("", object : HttpCallBackListener {
+            override fun onSuccess(dataString: String) {
+            }
+
+            override fun onError(e: Exception) {
+            }
+        })
     }
 
     private fun sendRequest() {

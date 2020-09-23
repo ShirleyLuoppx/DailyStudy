@@ -5,14 +5,13 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.ppx.dailystudy.R
 import kotlinx.android.synthetic.main.activity_okhttp.*
-import okhttp3.FormBody
-import okhttp3.OkHttpClient
-import okhttp3.Request
+import okhttp3.*
 import org.json.JSONArray
 import org.xml.sax.InputSource
 import org.xml.sax.XMLReader
 import org.xmlpull.v1.XmlPullParser
 import org.xmlpull.v1.XmlPullParserFactory
+import java.io.IOException
 import java.io.InputStream
 import java.io.StringReader
 import java.lang.Exception
@@ -30,6 +29,16 @@ class OkHttpActivity : AppCompatActivity() {
         setContentView(R.layout.activity_okhttp)
 
         bt_send_okhttp_request.setOnClickListener {
+            HttpUtil.sendOkHttpConnection("", object : Callback {
+                override fun onFailure(call: Call, e: IOException) {
+
+                }
+
+                override fun onResponse(call: Call, response: Response) {
+                }
+
+            })
+
             sendOkHttpRequest()
         }
     }
