@@ -2,19 +2,21 @@ package com.ppx.dailystudy.chap10service
 
 import android.app.Service
 import android.content.Intent
+import android.os.Binder
 import android.os.IBinder
 import android.util.Log
 
 /**
- * 服务学习类
+ * service
  */
 class MyService : Service() {
 
     private val TAG = "MyService"
 
+    private val downLoaderBinder : DownLoaderBinder = DownLoaderBinder()
 
     override fun onBind(intent: Intent): IBinder? {
-        return null
+        return downLoaderBinder
     }
 
     /**
@@ -26,7 +28,7 @@ class MyService : Service() {
     }
 
     /**
-     * 服务启动的时候调用
+     * 每一次服务启动的时候都会被调用
      */
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         Log.d(TAG, "onStartCommand: ")
@@ -39,5 +41,25 @@ class MyService : Service() {
     override fun onDestroy() {
         super.onDestroy()
         Log.d(TAG, "onDestroy: ")
+    }
+
+    /**
+     * 暂停的方法
+     */
+    private fun stop() {
+        stopSelf()
+    }
+
+    class DownLoaderBinder : Binder() {
+        private val TAG = "DownLoaderBinder"
+
+        public fun startDownLoad() {
+            Log.d(TAG, "startDownLoad: ")
+        }
+
+        public fun getProgress(): Int {
+            Log.d(TAG, "getProgress: ")
+            return 0
+        }
     }
 }
