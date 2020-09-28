@@ -18,9 +18,9 @@ class ServiceActivity : AppCompatActivity() {
         setContentView(R.layout.activity_service)
 
         bt_start_service.setOnClickListener {
-            startActivity(Intent(this, MyService().javaClass))
+            startService(Intent(this,MyService().javaClass))
         }
 
-        bt_stop_service.setOnClickListener { Intent(this, MyService().javaClass) }
+        bt_stop_service.setOnClickListener { stopService(Intent(this, MyService().javaClass)) }
     }
 }

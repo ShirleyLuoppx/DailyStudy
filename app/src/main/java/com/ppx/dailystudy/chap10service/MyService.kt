@@ -37,7 +37,7 @@ class MyService : Service() {
      * 销毁的时候调用
      */
     override fun onDestroy() {
-        Log.d(TAG, "onDestroy: ")
         super.onDestroy()
+        Log.d(TAG, "onDestroy: ")
     }
 }
