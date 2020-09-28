@@ -73,6 +73,14 @@ class ForeService : Service() {
      * 每一次服务启动的时候都会被调用
      */
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        /**
+         * 如果你要在服务里面操作一些耗时操作，就需要开一个子线程了
+         */
+        Thread(Runnable {
+            //并且在里面执行完耗时操作后需要调用stopSelf()  来停止服务
+            stopSelf()
+            //当然有更简单的办法，那就是intentService
+        }).start()
         Log.d(TAG, "onStartCommand: ")
         return super.onStartCommand(intent, flags, startId)
     }

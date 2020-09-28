@@ -38,6 +38,10 @@
             android:name=".chap10service.ForeService"
             android:enabled="true"
             android:exported="true" />
+        <service
+            android:name=".chap10service.MyIntentService"
+            android:enabled="true"
+            android:exported="true" />
 
         <provider
             android:name=".contentprovider.MyContentProvider"

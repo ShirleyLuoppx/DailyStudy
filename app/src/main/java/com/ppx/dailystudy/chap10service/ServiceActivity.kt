@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.ServiceConnection
 import android.os.Bundle
 import android.os.IBinder
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.ppx.dailystudy.R
 import kotlinx.android.synthetic.main.activity_service.*
@@ -16,7 +17,7 @@ import kotlinx.android.synthetic.main.activity_service.*
  * Description: 调用service的启动和停止
  */
 class ServiceActivity : AppCompatActivity() {
-
+    private val TAG ="ServiceActivity"
     private var downLoaderBinder = MyService.DownLoaderBinder()
 
     private val conn = object : ServiceConnection {
@@ -67,6 +68,16 @@ class ServiceActivity : AppCompatActivity() {
                 Intent(
                     this,
                     ForeService().javaClass
+                )
+            )
+        }
+
+        bt_start_intentservice.setOnClickListener {
+            Log.d(TAG, "onCreate: 当前线程id：${Thread.currentThread().id}")
+            startService(
+                Intent(
+                    this,
+                    MyIntentService().javaClass
                 )
             )
         }
