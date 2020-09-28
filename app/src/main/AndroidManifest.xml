@@ -17,8 +17,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 监听系统开机的权限 -->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" /> <!-- 添加读取通讯录权限 -->
-    <uses-permission android:name="android.permission.READ_CONTACTS" />
-    <!--    手机振动权限-->
+    <uses-permission android:name="android.permission.READ_CONTACTS" /> <!-- 手机振动权限 -->
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
@@ -30,15 +29,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <service
+            android:name=".chap10service.MyService"
+            android:enabled="true"
+            android:exported="true" />
+
         <provider
             android:name=".contentprovider.MyContentProvider"
             android:authorities="com.ppx.dailystudy.contentprovider"
             android:enabled="true"
-            android:exported="true"></provider>
-
-        <!--        拍照片用的哟-->
-        <!--        name固定值，authorities就是FileProvider.getUriForFile的第二个参数，要一直，他才知道是在这里provider里面找数据-->
-        <!--        exported，是否可导出，grantUriPermissions，授权uri-->
+            android:exported="true" /> <!-- 拍照片用的哟 -->
+        <!-- name固定值，authorities就是FileProvider.getUriForFile的第二个参数，要一直，他才知道是在这里provider里面找数据 -->
+        <!-- exported，是否可导出，grantUriPermissions，授权uri -->
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.ppx.dailystudy.multimedia.takecameraorphoto"
@@ -49,7 +51,7 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity android:name=".chap10service.UpdateUiOnChildThread">
+        <activity android:name=".chap10service.ServiceActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
