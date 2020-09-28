@@ -61,5 +61,14 @@ class ServiceActivity : AppCompatActivity() {
         }
 
         bt_unbind_service.setOnClickListener { unbindService(conn) }
+
+        bt_start_foreservice.setOnClickListener {
+            startService(
+                Intent(
+                    this,
+                    ForeService().javaClass
+                )
+            )
+        }
     }
 }

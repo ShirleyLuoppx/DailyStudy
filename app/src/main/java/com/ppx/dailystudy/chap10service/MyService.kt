@@ -7,7 +7,7 @@ import android.os.IBinder
 import android.util.Log
 
 /**
- * service
+ * 普通service
  */
 class MyService : Service() {
 
