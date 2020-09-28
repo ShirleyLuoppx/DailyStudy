@@ -40,6 +40,9 @@ class ServiceActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_service)
 
+        /**
+         * 需要注意的是：如果同时调用了startService和bindService的话，相应的需要同时调用stopService和unbindService来停止服务
+         */
         bt_start_service.setOnClickListener {
             startService(Intent(this, MyService().javaClass))
         }
