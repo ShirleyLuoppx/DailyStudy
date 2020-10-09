@@ -13,8 +13,8 @@ import android.widget.Toast
  * Description: 一个封装过的异步处理操作的类
  */
 /**
- * 参数一：
- * 参数二：
+ * 参数一：需要传入的参数
+ * 参数二：进度
  * 参数三：方法的执行结果返回的泛型
  */
 class DownLoadTaskActivity(mcontext: Context) : AsyncTask<Unit, Int, Boolean>() {
