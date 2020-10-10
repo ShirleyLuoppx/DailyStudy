@@ -14,6 +14,9 @@ import com.ppx.dailystudy.R
 import java.io.File
 
 class DownLoadService : IntentService("DownLoadService") {
+    companion object {
+        const val TAG = "DownLoadService"
+    }
 
     public var downLoadTask: DownLoadTask? = null
     private var downLoadUrl: String = ""
@@ -72,11 +75,7 @@ class DownLoadService : IntentService("DownLoadService") {
                 //注意这里的execute  ，不知道为啥不能提示出来，需要自己手打....
                 downLoadTask?.execute(downLoadUrl)
                 startForeground(1, getNotification("startDownLoad", 0))
-                Toast.makeText(
-                    DownLoadService().applicationContext,
-                    "startDownLoad",
-                    Toast.LENGTH_SHORT
-                ).show()
+                Log.d(TAG, "startDownLoad:")
             }
         }
 

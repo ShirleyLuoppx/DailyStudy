@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.activity_service.*
  * Description: 调用service的启动和停止
  */
 class ServiceActivity : AppCompatActivity() {
-    private val TAG ="ServiceActivity"
+    private val TAG = "ServiceActivity"
     private var downLoaderBinder = MyService.DownLoaderBinder()
 
     private val conn = object : ServiceConnection {
@@ -44,10 +44,7 @@ class ServiceActivity : AppCompatActivity() {
         initEvent()
     }
 
-    private fun initEvent(){
-        bt_start_download.setOnClickListener {
-
-        }
+    private fun initEvent() {
 
         /**
          * 需要注意的是：如果同时调用了startService和bindService的话，相应的需要同时调用stopService和unbindService来停止服务
