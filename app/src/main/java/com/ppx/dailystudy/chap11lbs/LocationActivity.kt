@@ -11,6 +11,11 @@ import com.baidu.location.BDLocation
 import com.baidu.location.BDLocationListener
 import com.baidu.location.LocationClient
 import com.baidu.location.LocationClientOption
+import com.baidu.mapapi.SDKInitializer
+import com.baidu.mapapi.map.BaiduMap
+import com.baidu.mapapi.map.MapStatusUpdateFactory
+import com.baidu.mapapi.map.MapView
+import com.baidu.mapapi.model.LatLng
 import com.ppx.dailystudy.R
 import kotlinx.android.synthetic.main.activity_location.*
 import java.lang.StringBuilder
@@ -18,16 +23,55 @@ import java.lang.StringBuilder
 /**
  * Author: LuoXia
  * Date: 2020/10/11 16:48
- * Description: 百度地图的定位Demo
+ * Description: 百度地图以及定位Demo
  */
 class LocationActivity : AppCompatActivity() {
 
     private lateinit var mLocationClient: LocationClient
+    private lateinit var mBaiDuMap: BaiduMap
+    private lateinit var baidu_mapview: MapView
+    private var isFirstLocate: Boolean = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        SDKInitializer.initialize(applicationContext)
         setContentView(R.layout.activity_location)
 
+        baidu_mapview = findViewById(R.id.baidu_mapview)
+
+        checkPermission()
+    }
+
+    /**
+     * 将百度地图定位到指定经纬度
+     */
+    private fun navigateTo(bdLocation: BDLocation) {
+        if (isFirstLocate) {
+            mBaiDuMap = baidu_mapview.map
+
+            val latLng = LatLng(bdLocation.latitude, bdLocation.longitude)
+            var mapStatusUpdate = MapStatusUpdateFactory.newLatLng(latLng)
+            mBaiDuMap.animateMapStatus(mapStatusUpdate)
+
+            //将地图进行缩放，float类型的值，范围在3-19，值越大，数据越细
+            mapStatusUpdate = MapStatusUpdateFactory.zoomBy(12.5f)
+            mBaiDuMap.animateMapStatus(mapStatusUpdate)
+            isFirstLocate = false
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        baidu_mapview.onResume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        baidu_mapview.onPause()
+    }
+
+    private fun checkPermission() {
         mLocationClient = LocationClient(this)
         mLocationClient.registerLocationListener(MyLocationListener())
 
@@ -121,6 +165,10 @@ class LocationActivity : AppCompatActivity() {
             sb.append("区：${p0?.district}  \n")
             sb.append("街道：${p0?.street}  \n")
             tv_show_location.text = sb
+
+            if (p0?.locType == BDLocation.TypeGpsLocation || p0?.locType == BDLocation.TypeNetWorkLocation) {
+                navigateTo(p0)
+            }
         }
 
     }
@@ -129,5 +177,6 @@ class LocationActivity : AppCompatActivity() {
         super.onDestroy()
         //activity被销毁的时候需要停止mLocationClient，要不然定位会在后台一直运行严重消耗手机电量
         mLocationClient.stop()
+        baidu_mapview.onDestroy()
     }
 }
