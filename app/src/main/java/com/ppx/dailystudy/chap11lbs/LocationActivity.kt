@@ -10,6 +10,7 @@ import androidx.core.content.ContextCompat
 import com.baidu.location.BDLocation
 import com.baidu.location.BDLocationListener
 import com.baidu.location.LocationClient
+import com.baidu.location.LocationClientOption
 import com.ppx.dailystudy.R
 import kotlinx.android.synthetic.main.activity_location.*
 import java.lang.StringBuilder
@@ -81,7 +82,22 @@ class LocationActivity : AppCompatActivity() {
     }
 
     private fun requestLocation() {
+        initLocation()
         mLocationClient.start()
+    }
+
+    private fun initLocation() {
+        val locationClientOption = LocationClientOption()
+        //每5s更新一次当前的位置
+        locationClientOption.scanSpan = 5000
+        /**
+         * 可以通过locationClientOption的locationMode强制设置定位方式，有三种定位值
+         * 1、Hight_Accuracy： 高精度模式，也是默认的，会优先使用精确度更高的Gps定位，如果Gps获取不到会自动转换为蓝牙 或者网络定位
+         * 2、Battery_Saving：省电模式，也就是网络定位模式
+         * 3、Device_Sensors：设备传感器模式，也就是Gps模式，室内一般是接收不到Gps信号的
+         */
+        locationClientOption.locationMode = LocationClientOption.LocationMode.Device_Sensors
+        mLocationClient.locOption = locationClientOption
     }
 
     inner class MyLocationListener : BDLocationListener {
@@ -96,5 +112,11 @@ class LocationActivity : AppCompatActivity() {
             tv_show_location.text = sb
         }
 
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        //activity被销毁的时候需要停止mLocationClient，要不然定位会在后台一直运行严重消耗手机电量
+        mLocationClient.stop()
     }
 }
