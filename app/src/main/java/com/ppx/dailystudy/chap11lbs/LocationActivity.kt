@@ -88,27 +88,38 @@ class LocationActivity : AppCompatActivity() {
 
     private fun initLocation() {
         val locationClientOption = LocationClientOption()
+
         //每5s更新一次当前的位置
-        locationClientOption.scanSpan = 5000
+//        locationClientOption.scanSpan = 5000
+
         /**
          * 可以通过locationClientOption的locationMode强制设置定位方式，有三种定位值
          * 1、Hight_Accuracy： 高精度模式，也是默认的，会优先使用精确度更高的Gps定位，如果Gps获取不到会自动转换为蓝牙 或者网络定位
          * 2、Battery_Saving：省电模式，也就是网络定位模式
          * 3、Device_Sensors：设备传感器模式，也就是Gps模式，室内一般是接收不到Gps信号的
          */
-        locationClientOption.locationMode = LocationClientOption.LocationMode.Device_Sensors
+//        locationClientOption.locationMode = LocationClientOption.LocationMode.Device_Sensors//强行转换为Gps获取位置
+
+        //设置是否可以直接获取到地址信息
+        locationClientOption.setIsNeedAddress(true)
+
         mLocationClient.locOption = locationClientOption
     }
 
     inner class MyLocationListener : BDLocationListener {
         override fun onReceiveLocation(p0: BDLocation?) {
             val sb = StringBuilder()
-            sb.append("纬度：${p0?.latitude}，经度：${p0?.longitude}，定位方式：")
+            sb.append("纬度：${p0?.latitude} \n 经度：${p0?.longitude} \n 定位方式：")
             if (p0?.locType == BDLocation.TypeGpsLocation) {
-                sb.append("GPS定位")
+                sb.append("GPS定位  \n")
             } else {
-                sb.append("网络定位")
+                sb.append("网络定位 \n")
             }
+            sb.append("国家：${p0?.country}  \n")
+            sb.append("省：${p0?.province}  \n")
+            sb.append("市：${p0?.city}  \n")
+            sb.append("区：${p0?.district}  \n")
+            sb.append("街道：${p0?.street}  \n")
             tv_show_location.text = sb
         }
 
