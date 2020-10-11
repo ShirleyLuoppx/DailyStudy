@@ -15,6 +15,7 @@ import com.baidu.mapapi.SDKInitializer
 import com.baidu.mapapi.map.BaiduMap
 import com.baidu.mapapi.map.MapStatusUpdateFactory
 import com.baidu.mapapi.map.MapView
+import com.baidu.mapapi.map.MyLocationData
 import com.baidu.mapapi.model.LatLng
 import com.ppx.dailystudy.R
 import kotlinx.android.synthetic.main.activity_location.*
@@ -49,6 +50,8 @@ class LocationActivity : AppCompatActivity() {
     private fun navigateTo(bdLocation: BDLocation) {
         if (isFirstLocate) {
             mBaiDuMap = baidu_mapview.map
+            //将百度地图的允许显示“我”的那个东西
+            mBaiDuMap.isMyLocationEnabled = true
 
             val latLng = LatLng(bdLocation.latitude, bdLocation.longitude)
             var mapStatusUpdate = MapStatusUpdateFactory.newLatLng(latLng)
@@ -59,6 +62,13 @@ class LocationActivity : AppCompatActivity() {
             mBaiDuMap.animateMapStatus(mapStatusUpdate)
             isFirstLocate = false
         }
+
+        val builder = MyLocationData.Builder()
+        builder.latitude(bdLocation.latitude)
+        builder.longitude(bdLocation.longitude)
+
+        val myLocationData = builder.build()
+        mBaiDuMap.setMyLocationData(myLocationData)
     }
 
     override fun onResume() {
@@ -178,5 +188,7 @@ class LocationActivity : AppCompatActivity() {
         //activity被销毁的时候需要停止mLocationClient，要不然定位会在后台一直运行严重消耗手机电量
         mLocationClient.stop()
         baidu_mapview.onDestroy()
+        //将百度地图的取消显示“我”的那个东西
+        mBaiDuMap.isMyLocationEnabled = false
     }
 }
