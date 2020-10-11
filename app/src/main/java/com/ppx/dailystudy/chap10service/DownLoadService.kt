@@ -37,7 +37,7 @@ class DownLoadService : IntentService("DownLoadService") {
             downLoadTask = null
             stopForeground(true)
             getNotificationManager().notify(1, getNotification("failed", -1))
-            Toast.makeText(this@DownLoadService, "success", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@DownLoadService, "onFailed", Toast.LENGTH_SHORT).show()
         }
 
         override fun onPause() {
