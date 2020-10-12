@@ -38,7 +38,7 @@
         <!--        添加一个百度地方的API_KEY-->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="YfDFRA6yzHjOBGAkZMVpiamlZILE5aovs" />
+            android:value="WhkwAHAopYX9hDh9HecpHiqvX58GpIKj" />
 
         <activity android:name=".chap11lbs.LocationActivity">
             <intent-filter>

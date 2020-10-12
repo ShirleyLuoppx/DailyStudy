@@ -3,6 +3,7 @@ package com.ppx.dailystudy.chap11lbs
 import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -28,10 +29,13 @@ import java.lang.StringBuilder
  */
 class LocationActivity : AppCompatActivity() {
 
+
     private lateinit var mLocationClient: LocationClient
     private lateinit var mBaiDuMap: BaiduMap
     private lateinit var baidu_mapview: MapView
     private var isFirstLocate: Boolean = true
+
+    private val TAG = "LocationActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,6 +77,7 @@ class LocationActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        Log.d(TAG, "onResume: $baidu_mapview")
         baidu_mapview.onResume()
     }
 
@@ -144,7 +149,7 @@ class LocationActivity : AppCompatActivity() {
         val locationClientOption = LocationClientOption()
 
         //每5s更新一次当前的位置
-//        locationClientOption.scanSpan = 5000
+        locationClientOption.scanSpan = 5000
 
         /**
          * 可以通过locationClientOption的locationMode强制设置定位方式，有三种定位值
@@ -152,7 +157,7 @@ class LocationActivity : AppCompatActivity() {
          * 2、Battery_Saving：省电模式，也就是网络定位模式
          * 3、Device_Sensors：设备传感器模式，也就是Gps模式，室内一般是接收不到Gps信号的
          */
-//        locationClientOption.locationMode = LocationClientOption.LocationMode.Device_Sensors//强行转换为Gps获取位置
+        locationClientOption.locationMode = LocationClientOption.LocationMode.Device_Sensors//强行转换为Gps获取位置
 
         //设置是否可以直接获取到地址信息
         locationClientOption.setIsNeedAddress(true)
@@ -175,6 +180,8 @@ class LocationActivity : AppCompatActivity() {
             sb.append("区：${p0?.district}  \n")
             sb.append("街道：${p0?.street}  \n")
             tv_show_location.text = sb
+
+            Log.d(TAG, "onReceiveLocation: 地址：$sb")//这个定位不准确啊，给我定到白云区去了
 
             if (p0?.locType == BDLocation.TypeGpsLocation || p0?.locType == BDLocation.TypeNetWorkLocation) {
                 navigateTo(p0)
