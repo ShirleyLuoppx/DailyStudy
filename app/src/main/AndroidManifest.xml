@@ -36,6 +36,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <!--        添加一个百度地方的API_KEY-->
+        <!--        这里需要注意一下，在申请AK的时候，一定要项目名称和报名和申请填入的一致，要不然地图显示不出来-->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="WhkwAHAopYX9hDh9HecpHiqvX58GpIKj" />
