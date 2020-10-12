@@ -5,6 +5,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
 import com.ppx.dailystudy.R
 import kotlinx.android.synthetic.main.activity_toolbar.*
 
@@ -19,7 +20,13 @@ class ToolBarActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_toolbar)
 
-//        setSupportActionBar(toolbar)
+        setSupportActionBar(toolbar)
+
+        val actionBar = supportActionBar
+        actionBar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+//            setHomeAsUpIndicator(R.drawable.ic_launcher_foreground)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -37,6 +44,9 @@ class ToolBarActivity : AppCompatActivity() {
             }
             R.id.delete -> {
                 Toast.makeText(this, "delete", Toast.LENGTH_SHORT).show()
+            }
+            android.R.id.home->{
+                drawerlayout.openDrawer(GravityCompat.START)
             }
         }
         return true
