@@ -1,5 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/add" android:title="Add"/>
-    <item android:id="@+id/delete" android:title="Delete"/>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!--    如果item是在toolbar中，设置了icon后就只 会显示icon不会显示文字，-->
+    <!--    如果item是在菜单栏中，设置icon后也只会显示文字，不会显示icon-->
+    <!--    showAsAction的几种值：-->
+    <!--    always：永远显示在toolbar中，如果空间不够就不显示了-->
+    <!--    ifRoom：只要空间允许就会永远显示早toolbar中，不够的话就显示在菜单栏中-->
+    <!--    never：永远不会显示在toolbar中，只会显示在菜单栏中-->
+
+    <item
+        android:id="@+id/add"
+        android:icon="@mipmap/music_def_play_cover"
+        android:title="Add"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/delete"
+        android:icon="@mipmap/my_collection"
+        android:title="Delete"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/setting"
+        android:icon="@mipmap/song_list_collection"
+        android:title="setting"
+        app:showAsAction="withText" />
+    <item
+        android:id="@+id/setting1"
+        android:icon="@mipmap/song_list_collection"
+        android:title="setting1"
+        app:showAsAction="collapseActionView" />
+    <item
+        android:id="@+id/setting2"
+        android:icon="@mipmap/song_list_collection"
+        android:title="setting2"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/setting3"
+        android:icon="@mipmap/song_list_collection"
+        android:title="setting3"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/setting4"
+        android:icon="@mipmap/song_list_collection"
+        android:title="setting4"
+        app:showAsAction="never" />
 </menu>

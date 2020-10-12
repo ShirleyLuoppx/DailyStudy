@@ -157,7 +157,7 @@ class LocationActivity : AppCompatActivity() {
          * 2、Battery_Saving：省电模式，也就是网络定位模式
          * 3、Device_Sensors：设备传感器模式，也就是Gps模式，室内一般是接收不到Gps信号的
          */
-        locationClientOption.locationMode = LocationClientOption.LocationMode.Device_Sensors//强行转换为Gps获取位置
+//        locationClientOption.locationMode = LocationClientOption.LocationMode.Device_Sensors//强行转换为Gps获取位置
 
         //设置是否可以直接获取到地址信息
         locationClientOption.setIsNeedAddress(true)
