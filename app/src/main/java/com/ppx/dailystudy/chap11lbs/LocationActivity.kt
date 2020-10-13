@@ -50,6 +50,7 @@ class LocationActivity : AppCompatActivity() {
 
     /**
      * 将百度地图定位到指定经纬度
+     * 需要注意的是：我在调用这个sdk去定位的时候，连接的公司的wifi，定位出来的地点跟实际偏差还比较大，已经跨区了，但是当我换成流量的时候，偏差就缩小到几百米
      */
     private fun navigateTo(bdLocation: BDLocation) {
         if (isFirstLocate) {
