@@ -37,29 +37,12 @@
     </LinearLayout>
 
     <!--    需要注意的是：android:layout_gravity="start"，这个属性在侧滑界面里面 ，是没有提示的，androidx+as4.0,不知道为啥，手打也ok，只是没有提示-->
-    <LinearLayout
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigationview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="left"
-        android:background="@color/colorDarkBG1F2"
-        android:orientation="vertical">
+        android:layout_gravity="start"
+        app:headerLayout="@layout/nav_header"
+        app:menu="@menu/nav_menu" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="start"
-            android:text="this is a drawerlayout's child layout" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="start"
-            android:text="this is a drawerlayout's child layout" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="start"
-            android:text="this is a drawerlayout's child layout" />
-    </LinearLayout>
 </androidx.drawerlayout.widget.DrawerLayout>

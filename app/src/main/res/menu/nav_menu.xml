@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--    checkableBehavior="single" 表示组中的所有选项只能单选-->
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_bags"
+            android:icon="@mipmap/my_collection"
+            android:title="包包" />
+        <item
+            android:id="@+id/nav_shoes"
+            android:icon="@mipmap/my_collection"
+            android:title="鞋子" />
+        <item
+            android:id="@+id/nav_clothes"
+            android:icon="@mipmap/my_collection"
+            android:title="衣服" />
+        <item
+            android:id="@+id/nav_dress"
+            android:icon="@mipmap/my_collection"
+            android:title="裙子" />
+        <item
+            android:id="@+id/nav_skin"
+            android:icon="@mipmap/my_collection"
+            android:title="护肤品" />
+    </group>
+</menu>

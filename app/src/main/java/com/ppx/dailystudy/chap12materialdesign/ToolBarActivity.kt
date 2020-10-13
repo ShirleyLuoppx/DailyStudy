@@ -6,6 +6,7 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
+import com.google.android.material.navigation.NavigationView
 import com.ppx.dailystudy.R
 import kotlinx.android.synthetic.main.activity_toolbar.*
 
@@ -27,7 +28,16 @@ class ToolBarActivity : AppCompatActivity() {
             setDisplayHomeAsUpEnabled(true)
 //            setHomeAsUpIndicator(R.drawable.ic_launcher_foreground)
         }
+
+        //设置一个默认选中的item
+        navigationview.setCheckedItem(R.id.nav_bags)
+        navigationview.setNavigationItemSelectedListener {
+            //设置选择了一个item后就将侧滑页关闭
+            drawerlayout.closeDrawers()
+            true
+        }
     }
+
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main, menu)
@@ -45,7 +55,7 @@ class ToolBarActivity : AppCompatActivity() {
             R.id.delete -> {
                 Toast.makeText(this, "delete", Toast.LENGTH_SHORT).show()
             }
-            android.R.id.home->{
+            android.R.id.home -> {
                 drawerlayout.openDrawer(GravityCompat.START)
             }
         }

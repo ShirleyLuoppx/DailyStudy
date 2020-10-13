@@ -5,7 +5,7 @@ apply plugin: 'kotlin-android-extensions'
 android {
     // 签名证书配置
     signingConfigs {
-        config4{
+        config4 {
             keyAlias 'flyaudio-android-releasekey'
             keyPassword 'flyaudio2019'
             storeFile file('key/Flyaudio-Android-Releasekey.jks')
@@ -28,7 +28,7 @@ android {
     }
 
     buildTypes {
-        debug{
+        debug {
             signingConfig signingConfigs.config4
         }
         release {
@@ -65,4 +65,9 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:4.7.2'
 
     implementation 'com.google.code.gson:gson:2.8.6'
+
+//    androidx的design包
+    implementation 'com.google.android.material:material:1.2.1'
+
+
 }
