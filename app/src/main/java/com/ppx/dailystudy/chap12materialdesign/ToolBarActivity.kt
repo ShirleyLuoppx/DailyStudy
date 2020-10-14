@@ -56,7 +56,7 @@ class ToolBarActivity : AppCompatActivity() {
             fruitsList.add(bean5)
             val bean6 = FruitBean(R.mipmap.pineapple, "pineapple")
             fruitsList.add(bean6)
-            val bean7 = FruitBean(R.mipmap.strawablerray, "strawablerray")
+            val bean7 = FruitBean(R.mipmap.strawberry, "strawberry")
             fruitsList.add(bean7)
         }
         cardViewAdapter = CardViewAdapter(fruitsList)

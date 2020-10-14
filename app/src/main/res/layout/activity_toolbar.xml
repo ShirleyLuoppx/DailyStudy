@@ -10,23 +10,28 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!--    事实证明，在androidx的版本下的toolbar指不指定 android:theme属性都是一样的了，所以还是很多跟郭神的第一行代码的第二版中的内容有些出入的-->
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorDarkBG354"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+            android:layout_height="wrap_content">
+            <!--    事实证明，在androidx的版本下的toolbar指不指定 android:theme属性都是一样的了，所以还是很多跟郭神的第一行代码的第二版中的内容有些出入的-->
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/colorDarkBG354"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+        </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_cardview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:itemCount="3"
-            tools:listitem="@layout/item_cardview" />
+            tools:listitem="@layout/item_cardview"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_button"
