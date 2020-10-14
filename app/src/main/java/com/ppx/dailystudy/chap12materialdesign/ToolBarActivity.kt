@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.activity_toolbar.*
 /**
  * Author: LuoXia
  * Date: 2020/10/12 19:06
- * Description: ToolBar的简单使用
+ * Description: 体验material design的 控件 。如：DrawerLayout、NavigationView、ToolBar、AppBarLayout、FloatingActionButton、SnackBar、CoordinateLayout的简单使用
  */
 class ToolBarActivity : AppCompatActivity() {
 
