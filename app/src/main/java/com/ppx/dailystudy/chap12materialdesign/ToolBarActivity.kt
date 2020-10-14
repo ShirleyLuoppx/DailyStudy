@@ -2,6 +2,7 @@ package com.ppx.dailystudy.chap12materialdesign
 
 import android.content.DialogInterface
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -9,10 +10,13 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 import com.ppx.dailystudy.R
 import kotlinx.android.synthetic.main.activity_toolbar.*
+import java.lang.Exception
+import kotlin.random.Random
 
 /**
  * Author: LuoXia
@@ -20,7 +24,7 @@ import kotlinx.android.synthetic.main.activity_toolbar.*
  * Description: 体验material design的 控件 。如：DrawerLayout、NavigationView、ToolBar、AppBarLayout、FloatingActionButton、SnackBar、CoordinateLayout的简单使用
  */
 class ToolBarActivity : AppCompatActivity() {
-
+    private val TAG = "ToolBarActivity"
     private var cardViewAdapter: CardViewAdapter = CardViewAdapter(mutableListOf())
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,6 +33,7 @@ class ToolBarActivity : AppCompatActivity() {
 
         setSupportActionBar(toolbar)
 
+        //actionBar
         val actionBar = supportActionBar
         actionBar?.apply {
             setDisplayHomeAsUpEnabled(true)
@@ -39,25 +44,50 @@ class ToolBarActivity : AppCompatActivity() {
 
         floatingActionBar()
         initRVCardView()
+
+        useSwipeRefresh()
     }
 
+    /**
+     * SwipeRefreshLayout
+     */
+    private fun useSwipeRefresh() {
+        swipe_refresh.setColorSchemeColors(resources.getColor(R.color.colorPrimary))
+        swipe_refresh.setOnRefreshListener {
+            Thread {
+                try {
+                    Thread.sleep(2000)
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+                runOnUiThread {
+                    initRVCardView()
+                    cardViewAdapter.notifyDataSetChanged()
+                    swipe_refresh.isRefreshing = false
+                }
+            }.start()
+        }
+    }
+
+    /**
+     * CardView
+     */
     private fun initRVCardView() {
         val fruitsList = mutableListOf<FruitBean>()
-        for (i in 0..10) {
-            val bean1 = FruitBean(R.mipmap.apple, "apple")
+        val imgArray = intArrayOf(
+            R.mipmap.apple,
+            R.mipmap.cherry,
+            R.mipmap.mango,
+            R.mipmap.orange,
+            R.mipmap.pear,
+            R.mipmap.pineapple,
+            R.mipmap.strawberry
+        )
+        for (i in 0..50) {
+            val random = 0 + Math.random() * 6
+
+            val bean1 = FruitBean(imgArray[random.toInt()], "apple")
             fruitsList.add(bean1)
-            val bean2 = FruitBean(R.mipmap.cherry, "cherry")
-            fruitsList.add(bean2)
-            val bean3 = FruitBean(R.mipmap.mango, "mango")
-            fruitsList.add(bean3)
-            val bean4 = FruitBean(R.mipmap.orange, "orange")
-            fruitsList.add(bean4)
-            val bean5 = FruitBean(R.mipmap.pear, "pear")
-            fruitsList.add(bean5)
-            val bean6 = FruitBean(R.mipmap.pineapple, "pineapple")
-            fruitsList.add(bean6)
-            val bean7 = FruitBean(R.mipmap.strawberry, "strawberry")
-            fruitsList.add(bean7)
         }
         cardViewAdapter = CardViewAdapter(fruitsList)
 
@@ -65,6 +95,9 @@ class ToolBarActivity : AppCompatActivity() {
         rv_cardview.adapter = cardViewAdapter
     }
 
+    /**
+     * navigationView
+     */
     private fun navigationView() {
         //设置一个默认选中的item
         navigationview.setCheckedItem(R.id.nav_bags)
@@ -75,6 +108,9 @@ class ToolBarActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * floatingActionButton &  SnackBar
+     */
     private fun floatingActionBar() {
         fab_button.setOnClickListener {
             /**
