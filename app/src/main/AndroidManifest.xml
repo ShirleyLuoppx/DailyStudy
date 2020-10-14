@@ -34,7 +34,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.NoActionBar">
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <!--        添加一个百度地方的API_KEY-->
         <!--        这里需要注意一下，在申请AK的时候，一定要项目名称和报名和申请填入的一致，要不然地图显示不出来-->
         <meta-data

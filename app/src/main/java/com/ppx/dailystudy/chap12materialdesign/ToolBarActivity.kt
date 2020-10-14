@@ -1,12 +1,15 @@
 package com.ppx.dailystudy.chap12materialdesign
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import com.google.android.material.navigation.NavigationView
+import com.google.android.material.snackbar.Snackbar
 import com.ppx.dailystudy.R
 import kotlinx.android.synthetic.main.activity_toolbar.*
 
@@ -35,6 +38,20 @@ class ToolBarActivity : AppCompatActivity() {
             //设置选择了一个item后就将侧滑页关闭
             drawerlayout.closeDrawers()
             true
+        }
+
+        fab_button.setOnClickListener {
+            Snackbar.make(it, "floatingactionbutton", Snackbar.LENGTH_SHORT)
+                .setAction("Undo", object : View.OnClickListener {
+                    override fun onClick(v: View?) {
+                        Toast.makeText(
+                            this@ToolBarActivity,
+                            "click floatingactionbutton",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                })
+                .show()
         }
     }
 
