@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
+import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 import com.ppx.dailystudy.R
@@ -19,6 +20,8 @@ import kotlinx.android.synthetic.main.activity_toolbar.*
  * Description: ToolBar的简单使用
  */
 class ToolBarActivity : AppCompatActivity() {
+
+    private var cardViewAdapter: CardViewAdapter = CardViewAdapter(mutableListOf())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +35,37 @@ class ToolBarActivity : AppCompatActivity() {
 //            setHomeAsUpIndicator(R.drawable.ic_launcher_foreground)
         }
 
+        navigationView()
+
+        floatingActionBar()
+        initRVCardView()
+    }
+
+    private fun initRVCardView() {
+        val fruitsList = mutableListOf<FruitBean>()
+        for (i in 0..10) {
+            val bean1 = FruitBean(R.mipmap.apple, "apple")
+            fruitsList.add(bean1)
+            val bean2 = FruitBean(R.mipmap.cherry, "cherry")
+            fruitsList.add(bean2)
+            val bean3 = FruitBean(R.mipmap.mango, "mango")
+            fruitsList.add(bean3)
+            val bean4 = FruitBean(R.mipmap.orange, "orange")
+            fruitsList.add(bean4)
+            val bean5 = FruitBean(R.mipmap.pear, "pear")
+            fruitsList.add(bean5)
+            val bean6 = FruitBean(R.mipmap.pineapple, "pineapple")
+            fruitsList.add(bean6)
+            val bean7 = FruitBean(R.mipmap.strawablerray, "strawablerray")
+            fruitsList.add(bean7)
+        }
+        cardViewAdapter = CardViewAdapter(fruitsList)
+
+        rv_cardview.layoutManager = GridLayoutManager(this, 3)
+        rv_cardview.adapter = cardViewAdapter
+    }
+
+    private fun navigationView() {
         //设置一个默认选中的item
         navigationview.setCheckedItem(R.id.nav_bags)
         navigationview.setNavigationItemSelectedListener {
@@ -39,7 +73,9 @@ class ToolBarActivity : AppCompatActivity() {
             drawerlayout.closeDrawers()
             true
         }
+    }
 
+    private fun floatingActionBar() {
         fab_button.setOnClickListener {
             /**
              * setAction:参数一：底部弹出的那个匡匡的右侧的可点击的文字，
@@ -54,7 +90,8 @@ class ToolBarActivity : AppCompatActivity() {
                         Toast.LENGTH_SHORT
                     ).show()
                 }
-                .setAction("Undo2", object : View.OnClickListener {//事实证明，不能添加两个action。第二个会把第一个给覆盖掉
+                .setAction("Undo2", object : View.OnClickListener {
+                    //事实证明，不能添加两个action。第二个会把第一个给覆盖掉
                     override fun onClick(v: View?) {
                         Toast.makeText(
                             this@ToolBarActivity,
