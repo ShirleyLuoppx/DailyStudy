@@ -41,6 +41,11 @@ class ToolBarActivity : AppCompatActivity() {
         }
 
         fab_button.setOnClickListener {
+            /**
+             * setAction:参数一：底部弹出的那个匡匡的右侧的可点击的文字，
+             * 参数二：点击事件
+             *  Snackbar.make(it, "floatingactionbutton",....    第二个参数，snackbar弹出的时候左边的文字显示
+             */
             Snackbar.make(it, "floatingactionbutton", Snackbar.LENGTH_SHORT)
                 .setAction("Undo") {
                     Toast.makeText(

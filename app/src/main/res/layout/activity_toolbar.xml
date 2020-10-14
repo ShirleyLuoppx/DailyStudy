@@ -5,10 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
         <!--    事实证明，在androidx的版本下的toolbar指不指定 android:theme属性都是一样的了，所以还是很多跟郭神的第一行代码的第二版中的内容有些出入的-->
         <androidx.appcompat.widget.Toolbar
@@ -25,12 +24,11 @@
             android:id="@+id/fab_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/my_collection"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
+            android:layout_gravity="end|bottom"
             android:layout_margin="16dp"
-            android:elevation="8dp"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:elevation="8dp"
+            android:src="@mipmap/my_collection" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <!--    需要注意的是：android:layout_gravity="start"，这个属性在侧滑界面里面 ，是没有提示的，androidx+as4.0,不知道为啥，手打也ok，只是没有提示-->
     <com.google.android.material.navigation.NavigationView
