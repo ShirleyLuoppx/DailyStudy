@@ -22,6 +22,7 @@
                 android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_scrollFlags="scroll|enterAlways|snap"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -29,9 +30,9 @@
             android:id="@+id/rv_cardview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
             tools:itemCount="3"
-            tools:listitem="@layout/item_cardview"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+            tools:listitem="@layout/item_cardview" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_button"
