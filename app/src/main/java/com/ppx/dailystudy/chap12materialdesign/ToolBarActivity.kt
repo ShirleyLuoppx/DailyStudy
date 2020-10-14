@@ -42,7 +42,14 @@ class ToolBarActivity : AppCompatActivity() {
 
         fab_button.setOnClickListener {
             Snackbar.make(it, "floatingactionbutton", Snackbar.LENGTH_SHORT)
-                .setAction("Undo", object : View.OnClickListener {
+                .setAction("Undo") {
+                    Toast.makeText(
+                        this@ToolBarActivity,
+                        "click floatingactionbutton",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+                .setAction("Undo2", object : View.OnClickListener {//事实证明，不能添加两个action。第二个会把第一个给覆盖掉
                     override fun onClick(v: View?) {
                         Toast.makeText(
                             this@ToolBarActivity,
