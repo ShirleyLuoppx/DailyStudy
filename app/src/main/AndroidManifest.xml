@@ -42,7 +42,8 @@
             android:value="WhkwAHAopYX9hDh9HecpHiqvX58GpIKj" />
 
         <activity android:name=".chap12materialdesign.ToolBarActivity"
-            android:label="@string/hello_world">
+            android:label="@string/hello_world"
+            android:theme="@style/FruitActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
