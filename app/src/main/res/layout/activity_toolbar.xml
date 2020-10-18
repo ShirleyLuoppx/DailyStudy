@@ -17,7 +17,7 @@
 
             <!--            Toolbar:一个顶部标题栏-->
             <!--    事实证明，在androidx的版本下的toolbar指不指定 android:theme、popupTheme属性都是一样的了，所以还是很多跟郭神的第一行代码的第二版中的内容有些出入的-->
-            <!--            layout_scrollFlags：设置界面在滚动的时候，Toolbar跟随滚动的状态-->
+            <!--            在AppBarLayout下面才有效的，layout_scrollFlags：设置界面在滚动的时候，Toolbar跟随滚动的状态-->
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"

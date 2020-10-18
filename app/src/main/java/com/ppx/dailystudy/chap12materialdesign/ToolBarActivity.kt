@@ -21,7 +21,7 @@ import kotlin.random.Random
 /**
  * Author: LuoXia
  * Date: 2020/10/12 19:06
- * Description: 体验material design的 控件 。如：DrawerLayout、NavigationView、ToolBar、AppBarLayout、FloatingActionButton、SnackBar、CoordinateLayout的简单使用
+ * Description: 体验material design风格的 控件 。如：DrawerLayout、NavigationView、ToolBar、AppBarLayout、FloatingActionButton、SnackBar、CoordinateLayout的简单使用
  */
 class ToolBarActivity : AppCompatActivity() {
     private val TAG = "ToolBarActivity"
