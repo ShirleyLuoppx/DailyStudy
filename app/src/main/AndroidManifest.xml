@@ -54,6 +54,7 @@
         <activity android:name=".TestFinishFunction" />
         <activity android:name=".broadcast.ForceOffLineActivity" />
         <activity android:name=".multimedia.NotificationLayoutActivity" />
+        <activity android:name=".chap12materialdesign.CollaspcingToobarActivity" />
 
         <receiver
             android:name=".broadcast.MyReceiver"

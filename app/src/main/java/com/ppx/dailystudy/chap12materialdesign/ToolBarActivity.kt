@@ -1,6 +1,7 @@
 package com.ppx.dailystudy.chap12materialdesign
 
 import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -93,6 +94,14 @@ class ToolBarActivity : AppCompatActivity() {
 
         rv_cardview.layoutManager = GridLayoutManager(this, 3)
         rv_cardview.adapter = cardViewAdapter
+
+        cardViewAdapter.setOnItemClickListener { adapter, view, position ->
+            val bean = adapter.getItem(position) as FruitBean
+            val intent = Intent(this, CollaspcingToobarActivity::class.java)
+            intent.putExtra(CollaspcingToobarActivity.FRUIT_NAME, bean.name)
+            intent.putExtra(CollaspcingToobarActivity.FRUIT_IMAGE_ID, bean.img)
+            startActivity(intent)
+        }
     }
 
     /**
