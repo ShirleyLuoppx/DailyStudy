@@ -13,13 +13,13 @@
         android:layout_height="250dp">
 
         <!--        contentScrim : 指 CollapsingToolbarLayout滑动折叠的时候的背景色-->
-        <!--        layout_scrollFlags: scroll:随着内容一起滚动；exitUntilCollapsed滚动完成就随着内容保存在屏幕上-->
+        <!--        layout_scrollFlags: scroll:随着内容一起滚动；exitUntilCollapsed 滚动完成就随着内容保存在屏幕上-->
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:id="@+id/collapsing_layout"
             style="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:contentScrim="@color/colorPrimary"
+            app:contentScrim="@color/colorDarkBG354"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <!--        layout_collapseMode:是指在CollapsingToolbarLayout滚动过程中，该控件的折叠方式。-->
