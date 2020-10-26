@@ -26,7 +26,7 @@ class CollaspcingToobarActivity : AppCompatActivity() {
         val fruitName = intent.getStringExtra(FRUIT_NAME)
         val fruitImageId = intent.getIntExtra(FRUIT_IMAGE_ID, 0)
 
-        setSupportActionBar(toolbar)
+//        setSupportActionBar(toolbar)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 

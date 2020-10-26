@@ -8,4 +8,8 @@
     </style>
 
     <style name="FruitActivity" parent="AppTheme" />
+
+<!--    <style name="FruitActivity" parent="AppTheme">-->
+<!--        <item name="android:statusBarColor">@android:color/transparent</item>-->
+<!--    </style>-->
 </resources>

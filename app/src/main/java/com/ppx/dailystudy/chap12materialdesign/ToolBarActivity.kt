@@ -32,7 +32,7 @@ class ToolBarActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_toolbar)
 
-        setSupportActionBar(toolbar)
+//        setSupportActionBar(toolbar)
 
         //actionBar
         val actionBar = supportActionBar
