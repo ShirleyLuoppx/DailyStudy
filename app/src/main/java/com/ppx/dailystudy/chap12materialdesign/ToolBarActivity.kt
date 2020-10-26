@@ -32,7 +32,7 @@ class ToolBarActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_toolbar)
 
-//        setSupportActionBar(toolbar)
+//        setSupportActionBar(toolbar)  这里是使用  android:theme="@style/FruitActivity">的时候注释掉的，主要是想做个状态栏透明的效果，但是应该有其他办法可以透明的
 
         //actionBar
         val actionBar = supportActionBar

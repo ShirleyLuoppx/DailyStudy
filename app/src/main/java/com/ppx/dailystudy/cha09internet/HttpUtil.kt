@@ -1,3 +1,5 @@
+import android.widget.Toast
+import com.ppx.dailystudy.MyApplication
 import okhttp3.Callback
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -28,6 +30,10 @@ object HttpUtil {
         var connection: HttpURLConnection? = null
         var bufferReader: BufferedReader? = null
         val stringBuilder = StringBuilder()
+
+        if (!isNetWork()){
+            Toast.makeText(MyApplication.getContext(),"网络不可用",Toast.LENGTH_SHORT).show()
+        }
 
         Thread(object : Runnable {
             override fun run() {
@@ -69,5 +75,12 @@ object HttpUtil {
             }
         }).start()
         return stringBuilder.toString()
+    }
+
+    fun isNetWork() : Boolean{
+        /**
+         * 具体实现
+         */
+        return true
     }
 }

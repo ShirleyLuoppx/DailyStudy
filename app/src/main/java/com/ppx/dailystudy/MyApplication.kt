@@ -1,6 +1,7 @@
 package com.ppx.dailystudy
 
 import android.app.Application
+import android.content.Context
 import android.util.Log
 import cn.flyaudio.sdk.FlySDKManager
 import cn.flyaudio.sdk.InitListener
@@ -15,6 +16,20 @@ import com.baidu.mapapi.SDKInitializer
  */
 class MyApplication : Application() {
     private val TAG = "MyApplication"
+
+
+    /**
+     * 获取全局的context
+     */
+    companion object {
+
+        private var context: Context? = null
+
+        fun getContext(): Context? {
+
+            return context
+        }
+    }
 
     override fun onCreate() {
         super.onCreate()
@@ -39,5 +54,12 @@ class MyApplication : Application() {
                 FlyNewEnergyManager.getInstance().registerCallBackListener()
             }
         })
+
+        context = applicationContext
+
+        //其他需要context对象的类啊方法啊  也可以在这里初始化传入context过去
     }
+
+
+
 }
