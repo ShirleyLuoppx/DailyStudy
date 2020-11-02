@@ -47,7 +47,9 @@
         <activity
             android:name=".test.TimePickerDemoActivity"
             android:label="@string/hello_world"
-            android:theme="@style/FruitActivity">
+            android:theme="@style/FruitActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|screenSize|screenLayout|orientation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
