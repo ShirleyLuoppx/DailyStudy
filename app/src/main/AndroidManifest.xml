@@ -22,9 +22,8 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <!--    不知道这个权限在百度地图的sdk开发中的一定需要的，事实证明这个权限在百度地图的获取经纬度里面不是必须的-->
-    <!--    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- 不知道这个权限在百度地图的sdk开发中的一定需要的，事实证明这个权限在百度地图的获取经纬度里面不是必须的 -->
+    <!-- <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" /> -->
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
@@ -35,13 +34,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <!--        添加一个百度地方的API_KEY-->
-        <!--        这里需要注意一下，在申请AK的时候，一定要项目名称和报名和申请填入的一致，要不然地图显示不出来-->
+        <service
+            android:name=".chap13advancedtechniques.LongRunningService"
+            android:enabled="true"
+            android:exported="true"></service>
+        <!-- 添加一个百度地方的API_KEY -->
+        <!-- 这里需要注意一下，在申请AK的时候，一定要项目名称和报名和申请填入的一致，要不然地图显示不出来 -->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="WhkwAHAopYX9hDh9HecpHiqvX58GpIKj" />
 
-        <activity android:name=".chap12materialdesign.ToolBarActivity"
+        <activity
+            android:name=".test.TimePickerDemoActivity"
             android:label="@string/hello_world"
             android:theme="@style/FruitActivity">
             <intent-filter>
@@ -50,7 +54,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".MenuResourcesActivity" />
         <activity android:name=".TestFinishFunction" />
         <activity android:name=".broadcast.ForceOffLineActivity" />
@@ -81,8 +84,7 @@
         <service
             android:name=".chap10service.MyIntentService"
             android:enabled="true"
-            android:exported="true" />
-        <!--        百度地图的service-->
+            android:exported="true" /> <!-- 百度地图的service -->
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"
