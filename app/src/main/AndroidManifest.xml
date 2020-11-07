@@ -27,7 +27,7 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
-        android:name=".MyApplication"
+        android:name="org.litepal.LitePalApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -45,7 +45,7 @@
             android:value="WhkwAHAopYX9hDh9HecpHiqvX58GpIKj" />
 
         <activity
-            android:name=".test.TimePickerDemoActivity"
+            android:name=".test.TestDemo"
             android:label="@string/hello_world"
             android:theme="@style/FruitActivity"
             android:screenOrientation="portrait"

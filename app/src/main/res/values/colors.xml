@@ -5,7 +5,7 @@
     <color name="colorAccent">#03DAC5</color>
 
     <color name="colorLightBlue00E">#00EFEC</color>
-    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorWhite">#FFFFFFFF</color>
     <color name="colorTransparentWhite">#00FFFFFF</color>
     <color name="colorWhiteDF">#DFDFE1</color>
     <color name="colorGrayEB">#EBEBEB</color>
@@ -34,4 +34,9 @@
     <color name="colorBlue5D6A7D">#5D6A7D</color>
     <color name="colorRedFF55">#FF5555</color>
 
+
+
+
+    <color name="colorGrayDialog">#D1D5D9</color>
+    <color name="xp_find_new_version_dialog_notify">#4D99BC</color>
 </resources>
