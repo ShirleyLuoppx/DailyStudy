@@ -176,14 +176,16 @@ class ChooseAreaFragment : Fragment() {
         try {
             HttpUtil.sendOkHttpRequest(address, object : Callback {
                 override fun onFailure(call: Call, e: IOException) {
+                    Log.d(TAG, "onFailure: $e")
                     activity?.runOnUiThread {
                         Toast.makeText(context, "加载失败", Toast.LENGTH_SHORT)
                     }
                 }
 
                 override fun onResponse(call: Call, response: Response) {
+                    Log.d(TAG, "onResponse: $response")
                     val responseString = response.body.toString()
-                    Log.d(TAG, "onResponse: $responseString")
+
                     var result = false
                     when (type) {
                         "province" -> {
