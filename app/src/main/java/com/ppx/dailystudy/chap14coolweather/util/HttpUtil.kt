@@ -9,7 +9,7 @@ import okhttp3.Request
  * Date: 2020/11/7 20:34
  * Description: 网络请求工具类
  */
-class HttpUtil {
+object HttpUtil {
 
 
     fun sendOkHttpRequest(address: String, callback: Callback) {

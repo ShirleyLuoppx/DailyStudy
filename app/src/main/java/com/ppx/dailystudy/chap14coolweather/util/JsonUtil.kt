@@ -62,7 +62,7 @@ object JsonUtil {
     /**
      * 处理县级数据
      */
-    fun handleCounty(response: String, cityId: Int): Boolean {
+    fun handleCountyResponse(response: String, cityId: Int): Boolean {
 
         if (!TextUtils.isEmpty(response)) {
             val allCounties = JSONArray(response)
