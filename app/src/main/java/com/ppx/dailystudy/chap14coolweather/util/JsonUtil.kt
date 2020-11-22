@@ -1,6 +1,10 @@
 package com.ppx.dailystudy.chap14coolweather.util
 
 import android.text.TextUtils
+import android.util.Log
+import com.google.gson.Gson
+import com.google.gson.JsonParser
+import com.google.gson.reflect.TypeToken
 import com.ppx.dailystudy.chap14coolweather.db.City
 import com.ppx.dailystudy.chap14coolweather.db.County
 import com.ppx.dailystudy.chap14coolweather.db.Province
@@ -20,14 +24,23 @@ object JsonUtil {
     fun handleProvinceResponse(response: String): Boolean {
         if (!TextUtils.isEmpty(response)) {
             try {
-                val allProvinces = JSONArray(response)
-                for (i in 0..allProvinces.length()) {
-                    val jsonObject = allProvinces.getJSONObject(i)
-                    val province = Province()
-                    province.provinceName = jsonObject.getString("name")
-                    province.provinceCode = jsonObject.getInt("id")
-                    province.save()
+                val array = JsonParser().parse(response).asJsonArray
+                for (jsonElement in array) {
+                    val pro = Gson().fromJson(jsonElement,Province::class.java)
+                    pro.save()
+                    Log.d("ippx", "handleProvinceResponse: 从服务器查询到的数据${pro.provinceName}")
                 }
+                
+                
+//                val jsonArr = Gson().fromJson(response, TypeToken<List<Province>>(){}.type()
+//                val allProvinces = JSONArray(response)
+//                for (i in 0..allProvinces.length()) {
+//                    val jsonObject = allProvinces.getJSONObject(i)
+//                    val province = Province()
+//                    province.provinceName = jsonObject.getString("name")
+//                    province.provinceCode = jsonObject.getInt("id")
+//                    province.save()
+//                }
                 return true
             } catch (e: Exception) {
                 e.printStackTrace()

@@ -105,7 +105,6 @@ class ChooseAreaFragment : Fragment() {
      * 查询全国的省，优先从数据库查，没有就去服务器查
      */
     private fun queryProvince() {
-        Log.d(TAG, "queryProvince: okin----")
         tv_title.text = "中国"
         bt_back.visibility = View.GONE
         provinceList = LitePal.findAll(Province::class.java)
@@ -117,6 +116,7 @@ class ChooseAreaFragment : Fragment() {
             }
             weatherAdapter.notifyDataSetChanged()
             currentLevel = LEVEL_PROVINCE
+            Log.d(TAG, "queryProvince: ----${provinceList.size}")
         } else {
             Log.d(TAG, "queryProvince: else")
             val address = "http://guolin.tech/api/china"
@@ -184,24 +184,30 @@ class ChooseAreaFragment : Fragment() {
 
                 override fun onResponse(call: Call, response: Response) {
                     Log.d(TAG, "onResponse: $response")
-                    val responseString = response.body.toString()
+                    val responseString = response.body?.string()
 
                     var result = false
                     when (type) {
                         "province" -> {
-                            result = JsonUtil.handleProvinceResponse(responseString)
+                            responseString?.let {
+                                result = JsonUtil.handleProvinceResponse(it)
+                            }
                             Log.d(TAG, "onResponse: $result")
                         }
                         "city" -> {
-                            result =
-                                JsonUtil.handleCityResponse(
-                                    responseString,
-                                    selectedProvince.provinceId
-                                )
+                            responseString?.let {
+                                result =
+                                    JsonUtil.handleCityResponse(
+                                        it,
+                                        selectedProvince.provinceId
+                                    )
+                            }
                         }
                         "county" -> {
-                            result =
-                                JsonUtil.handleCountyResponse(responseString, selectedCity.cityId)
+                            responseString?.let {
+                                result =
+                                    JsonUtil.handleCountyResponse(it, selectedCity.cityId)
+                            }
                         }
                     }
 
