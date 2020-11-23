@@ -36,6 +36,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    sourceSets {
+        main {
+            jniLibs.srcDir 'libs'
+        }
+    }
 }
 
 repositories {
@@ -60,7 +66,7 @@ dependencies {
 
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4'
 
-    implementation(name: 'flyaudiosdk_lib', ext: 'aar')
+//    implementation(name: 'flyaudiosdk_lib', ext: 'aar')
     implementation 'org.litepal.guolindev:core:3.2.1'
 
     implementation 'com.squareup.okhttp3:okhttp:4.7.2'
