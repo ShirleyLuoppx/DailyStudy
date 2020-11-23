@@ -29,7 +29,7 @@ import java.lang.Exception
 /**
  * by:LuoXia
  * date:2020/11/22
- * desc:DESC
+ * desc:省市县数据显示
  */
 class ChooseAreaFragment : Fragment() {
 
