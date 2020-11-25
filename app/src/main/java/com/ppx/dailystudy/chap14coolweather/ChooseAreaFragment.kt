@@ -110,13 +110,13 @@ class ChooseAreaFragment : Fragment() {
         provinceList = LitePal.findAll(Province::class.java)
         if (provinceList.size > 0) {
             dataList.clear()
-            for (province in provinceList) {
-                dataList.add(province.provinceName)
-                Log.d(TAG, "queryProvince: 省数据：${province.provinceName}")
+            for (data in provinceList) {
+                dataList.add(data.provinceName)
+                Log.d(TAG, "queryProvince: 省数据：${data.provinceName}")
             }
             weatherAdapter.notifyDataSetChanged()
             currentLevel = LEVEL_PROVINCE
-            Log.d(TAG, "queryProvince: ----${provinceList.size}")
+            Log.d(TAG, "queryProvince: ----${provinceList.size}-----${provinceList[0].provinceName}---${provinceList[1].provinceName}")
         } else {
             Log.d(TAG, "queryProvince: else")
             val address = "http://guolin.tech/api/china"
