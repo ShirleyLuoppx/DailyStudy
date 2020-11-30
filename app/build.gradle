@@ -77,5 +77,9 @@ dependencies {
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
 
+    //glide
+    implementation 'com.github.bumptech.glide:glide:4.10.0' //添加支持
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.4.0' //Glide4.x以上需要添加的支持
+
 
 }
