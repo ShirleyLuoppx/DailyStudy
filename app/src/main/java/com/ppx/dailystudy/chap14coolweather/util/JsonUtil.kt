@@ -18,6 +18,8 @@ import java.lang.Exception
  */
 object JsonUtil {
 
+    private val TAG = "JsonUtil"
+
     /**
      * 处理省数据
      */
@@ -26,12 +28,12 @@ object JsonUtil {
             try {
                 val array = JsonParser().parse(response).asJsonArray
                 for (jsonElement in array) {
-                    val pro = Gson().fromJson(jsonElement,Province::class.java)
+                    val pro = Gson().fromJson(jsonElement, Province::class.java)
                     pro.save()
-                    Log.d("ippx", "handleProvinceResponse: 从服务器查询到的数据${pro.provinceName}")
+                    Log.d(TAG, "handleProvinceResponse: 从服务器查询到的数据${pro.provinceName}--$pro")
                 }
-                
-                
+
+
 //                val jsonArr = Gson().fromJson(response, TypeToken<List<Province>>(){}.type()
 //                val allProvinces = JSONArray(response)
 //                for (i in 0..allProvinces.length()) {

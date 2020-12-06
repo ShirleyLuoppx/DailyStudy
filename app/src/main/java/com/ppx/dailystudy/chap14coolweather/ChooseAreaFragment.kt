@@ -112,7 +112,7 @@ class ChooseAreaFragment : Fragment() {
             dataList.clear()
             for (data in provinceList) {
                 dataList.add(data.provinceName)
-                Log.d(TAG, "queryProvince: 省数据：${data.provinceName}")
+                Log.d(TAG, "queryProvince: 省数据：${data.provinceName}--$data")
             }
             weatherAdapter.notifyDataSetChanged()
             currentLevel = LEVEL_PROVINCE
