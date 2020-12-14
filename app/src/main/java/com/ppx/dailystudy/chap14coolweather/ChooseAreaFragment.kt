@@ -15,6 +15,7 @@ import com.ppx.dailystudy.chap14coolweather.db.County
 import com.ppx.dailystudy.chap14coolweather.db.Province
 import com.ppx.dailystudy.chap14coolweather.util.HttpUtil
 import com.ppx.dailystudy.chap14coolweather.util.JsonUtil
+import kotlinx.android.synthetic.main.activity_test_finish_function.*
 import kotlinx.android.synthetic.main.fragment_choose_area.*
 import okhttp3.Call
 import okhttp3.Callback
@@ -105,16 +106,16 @@ class ChooseAreaFragment : Fragment() {
         tv_title.text = "中国"
         bt_back.visibility = View.GONE
         provinceList = LitePal.findAll(Province::class.java)
-        Log.d(TAG, "queryProvince: 省数据：${provinceList[0].provinceName}----${provinceList[0]}")
+//        provinceList.clear()
         if (provinceList.size > 0) {
             dataList.clear()
             for (data in provinceList) {
                 dataList.add(data.provinceName)
-                Log.d(TAG, "queryProvince: 省数据：${data.provinceName}--$data")
+                Log.d(TAG, "queryProvince: 省数据：$data")
             }
             weatherAdapter.notifyDataSetChanged()
             currentLevel = LEVEL_PROVINCE
-            Log.d(TAG, "queryProvince: ----${provinceList.size}-----${provinceList[0].provinceName}---${provinceList[1].provinceName}")
+            Log.d(TAG, "queryProvince: size：${provinceList.size}")
         } else {
             Log.d(TAG, "queryProvince: else")
             val address = "http://guolin.tech/api/china"
