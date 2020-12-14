@@ -9,15 +9,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.ppx.dailystudy.MyApplication
 import com.ppx.dailystudy.R
 import com.ppx.dailystudy.chap14coolweather.db.City
 import com.ppx.dailystudy.chap14coolweather.db.County
 import com.ppx.dailystudy.chap14coolweather.db.Province
-import com.ppx.dailystudy.chap14coolweather.util.CommonUtil
 import com.ppx.dailystudy.chap14coolweather.util.HttpUtil
 import com.ppx.dailystudy.chap14coolweather.util.JsonUtil
-import kotlinx.android.synthetic.main.activity_test_finish_function.*
 import kotlinx.android.synthetic.main.fragment_choose_area.*
 import okhttp3.Call
 import okhttp3.Callback
@@ -108,6 +105,7 @@ class ChooseAreaFragment : Fragment() {
         tv_title.text = "中国"
         bt_back.visibility = View.GONE
         provinceList = LitePal.findAll(Province::class.java)
+        Log.d(TAG, "queryProvince: 省数据：${provinceList[0].provinceName}----${provinceList[0]}")
         if (provinceList.size > 0) {
             dataList.clear()
             for (data in provinceList) {
