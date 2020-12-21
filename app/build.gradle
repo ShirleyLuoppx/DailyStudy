@@ -84,4 +84,7 @@ dependencies {
     //和风天气
     implementation 'com.squareup.okhttp3:okhttp:4.7.2'
     implementation 'com.google.code.gson:gson:2.8.6'
+    //rxjava
+    implementation "io.reactivex.rxjava2:rxjava:2.2.3"
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
 }
