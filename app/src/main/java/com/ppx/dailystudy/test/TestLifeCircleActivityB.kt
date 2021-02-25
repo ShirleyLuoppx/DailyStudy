@@ -1,6 +1,8 @@
 package com.ppx.dailystudy.test
 
+import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +14,7 @@ import kotlinx.android.synthetic.main.activity_test_lifecircle_b.*
  * @Date: 2021/2/25 9:34
  * @Description: DESCRIPTION
  */
+@SuppressLint("LongLogTag")
 class TestLifeCircleActivityB : AppCompatActivity() {
     /**
      * 结合activity的几种启动模式：standard、singTop、singleTask、singIEInstance
@@ -32,8 +35,12 @@ class TestLifeCircleActivityB : AppCompatActivity() {
      *      （注： 因为AC同栈，所以当C点击返回的时候，会先回到A，再次点击回到B）
      *
      * 注：   新建 = onCreate -> onStart -> onResume  ; 重绘 = onRestart -> onStart -> onResume  ;  销毁 = onStop -> onDestroy  ;
+     *
+     * 5、屏幕旋转时候的生命周期： onPause -> onSaveInstanceState -> onStop -> onDestroy -> onCreate -> onStart -> onRestoreInstanceState -> onResume ，
+     * 如果不想要activity重建的话 ，可以在清单文件给该 activity添加配置 ： android:configChanges="screenSize|orientation"，这样，屏幕旋转的时候就只会回调 onConfigurationChanged() 。
      */
     val TAG: String = "ippxTestLifeCircleActivityB"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_test_lifecircle_b)
@@ -83,5 +90,20 @@ class TestLifeCircleActivityB : AppCompatActivity() {
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
         Log.d(TAG, "onNewIntent: ")
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        Log.d(TAG, "onConfigurationChanged: ")
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        Log.d(TAG, "onSaveInstanceState: 1")
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        Log.d(TAG, "onRestoreInstanceState: 1")
     }
 }
