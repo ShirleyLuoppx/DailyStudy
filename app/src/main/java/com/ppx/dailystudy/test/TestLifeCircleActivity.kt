@@ -3,9 +3,9 @@ package com.ppx.dailystudy.test
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.ppx.dailystudy.R
-import com.ppx.dailystudy.multimedia.TestLifeCircleActivityB
 import kotlinx.android.synthetic.main.activity_test_lifecircle.*
 
 /**
@@ -24,7 +24,7 @@ class TestLifeCircleActivity : AppCompatActivity() {
         setContentView(R.layout.activity_test_lifecircle)
         Log.d(TAG, "onCreate: ")
 
-        bt_click.setOnClickListener {
+        bt_click_to_b.setOnClickListener {
             startActivity(
                 Intent(
                     this@TestLifeCircleActivity,
@@ -32,6 +32,8 @@ class TestLifeCircleActivity : AppCompatActivity() {
                 )
             )
         }
+
+        bt_click_back.setOnClickListener { finish() }
     }
 
     override fun onStart() {
@@ -62,5 +64,10 @@ class TestLifeCircleActivity : AppCompatActivity() {
     override fun onRestart() {
         super.onRestart()
         Log.d(TAG, "onRestart: ")
+    }
+
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        Log.d(TAG, "onNewIntent: ")
     }
 }

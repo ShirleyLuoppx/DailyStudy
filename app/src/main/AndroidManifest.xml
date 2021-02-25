@@ -64,7 +64,8 @@
         <activity android:name=".broadcast.ForceOffLineActivity" />
         <activity android:name=".multimedia.NotificationLayoutActivity" />
         <activity android:name=".chap12materialdesign.CollaspcingToobarActivity" />
-        <activity android:name=".multimedia.TestLifeCircleActivityB" />
+        <activity android:name=".test.TestLifeCircleActivityB" android:launchMode="singleInstance" />
+        <activity android:name=".test.TestLifeCircleActivityC" />
 
         <receiver
             android:name=".broadcast.MyReceiver"

@@ -1,21 +1,23 @@
-package com.ppx.dailystudy.multimedia
+package com.ppx.dailystudy.test
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.ppx.dailystudy.R
-import kotlinx.android.synthetic.main.activity_test_lifecircle_b.*
+import kotlinx.android.synthetic.main.activity_test_lifecircle_c.*
 
 /**
  * @Author: LuoXia
  * @Date: 2021/2/25 9:34
  * @Description: DESCRIPTION
  */
-class TestLifeCircleActivityB : AppCompatActivity() {
-    val TAG: String = "ippxTestLifeCircleActivityB"
+class TestLifeCircleActivityC : AppCompatActivity() {
+    val TAG: String = "ippxTestLifeCircleActivityC"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_test_lifecircle_b)
+        setContentView(R.layout.activity_test_lifecircle_c)
         Log.d(TAG, "onCreate: ")
 
         bt_click_back.setOnClickListener { finish() }
@@ -49,5 +51,10 @@ class TestLifeCircleActivityB : AppCompatActivity() {
     override fun onRestart() {
         super.onRestart()
         Log.d(TAG, "onRestart: ")
+    }
+
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        Log.d(TAG, "onNewIntent: ")
     }
 }
