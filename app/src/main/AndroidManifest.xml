@@ -48,7 +48,7 @@
             android:value="WhkwAHAopYX9hDh9HecpHiqvX58GpIKj" />
 
         <activity
-            android:name=".test.RxJavaDemo"
+            android:name=".test.TestLifeCircleActivity"
             android:label="@string/app_name"
             android:theme="@style/FruitActivity"
             android:screenOrientation="portrait"
@@ -64,6 +64,7 @@
         <activity android:name=".broadcast.ForceOffLineActivity" />
         <activity android:name=".multimedia.NotificationLayoutActivity" />
         <activity android:name=".chap12materialdesign.CollaspcingToobarActivity" />
+        <activity android:name=".multimedia.TestLifeCircleActivityB" />
 
         <receiver
             android:name=".broadcast.MyReceiver"

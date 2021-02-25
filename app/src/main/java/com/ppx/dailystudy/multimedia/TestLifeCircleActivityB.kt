@@ -1,37 +1,24 @@
-package com.ppx.dailystudy.test
+package com.ppx.dailystudy.multimedia
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.ppx.dailystudy.R
-import com.ppx.dailystudy.multimedia.TestLifeCircleActivityB
-import kotlinx.android.synthetic.main.activity_test_lifecircle.*
+import kotlinx.android.synthetic.main.activity_test_lifecircle_b.*
 
 /**
- * Author: LuoXia
- * Date: 2020/11/20 10:42
- * Description: 测试按下home键再回到界面  生命周期的变化  和杀进程的变化
+ * @Author: LuoXia
+ * @Date: 2021/2/25 9:34
+ * @Description: DESCRIPTION
  */
-class TestLifeCircleActivity : AppCompatActivity() {
-
-    companion object {
-        private val TAG = "ippxTestLifeCircleActivity"
-    }
-
+class TestLifeCircleActivityB : AppCompatActivity() {
+    val TAG: String = "ippxTestLifeCircleActivityB"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_test_lifecircle)
+        setContentView(R.layout.activity_test_lifecircle_b)
         Log.d(TAG, "onCreate: ")
 
-        bt_click.setOnClickListener {
-            startActivity(
-                Intent(
-                    this@TestLifeCircleActivity,
-                    TestLifeCircleActivityB::class.java
-                )
-            )
-        }
+        bt_click_back.setOnClickListener { finish() }
     }
 
     override fun onStart() {
