@@ -1,8 +1,9 @@
-package com.ppx.dailystudy.test
+package com.ppx.dailystudy.test.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.ppx.dailystudy.R
+import com.ppx.dailystudy.test.adapter.MultiAdapter
 import kotlinx.android.synthetic.main.activity_multi_rv.*
 
 /**

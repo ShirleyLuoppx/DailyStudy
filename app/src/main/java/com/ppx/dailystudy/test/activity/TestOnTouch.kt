@@ -1,4 +1,4 @@
-package com.ppx.dailystudy.test
+package com.ppx.dailystudy.test.activity
 
 import android.os.Bundle
 import android.util.Log

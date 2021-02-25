@@ -1,8 +1,9 @@
-package com.ppx.dailystudy
+package com.ppx.dailystudy.test.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.ppx.dailystudy.R
 import com.ppx.dailystudy.chatview.ChatAdapter
 import com.ppx.dailystudy.chatview.ChatType
 import com.ppx.dailystudy.chatview.ChatViewBean

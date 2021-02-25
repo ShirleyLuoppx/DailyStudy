@@ -1,8 +1,9 @@
-package com.ppx.dailystudy
+package com.ppx.dailystudy.test.activity
 
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.ppx.dailystudy.R
 import kotlinx.android.synthetic.main.activity_test_finish_function.*
 
 /**

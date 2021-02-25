@@ -1,14 +1,13 @@
-package com.ppx.dailystudy
+package com.ppx.dailystudy.test.activity
 
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.style.AbsoluteSizeSpan
 import android.text.style.ForegroundColorSpan
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.ppx.dailystudy.R
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_spannable_string.*
 
 /**
  * Author: luoxia

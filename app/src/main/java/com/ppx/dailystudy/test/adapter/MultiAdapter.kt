@@ -1,12 +1,12 @@
-package com.ppx.dailystudy.test
+package com.ppx.dailystudy.test.adapter
 
 import com.bumptech.glide.Glide
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter
 import com.chad.library.adapter.base.entity.MultiItemEntity
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.ppx.dailystudy.R
-import com.ppx.dailystudy.test.MultiRvDemo.Companion.TYPE_HORIZONTAL
-import com.ppx.dailystudy.test.MultiRvDemo.Companion.TYPE_NORMAL
+import com.ppx.dailystudy.test.activity.MultiRvDemo.Companion.TYPE_HORIZONTAL
+import com.ppx.dailystudy.test.activity.MultiRvDemo.Companion.TYPE_NORMAL
 import kotlinx.android.synthetic.main.item_multi_rv.view.*
 import kotlinx.android.synthetic.main.item_multi_rv_horizontal.view.*
 

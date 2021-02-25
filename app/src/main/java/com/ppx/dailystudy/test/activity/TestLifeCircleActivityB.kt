@@ -1,4 +1,4 @@
-package com.ppx.dailystudy.test
+package com.ppx.dailystudy.test.activity
 
 import android.annotation.SuppressLint
 import android.content.Intent

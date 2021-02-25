@@ -1,13 +1,13 @@
-package com.ppx.dailystudy
+package com.ppx.dailystudy.test.activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.ppx.dailystudy.MainActivity
+import com.ppx.dailystudy.R
 
 /**
  * Author: luoxia
