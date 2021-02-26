@@ -27,6 +27,7 @@ class TestLoadMoreActivity : AppCompatActivity() {
 
     private fun getData() {
         Log.d("ippx", "getData: ")
+        Log.d("", "getData: ")
         for (i in 0..100) {
             dataList.add(i)
         }
