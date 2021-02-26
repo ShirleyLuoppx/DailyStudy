@@ -1,6 +1,7 @@
 package com.ppx.dailystudy.test.activity
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.ppx.dailystudy.R
 import com.ppx.dailystudy.test.adapter.TestLoadMoreAdapter
@@ -25,6 +26,7 @@ class TestLoadMoreActivity : AppCompatActivity() {
     }
 
     private fun getData() {
+        Log.d("ippx", "getData: ")
         for (i in 0..100) {
             dataList.add(i)
         }
