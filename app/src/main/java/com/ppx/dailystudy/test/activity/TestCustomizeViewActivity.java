@@ -8,9 +8,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.ppx.dailystudy.R;
 
 /**
- * Author: LuoXia
+ * @Author: LuoXia
  * Date: 2021/3/29 15:23
- * Description:
+ * Description:自定义view的一个测试
  */
 public class TestCustomizeViewActivity extends AppCompatActivity {
     @Override
