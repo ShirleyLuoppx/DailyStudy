@@ -67,6 +67,7 @@
         <activity android:name=".test.activity.TestLifeCircleActivityB" android:launchMode="singleInstance" />
         <activity android:name=".test.activity.TestLifeCircleActivityC" />
         <activity android:name=".hencoder.avtivity.HenCoderViewActivity" />
+        <activity android:name=".hencoder.homework.HenCoderViewHomeWork1Activity" />
 
         <receiver
             android:name=".broadcast.MyReceiver"
