@@ -21,6 +21,10 @@ public class CustomizeView extends View {
 
     private String TAG = "CustomizeView";
     private int defaultSize;
+    /**
+     * 注意：画笔需要定义成全局变量，因为onDraw的话是每一次测绘都会执行一次
+     */
+    Paint paint = new Paint();
 
     public CustomizeView(Context context) {
         super(context);
@@ -34,7 +38,7 @@ public class CustomizeView extends View {
         //通过TypedArray对象调用getDimensionPixelSize获取styleable中自定义的属性值，并传入一个默认值
         //有点没太懂这个自定义属性，感觉没啥用啊
         defaultSize = typedArray.getDimensionPixelSize(R.styleable.CustomizeView_default_size, 100);
-        Log.d(TAG, "CustomizeView: "+defaultSize);
+        Log.d(TAG, "CustomizeView: " + defaultSize);
         //回收 TypedArray 对象
         typedArray.recycle();
     }
@@ -95,7 +99,6 @@ public class CustomizeView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        Paint paint = new Paint();
         paint.setColor(getResources().getColor(R.color.colorGrayD6));
 
         //半径长
