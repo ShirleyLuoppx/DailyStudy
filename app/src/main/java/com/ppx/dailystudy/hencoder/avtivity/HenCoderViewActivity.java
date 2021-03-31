@@ -1,4 +1,4 @@
-package com.ppx.dailystudy.test.activity;
+package com.ppx.dailystudy.hencoder.avtivity;
 
 import android.os.Bundle;
 

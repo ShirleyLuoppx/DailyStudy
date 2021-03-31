@@ -1,4 +1,4 @@
-package com.ppx.dailystudy.view;
+package com.ppx.dailystudy.hencoder.view;
 
 import android.content.Context;
 import android.graphics.Canvas;

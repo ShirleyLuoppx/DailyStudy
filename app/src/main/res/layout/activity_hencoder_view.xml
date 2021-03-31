@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.ppx.dailystudy.view.HenCoderViewFillType
+    <com.ppx.dailystudy.hencoder.view.HenCoderViewFillType
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintLeft_toLeftOf="parent"
