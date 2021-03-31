@@ -1,6 +1,8 @@
 package com.ppx.dailystudy.test.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,5 +19,12 @@ public class TestCustomizeViewActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_customize_view);
+
+        findViewById(R.id.bt_fill_type).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(TestCustomizeViewActivity.this, HenCoderViewActivity.class));
+            }
+        });
     }
 }

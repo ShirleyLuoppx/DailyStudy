@@ -66,6 +66,7 @@
         <activity android:name=".chap12materialdesign.CollaspcingToobarActivity" />
         <activity android:name=".test.activity.TestLifeCircleActivityB" android:launchMode="singleInstance" />
         <activity android:name=".test.activity.TestLifeCircleActivityC" />
+        <activity android:name=".test.activity.HenCoderViewActivity" />
 
         <receiver
             android:name=".broadcast.MyReceiver"
