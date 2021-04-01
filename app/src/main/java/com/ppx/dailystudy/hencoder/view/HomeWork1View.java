@@ -41,18 +41,55 @@ public class HomeWork1View extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
+        /**
+         * 一个实心黑圆
+         */
         paint.setColor(getResources().getColor(R.color.colorBlack));
         canvas.drawCircle(200, 200, 200, paint);
 
+        /**
+         * 一个空心黑圆
+         */
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(10);
-        canvas.drawCircle(700,200,200,paint);
+        canvas.drawCircle(700, 200, 200, paint);
 
+        /**
+         * 一个实心蓝圆
+         */
         paint.setStyle(Paint.Style.FILL);
         paint.setColor(Color.parseColor("#4990E2"));
-        canvas.drawCircle(200,700,200,paint);
+        canvas.drawCircle(200, 700, 200, paint);
 
+        /**
+         * 一个黑色圆环
+         */
+        paint.setColor(getResources().getColor(R.color.colorBlack));
         Path path = new Path();
+        path.setFillType(Path.FillType.EVEN_ODD);
+        path.addCircle(700, 700, 200, Path.Direction.CW);
+        path.addCircle(700, 700, 150, Path.Direction.CW);
+        canvas.drawPath(path, paint);
 
+        /**
+         * 画一个饼图
+         */
+        paint.setColor(Color.parseColor("#F44236"));
+        canvas.drawArc(200, 1000, 800, 1600, -180, 120, true, paint);
+
+        paint.setColor(Color.parseColor("#FEC107"));
+        canvas.drawArc(230, 1030, 830, 1630, -60, 50, true, paint);
+
+        paint.setColor(Color.parseColor("#9828AE"));
+        canvas.drawArc(230, 1030, 830, 1630, -8, 5, true, paint);
+
+        paint.setColor(Color.parseColor("#9AA4A4"));
+        canvas.drawArc(230, 1030, 830, 1630, -1, 5, true, paint);
+
+        paint.setColor(Color.parseColor("#029688"));
+        canvas.drawArc(230, 1030, 830, 1630, 6, 70, true, paint);
+
+        paint.setColor(Color.parseColor("#2196F3"));
+        canvas.drawArc(230, 1030, 830, 1630, 78, 102, true, paint);
     }
 }
