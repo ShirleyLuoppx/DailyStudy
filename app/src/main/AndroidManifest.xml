@@ -48,7 +48,7 @@
             android:value="WhkwAHAopYX9hDh9HecpHiqvX58GpIKj" />
 
         <activity
-            android:name=".hencoder.homework.HenCoderViewHomeWork1Activity"
+            android:name=".hencoder.avtivity.HenCoderViewActivity"
             android:label="@string/app_name"
             android:theme="@style/FruitActivity"
             android:screenOrientation="portrait"
@@ -66,7 +66,7 @@
         <activity android:name=".chap12materialdesign.CollaspcingToobarActivity" />
         <activity android:name=".test.activity.TestLifeCircleActivityB" android:launchMode="singleInstance" />
         <activity android:name=".test.activity.TestLifeCircleActivityC" />
-        <activity android:name=".hencoder.avtivity.HenCoderViewActivity" />
+<!--        <activity android:name=".hencoder.avtivity.HenCoderViewActivity" />-->
 <!--        <activity android:name=".hencoder.homework.HenCoderViewHomeWork1Activity" />-->
 <!--        <activity android:name=".wutong.WuTongDemoActivity" />-->
 

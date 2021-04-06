@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.ppx.dailystudy.R;
-import com.ppx.dailystudy.hencoder.homework.HenCoderViewHomeWork1Activity;
+import com.ppx.dailystudy.hencoder.homework.HenCoderViewHomeWork1Fragment;
 
 /**
  * @Author: LuoXia
@@ -30,7 +30,7 @@ public class TestCustomizeViewActivity extends AppCompatActivity {
         findViewById(R.id.btn_homework_1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(TestCustomizeViewActivity.this, HenCoderViewHomeWork1Activity.class));
+                startActivity(new Intent(TestCustomizeViewActivity.this, HenCoderViewHomeWork1Fragment.class));
             }
         });
     }

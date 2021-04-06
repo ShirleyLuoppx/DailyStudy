@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.ppx.dailystudy.hencoder.view.HomeWork1View
+    <com.ppx.dailystudy.hencoder.homework.HomeWork1View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintTop_toTopOf="parent" />
