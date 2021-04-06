@@ -24,6 +24,9 @@ public class WuTongDemoActivity extends AppCompatActivity {
 
         Log.d(TAG, "onCreate: " + getResources().getConfiguration().locale.getLanguage());
 
+        int delayMills = 10 * 000;
+        Log.d(TAG, "onCreate: delayMills:" + delayMills);
+
 
     }
 }

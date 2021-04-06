@@ -41,6 +41,8 @@ public class HomeWork1View extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
+        canvas.drawColor(Color.parseColor("#506E79"));
+
         /**
          * 一个实心黑圆
          */
@@ -91,5 +93,18 @@ public class HomeWork1View extends View {
 
         paint.setColor(Color.parseColor("#2196F3"));
         canvas.drawArc(230, 1030, 830, 1630, 78, 102, true, paint);
+
+        //画线和字
+        paint.setColor(getResources().getColor(R.color.colorWhite));
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setStrokeWidth(3);
+        Path mTextPath = new Path();
+        mTextPath.moveTo(100, 1000);
+        mTextPath.lineTo(300, 1000);
+        mTextPath.lineTo(340,1050);
+        canvas.drawPath(mTextPath, paint);
+
+        paint.setTextSize(45f);
+        canvas.drawText("Lollipop", 100, 980, paint);
     }
 }
