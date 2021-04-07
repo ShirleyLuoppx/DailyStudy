@@ -42,20 +42,4 @@
 
     </com.ppx.dailystudy.view.CustomizViewGroup>
 
-    <Button
-        android:id="@+id/bt_fill_type"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="fill type"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent" />
-
-    <Button
-        android:id="@+id/btn_homework_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="homework1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/bt_fill_type" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,16 +1,17 @@
 package com.ppx.dailystudy.hencoder.avtivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.ppx.dailystudy.R;
+import com.ppx.dailystudy.hencoder.fragment.HenCoderViewFragment;
 import com.ppx.dailystudy.hencoder.homework.HenCoderViewHomeWork1Fragment;
 
 /**
@@ -21,7 +22,11 @@ import com.ppx.dailystudy.hencoder.homework.HenCoderViewHomeWork1Fragment;
 public class HenCoderViewActivity extends AppCompatActivity implements View.OnClickListener {
 
     private FrameLayout baseFrameLayout;
-    private Button btnHenCoderViewFillType;
+    private TextView btnHenCoderViewFillType, btnHenCoderHomework1, btnHenCoderViewDemo;
+    private String tag = "";
+    private String FILL_TYPE = "FILL_TYPE";
+    private String PAINT = "PAINT";
+    private String BASE_API = "BASE_API";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -35,13 +40,25 @@ public class HenCoderViewActivity extends AppCompatActivity implements View.OnCl
     public void onClick(View view) {
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-
+        Fragment fragment;
         switch (view.getId()) {
             case R.id.btn_hencoder_view_fill_type:
-                transaction.replace(R.id.base_framelayout,new HenCoderViewFillTypeFragment());
+                tag = FILL_TYPE;
+                fragment = new HenCoderViewFragment(tag);
+                transaction.add(R.id.base_framelayout, fragment);
+                break;
+            case R.id.btn_hencoder_view_paint:
+                tag = PAINT;
+                fragment = new HenCoderViewFragment(tag);
+                transaction.add(R.id.base_framelayout, fragment);
+                break;
+            case R.id.btn_hencoder_view_demo:
+                tag = BASE_API;
+                fragment = new HenCoderViewFragment(tag);
+                transaction.add(R.id.base_framelayout, fragment);
                 break;
             case R.id.btn_hencoder_homework1:
-                transaction.replace(R.id.base_framelayout,new HenCoderViewHomeWork1Fragment());
+                transaction.replace(R.id.base_framelayout, new HenCoderViewHomeWork1Fragment());
                 break;
             default:
                 break;
@@ -53,6 +70,17 @@ public class HenCoderViewActivity extends AppCompatActivity implements View.OnCl
     private void initView() {
         btnHenCoderViewFillType = findViewById(R.id.btn_hencoder_view_fill_type);
         btnHenCoderViewFillType.setOnClickListener(this);
+        btnHenCoderHomework1 = findViewById(R.id.btn_hencoder_homework1);
+        btnHenCoderHomework1.setOnClickListener(this);
+        btnHenCoderViewDemo = findViewById(R.id.btn_hencoder_view_demo);
+        btnHenCoderViewDemo.setOnClickListener(this);
         baseFrameLayout = findViewById(R.id.base_framelayout);
+    }
+
+    //隐藏fragment
+    private void hideFragment(FragmentTransaction transaction, Fragment hideFragment) {
+        if (hideFragment != null) {
+            transaction.hide(hideFragment);
+        }
     }
 }

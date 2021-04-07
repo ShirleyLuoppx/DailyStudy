@@ -21,7 +21,7 @@ public class HenCoderViewHomeWork1Fragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return LayoutInflater.from(getContext()).inflate(R.layout.activity_hencoder_view_homework_1, container);
+        return LayoutInflater.from(getContext()).inflate(R.layout.activity_hencoder_view_homework_1, container,false);
     }
 
     @Override
