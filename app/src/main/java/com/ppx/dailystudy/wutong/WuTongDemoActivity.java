@@ -1,8 +1,11 @@
 package com.ppx.dailystudy.wutong;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -29,4 +32,21 @@ public class WuTongDemoActivity extends AppCompatActivity {
 
 
     }
+
+    Handler handler = new Handler() {
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            super.handleMessage(msg);
+        }
+    };
+
+    public void testPostDelay() {
+        handler.postDelayed(this::demo, 1000);
+    }
+
+    private String demo() {
+        return "";
+    }
+
+
 }
