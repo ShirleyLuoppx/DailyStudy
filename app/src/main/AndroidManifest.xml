@@ -36,14 +36,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <service
-            android:name=".chap13advancedtechniques.LongRunningService"
-            android:enabled="true"
-            android:exported="true" /> <!-- 添加一个百度地方的API_KEY -->
-        <!-- 这里需要注意一下，在申请AK的时候，一定要项目名称和报名和申请填入的一致，要不然地图显示不出来 -->
-        <meta-data
-            android:name="com.baidu.lbsapi.API_KEY"
-            android:value="WhkwAHAopYX9hDh9HecpHiqvX58GpIKj" />
 
         <activity
             android:name=".hencoder.avtivity.HenCoderViewActivity"
@@ -57,6 +49,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".test.activity.MenuResourcesActivity" />
         <activity android:name=".test.activity.TestFinishFunction" />
         <activity android:name=".broadcast.ForceOffLineActivity" />
@@ -65,17 +58,8 @@
         <activity
             android:name=".test.activity.TestLifeCircleActivityB"
             android:launchMode="singleInstance" />
-        <activity android:name=".test.activity.TestLifeCircleActivityC" /> <!-- <activity android:name=".hencoder.avtivity.HenCoderViewActivity" /> -->
-        <!-- <activity android:name=".hencoder.homework.HenCoderViewHomeWork1Activity" /> -->
-        <!-- <activity android:name=".wutong.WuTongDemoActivity" /> -->
-        <receiver
-            android:name=".broadcast.MyReceiver"
-            android:enabled="true"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-            </intent-filter>
-        </receiver>
+        <activity android:name=".test.activity.TestLifeCircleActivityC" />
+        <activity android:name=".wutong.WuTongDemoActivity" />
 
         <service
             android:name=".chap10service.DownLoadService"
@@ -98,6 +82,15 @@
             android:enabled="true"
             android:process=":remote" />
 
+        <service
+            android:name=".chap13advancedtechniques.LongRunningService"
+            android:enabled="true"
+            android:exported="true" /> <!-- 添加一个百度地方的API_KEY -->
+        <!-- 这里需要注意一下，在申请AK的时候，一定要项目名称和报名和申请填入的一致，要不然地图显示不出来 -->
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="WhkwAHAopYX9hDh9HecpHiqvX58GpIKj" />
+
         <provider
             android:name=".contentprovider.MyContentProvider"
             android:authorities="com.ppx.dailystudy.contentprovider"
@@ -114,6 +107,15 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
+
+        <receiver
+            android:name=".broadcast.MyReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
