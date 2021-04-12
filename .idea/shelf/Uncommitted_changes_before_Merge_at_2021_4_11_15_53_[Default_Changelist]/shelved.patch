@@ -1,0 +1,124 @@
+Index: app/src/main/res/layout/activity_test_customize_view.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\">\r\n\r\n    <com.ppx.dailystudy.view.CustomizeView\r\n        android:id=\"@+id/customizeView\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"100dp\"\r\n        android:background=\"@color/colorRedFF55\"\r\n        app:default_size=\"100dp\"\r\n        app:layout_constraintLeft_toLeftOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <com.ppx.dailystudy.view.CustomizViewGroup\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:background=\"@color/colorBlue5D6A7D\"\r\n        app:layout_constraintLeft_toLeftOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@id/customizeView\">\r\n\r\n        <Button\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:text=\"btn1\" />\r\n\r\n        <Button\r\n            android:layout_width=\"100dp\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:text=\"btn2\" />\r\n\r\n        <Button\r\n            android:layout_width=\"200dp\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:text=\"btn3\" />\r\n\r\n    </com.ppx.dailystudy.view.CustomizViewGroup>\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_test_customize_view.xml	(revision c5c2a408d152457982b7ad7c014ee22fa8c94f93)
++++ app/src/main/res/layout/activity_test_customize_view.xml	(date 1617113094891)
+@@ -14,6 +14,7 @@
+         app:layout_constraintTop_toTopOf="parent" />
+ 
+     <com.ppx.dailystudy.view.CustomizViewGroup
++        android:id="@+id/viewgroup"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:background="@color/colorBlue5D6A7D"
+@@ -37,4 +38,10 @@
+ 
+     </com.ppx.dailystudy.view.CustomizViewGroup>
+ 
++    <com.ppx.dailystudy.view.ScaleRulerView
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        app:layout_constraintLeft_toLeftOf="parent"
++        app:layout_constraintTop_toBottomOf="@id/viewgroup" />
++
+ </androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: .idea/inspectionProfiles/Project_Default.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><component name=\"InspectionProjectProfileManager\">\r\n  <profile version=\"1.0\">\r\n    <option name=\"myName\" value=\"Project Default\" />\r\n    <inspection_tool class=\"JavaDoc\" enabled=\"true\" level=\"WARNING\" enabled_by_default=\"true\">\r\n      <option name=\"TOP_LEVEL_CLASS_OPTIONS\">\r\n        <value>\r\n          <option name=\"ACCESS_JAVADOC_REQUIRED_FOR\" value=\"none\" />\r\n          <option name=\"REQUIRED_TAGS\" value=\"\" />\r\n        </value>\r\n      </option>\r\n      <option name=\"INNER_CLASS_OPTIONS\">\r\n        <value>\r\n          <option name=\"ACCESS_JAVADOC_REQUIRED_FOR\" value=\"none\" />\r\n          <option name=\"REQUIRED_TAGS\" value=\"\" />\r\n        </value>\r\n      </option>\r\n      <option name=\"METHOD_OPTIONS\">\r\n        <value>\r\n          <option name=\"ACCESS_JAVADOC_REQUIRED_FOR\" value=\"none\" />\r\n          <option name=\"REQUIRED_TAGS\" value=\"@return@param@throws or @exception\" />\r\n        </value>\r\n      </option>\r\n      <option name=\"FIELD_OPTIONS\">\r\n        <value>\r\n          <option name=\"ACCESS_JAVADOC_REQUIRED_FOR\" value=\"none\" />\r\n          <option name=\"REQUIRED_TAGS\" value=\"\" />\r\n        </value>\r\n      </option>\r\n      <option name=\"IGNORE_DEPRECATED\" value=\"false\" />\r\n      <option name=\"IGNORE_JAVADOC_PERIOD\" value=\"true\" />\r\n      <option name=\"IGNORE_DUPLICATED_THROWS\" value=\"false\" />\r\n      <option name=\"IGNORE_POINT_TO_ITSELF\" value=\"false\" />\r\n      <option name=\"myAdditionalJavadocTags\" value=\"date,Author:\" />\r\n    </inspection_tool>\r\n  </profile>\r\n</component>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/inspectionProfiles/Project_Default.xml	(revision c5c2a408d152457982b7ad7c014ee22fa8c94f93)
++++ .idea/inspectionProfiles/Project_Default.xml	(date 1617112844470)
+@@ -30,7 +30,7 @@
+       <option name="IGNORE_JAVADOC_PERIOD" value="true" />
+       <option name="IGNORE_DUPLICATED_THROWS" value="false" />
+       <option name="IGNORE_POINT_TO_ITSELF" value="false" />
+-      <option name="myAdditionalJavadocTags" value="date,Author:" />
++      <option name="myAdditionalJavadocTags" value="date,Author:,CreateDate:,Description:" />
+     </inspection_tool>
+   </profile>
+ </component>
+\ No newline at end of file
+Index: .idea/compiler.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/compiler.xml	(date 1617110422835)
++++ .idea/compiler.xml	(date 1617110422835)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="CompilerConfiguration">
++    <bytecodeTargetLevel target="1.8" />
++  </component>
++</project>
+\ No newline at end of file
+Index: app/src/main/java/com/ppx/dailystudy/view/ScaleRulerView.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/ppx/dailystudy/view/ScaleRulerView.java	(date 1617113234443)
++++ app/src/main/java/com/ppx/dailystudy/view/ScaleRulerView.java	(date 1617113234443)
+@@ -0,0 +1,53 @@
++package com.ppx.dailystudy.view;
++
++import android.content.Context;
++import android.graphics.Canvas;
++import android.graphics.Paint;
++import android.util.AttributeSet;
++import android.view.View;
++
++import androidx.annotation.Nullable;
++
++import com.ppx.dailystudy.R;
++
++/**
++ * @Author: LuoXia
++ * @CreateDate: 2021/3/30 22:01
++ * @Description: 自定义刻度尺
++ */
++public class ScaleRulerView extends View {
++
++    private Paint scalePaint;
++
++    public ScaleRulerView(Context context) {
++        super(context);
++    }
++
++    public ScaleRulerView(Context context, @Nullable AttributeSet attrs) {
++        super(context, attrs);
++    }
++
++    public ScaleRulerView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
++        super(context, attrs, defStyleAttr);
++    }
++
++    public ScaleRulerView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
++        super(context, attrs, defStyleAttr, defStyleRes);
++    }
++
++    @Override
++    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
++        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
++    }
++
++    @Override
++    protected void onDraw(Canvas canvas) {
++        super.onDraw(canvas);
++
++        scalePaint = new Paint();
++        scalePaint.setColor(getResources().getColor(R.color.colorBlack));
++
++        canvas.drawLine(100, 100, 200, 200, scalePaint);
++
++    }
++}

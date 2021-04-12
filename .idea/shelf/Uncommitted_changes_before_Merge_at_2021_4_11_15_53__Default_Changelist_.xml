@@ -1,0 +1,14 @@
+<changelist name="Uncommitted_changes_before_Merge_at_2021_4_11_15_53_[Default_Changelist]" date="1618127649157" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021_4_11_15_53_[Default_Changelist]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Merge at 2021/4/11 15:53 [Default Changelist]" />
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="app/src/main/jniLibs/armeabi/libamapv303.so" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021_4_11_15_53_[Default_Changelist]/libamapv303.so" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="app/src/main/jniLibs/armeabi/libamapv303ex.so" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021_4_11_15_53_[Default_Changelist]/libamapv303ex.so" />
+  </binary>
+</changelist>
