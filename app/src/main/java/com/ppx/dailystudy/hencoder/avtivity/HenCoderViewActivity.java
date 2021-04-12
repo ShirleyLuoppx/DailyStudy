@@ -22,7 +22,7 @@ import com.ppx.dailystudy.hencoder.homework.HenCoderViewHomeWork1Fragment;
 public class HenCoderViewActivity extends AppCompatActivity implements View.OnClickListener {
 
     private FrameLayout baseFrameLayout;
-    private TextView btnHenCoderViewFillType, btnHenCoderHomework1, btnHenCoderViewDemo;
+    private TextView btnHenCoderViewFillType, btnHenCoderHomework1, btnHenCoderViewDemo ,btnHenCoderViewPaint;
     private String tag = "";
     private String FILL_TYPE = "FILL_TYPE";
     private String PAINT = "PAINT";
@@ -50,7 +50,7 @@ public class HenCoderViewActivity extends AppCompatActivity implements View.OnCl
             case R.id.btn_hencoder_view_paint:
                 tag = PAINT;
                 fragment = new HenCoderViewFragment(tag);
-                transaction.add(R.id.base_framelayout, fragment);
+                transaction.replace(R.id.base_framelayout, fragment);
                 break;
             case R.id.btn_hencoder_view_demo:
                 tag = BASE_API;
@@ -74,6 +74,8 @@ public class HenCoderViewActivity extends AppCompatActivity implements View.OnCl
         btnHenCoderHomework1.setOnClickListener(this);
         btnHenCoderViewDemo = findViewById(R.id.btn_hencoder_view_demo);
         btnHenCoderViewDemo.setOnClickListener(this);
+        btnHenCoderViewPaint = findViewById(R.id.btn_hencoder_view_paint);
+        btnHenCoderViewPaint.setOnClickListener(this);
         baseFrameLayout = findViewById(R.id.base_framelayout);
     }
 
