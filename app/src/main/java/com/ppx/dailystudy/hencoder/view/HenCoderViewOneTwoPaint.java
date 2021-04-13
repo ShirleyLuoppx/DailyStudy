@@ -7,8 +7,10 @@ import android.graphics.BitmapFactory;
 import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.ComposeShader;
 import android.graphics.LinearGradient;
 import android.graphics.Paint;
+import android.graphics.PorterDuff;
 import android.graphics.RadialGradient;
 import android.graphics.Shader;
 import android.graphics.SweepGradient;
@@ -66,7 +68,7 @@ public class HenCoderViewOneTwoPaint extends View {
         Shader shader2 = new LinearGradient(600, 100, 1000, 500, Color.parseColor("#E91E63"),
                 Color.parseColor("#2196F3"), Shader.TileMode.MIRROR);
         paint.setShader(shader2);
-        canvas.drawCircle(800, 300, 200, paint);
+        canvas.drawCircle(1000, 500, 400, paint);
 
         /**
          * REPEAT
@@ -74,7 +76,7 @@ public class HenCoderViewOneTwoPaint extends View {
         Shader shader3 = new LinearGradient(100, 600, 500, 1000, Color.parseColor("#E91E63"),
                 Color.parseColor("#2196F3"), Shader.TileMode.REPEAT);
         paint.setShader(shader3);
-        canvas.drawCircle(300, 800, 200, paint);
+        canvas.drawCircle(500, 1000, 400, paint);
 
         /**
          * RadialGradient:辐射性渐变
@@ -92,13 +94,26 @@ public class HenCoderViewOneTwoPaint extends View {
         canvas.drawCircle(300, 1300, 200, paint);
 
         /**
-         * BitmapShader 相当于图片裁切吧
+         * BitmapShader bitmap着色器，相当于图片裁切吧
+         * BitmapShader()的第2、3个参数,横/纵向的 TileMode
          */
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.cherry);
-        Shader shader1 = new BitmapShader(bitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.pic);
+        Shader shader1 = new BitmapShader(bitmap, Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
         paint.setShader(shader1);
-        canvas.drawCircle(800, 1300, 200, paint);
+        canvas.drawCircle(1000, 1500, 400, paint);
 
+        /**
+         * ComposeShader 混合着色器
+         */
+        Bitmap bitmap1 = BitmapFactory.decodeResource(getResources(), R.mipmap.cherry);
+        Shader shader7 = new BitmapShader(bitmap1, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+
+        Bitmap bitmap2 = BitmapFactory.decodeResource(getResources(), R.mipmap.pic);
+        Shader shader8 = new BitmapShader(bitmap2, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+
+        Shader shader6 = new ComposeShader(shader7, shader8, PorterDuff.Mode.SRC_OVER);
+        paint.setShader(shader6);
+        canvas.drawCircle(300, 1700, 200, paint);
 
     }
 }
