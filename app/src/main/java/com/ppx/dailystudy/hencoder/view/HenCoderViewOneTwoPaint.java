@@ -24,7 +24,7 @@ import com.ppx.dailystudy.R;
 /**
  * @Author: LuoXia
  * @Date: 2021/4/6 18:51
- * @Description: HenCoder自定义view第1-2节，Paint详解
+ * @Description: HenCoder自定义view第1-2节，Paint详解  测试
  */
 public class HenCoderViewOneTwoPaint extends View {
 
