@@ -92,28 +92,5 @@ public class HenCoderViewOneTwoPaint extends View {
         Shader shader5 = new SweepGradient(300, 1300, Color.parseColor("#E91E63"), Color.parseColor("#2196F3"));
         paint.setShader(shader5);
         canvas.drawCircle(300, 1300, 200, paint);
-
-        /**
-         * BitmapShader bitmap着色器，相当于图片裁切吧
-         * BitmapShader()的第2、3个参数,横/纵向的 TileMode
-         */
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.pic);
-        Shader shader1 = new BitmapShader(bitmap, Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
-        paint.setShader(shader1);
-        canvas.drawCircle(1000, 1500, 400, paint);
-
-        /**
-         * ComposeShader 混合着色器
-         */
-        Bitmap bitmap1 = BitmapFactory.decodeResource(getResources(), R.mipmap.cherry);
-        Shader shader7 = new BitmapShader(bitmap1, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
-
-        Bitmap bitmap2 = BitmapFactory.decodeResource(getResources(), R.mipmap.pic);
-        Shader shader8 = new BitmapShader(bitmap2, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
-
-        Shader shader6 = new ComposeShader(shader7, shader8, PorterDuff.Mode.SRC_OVER);
-        paint.setShader(shader6);
-        canvas.drawCircle(300, 1700, 200, paint);
-
     }
 }

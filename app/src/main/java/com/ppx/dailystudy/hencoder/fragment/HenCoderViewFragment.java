@@ -30,12 +30,12 @@ public class HenCoderViewFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        if (tag.equals("FILL_TYPE")) {
-            return LayoutInflater.from(getContext()).inflate(R.layout.fragment_hencoder_view_filltype, container, false);
-        } else if (tag.equals("PAINT")) {
-            return LayoutInflater.from(getContext()).inflate(R.layout.fragment_hencoder_view_paint, container, false);
-        } else if (tag.equals("BASE_API")) {
+        if (tag.equals(ViewType.BASE_API.name())) {
             return LayoutInflater.from(getContext()).inflate(R.layout.activity_test_customize_view, container, false);
+        } else if (tag.equals(ViewType.FILL_TYPE.name())) {
+            return LayoutInflater.from(getContext()).inflate(R.layout.fragment_hencoder_view_filltype, container, false);
+        } else if (tag.equals(ViewType.PAINT.name())) {
+            return LayoutInflater.from(getContext()).inflate(R.layout.fragment_hencoder_view_paint, container, false);
         } else {
             return LayoutInflater.from(getContext()).inflate(R.layout.fragment_hencoder_view_filltype, container, false);
         }
@@ -44,5 +44,23 @@ public class HenCoderViewFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        view.findViewById(R.id.btn_gradient_view).setOnClickListener(view1 -> getChildFragmentManager().beginTransaction().replace(R.id.fl_paint,new GradientViewFragment()).commit());
+        view.findViewById(R.id.btn_shader_view).setOnClickListener(view1 -> getChildFragmentManager().beginTransaction().replace(R.id.fl_paint,new ShaderViewFragment()).commit());
+    }
+
+    enum ViewType{
+        /**
+         * 自定义view1-1 的一些基础api
+         */
+        BASE_API,
+        /**
+         * 自定义view  1-1 的fill_type  部分
+         */
+        FILL_TYPE,
+        /**
+         * 自定义view  1-2  的paint 部分
+         */
+        PAINT;
     }
 }

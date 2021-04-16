@@ -1,5 +1,6 @@
 package com.ppx.dailystudy.hencoder.avtivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -36,29 +37,30 @@ public class HenCoderViewActivity extends AppCompatActivity implements View.OnCl
         initView();
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View view) {
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         Fragment fragment;
         switch (view.getId()) {
-            case R.id.btn_hencoder_view_fill_type:
-                tag = FILL_TYPE;
-                fragment = new HenCoderViewFragment(tag);
-                transaction.add(R.id.base_framelayout, fragment);
-                break;
-            case R.id.btn_hencoder_view_paint:
-                tag = PAINT;
-                fragment = new HenCoderViewFragment(tag);
-                transaction.replace(R.id.base_framelayout, fragment);
-                break;
             case R.id.btn_hencoder_view_demo:
                 tag = BASE_API;
                 fragment = new HenCoderViewFragment(tag);
                 transaction.add(R.id.base_framelayout, fragment);
                 break;
+            case R.id.btn_hencoder_view_fill_type:
+                tag = FILL_TYPE;
+                fragment = new HenCoderViewFragment(tag);
+                transaction.add(R.id.base_framelayout, fragment);
+                break;
             case R.id.btn_hencoder_homework1:
                 transaction.replace(R.id.base_framelayout, new HenCoderViewHomeWork1Fragment());
+                break;
+            case R.id.btn_hencoder_view_paint:
+                tag = PAINT;
+                fragment = new HenCoderViewFragment(tag);
+                transaction.replace(R.id.base_framelayout, fragment);
                 break;
             default:
                 break;
@@ -79,7 +81,11 @@ public class HenCoderViewActivity extends AppCompatActivity implements View.OnCl
         baseFrameLayout = findViewById(R.id.base_framelayout);
     }
 
-    //隐藏fragment
+    /**
+     * 隐藏fragment
+     * @param transaction
+     * @param hideFragment
+     */
     private void hideFragment(FragmentTransaction transaction, Fragment hideFragment) {
         if (hideFragment != null) {
             transaction.hide(hideFragment);
