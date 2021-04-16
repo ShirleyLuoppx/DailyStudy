@@ -25,7 +25,10 @@ import com.ppx.dailystudy.R;
  */
 public class PaintShaderView extends View {
 
-    private Paint paint = new Paint();
+    /**
+     * 抗锯齿
+     */
+    private final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
     public PaintShaderView(Context context) {
         super(context);
@@ -46,6 +49,9 @@ public class PaintShaderView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+
+        //抗锯齿
+//        paint.setAntiAlias(true);
 
         /**
          * BitmapShader bitmap着色器，相当于图片裁切吧
