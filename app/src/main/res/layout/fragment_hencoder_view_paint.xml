@@ -21,6 +21,14 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toRightOf="@id/btn_gradient_view"/>
 
+    <Button
+        android:id="@+id/btn_line_shape"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="线条形状"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/btn_shader_view"/>
+
     <FrameLayout
         android:id="@+id/fl_paint"
         android:layout_width="match_parent"
