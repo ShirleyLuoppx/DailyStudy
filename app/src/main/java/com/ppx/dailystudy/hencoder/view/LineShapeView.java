@@ -95,5 +95,17 @@ public class LineShapeView extends View {
 
         canvas.restore();
 
+
+        /**
+         * 抖动  paint.setDither(true)
+         * 不过对于现在（2017年）而言， setDither(dither) 已经没有当年那么实用了，
+         * 因为现在的 Android 版本的绘制，默认的色彩深度已经是 32 位的 ARGB_8888 ，
+         * 效果已经足够清晰了。只有当你向自建的 Bitmap 中绘制，并且选择 16 位色的 ARGB_4444 或者
+         * RGB_565 的时候，开启它才会有比较明显的效果。
+         *
+         * 双线性过滤  paint.setFilterBitmap(true);
+         * 图像在放大绘制的时候，默认使用的是最近邻插值过滤，这种算法简单，但会出现马赛克现象；
+         * 而如果开启了双线性过滤，就可以让结果图像显得更加平滑
+         */
     }
 }
