@@ -3,8 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.ppx.dailystudy.hencoder.view.ShaderLayoutView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent">
+
+        <com.ppx.dailystudy.hencoder.view.ShaderLayoutView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
