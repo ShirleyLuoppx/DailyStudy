@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorWhite">
 
     <Button
@@ -10,35 +10,43 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="各种渐变"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"/>
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btn_shader_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Shader着色器"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/btn_gradient_view"/>
+        app:layout_constraintLeft_toRightOf="@id/btn_gradient_view"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btn_line_shape"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="线条形状"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/btn_shader_view"/>
+        app:layout_constraintLeft_toRightOf="@id/btn_shader_view"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btn_path_effect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="路径影响"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/btn_line_shape"/>
+        app:layout_constraintLeft_toRightOf="@id/btn_line_shape"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_shader_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="文字渲染"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_gradient_view" />
 
     <FrameLayout
         android:id="@+id/fl_paint"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

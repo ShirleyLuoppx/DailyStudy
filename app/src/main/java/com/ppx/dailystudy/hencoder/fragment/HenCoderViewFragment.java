@@ -49,6 +49,7 @@ public class HenCoderViewFragment extends Fragment {
         view.findViewById(R.id.btn_shader_view).setOnClickListener(view1 -> getChildFragmentManager().beginTransaction().replace(R.id.fl_paint,new ShaderViewFragment()).commit());
         view.findViewById(R.id.btn_line_shape).setOnClickListener(view1 -> getChildFragmentManager().beginTransaction().replace(R.id.fl_paint,new LineShapeViewFragment()).commit());
         view.findViewById(R.id.btn_path_effect).setOnClickListener(view1 -> getChildFragmentManager().beginTransaction().replace(R.id.fl_paint,new PathEffectViewFragment()).commit());
+        view.findViewById(R.id.btn_shader_layout).setOnClickListener(view1 -> getChildFragmentManager().beginTransaction().replace(R.id.fl_paint,new ShaderLayoutViewFragment()).commit());
     }
 
     enum ViewType{
