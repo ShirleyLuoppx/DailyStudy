@@ -70,22 +70,26 @@ public class LineShapeView extends View {
         //再从这个位置水平画线到x=250得位置
         path.rLineTo(250, 0);
         //再以这个最后画线得位置为原点，画线到(-230,130)得位置
-        path.rLineTo(-230, 130);
+        path.rLineTo(-230, 30);
 
         canvas.save();
 
-        // 第一种形状：MITER（默认得）
+        // 第一种形状：MITER（默认得），尖角
         paint.setStrokeJoin(Paint.Join.MITER);
+        /**
+         * setStrokeMiter： 当setStrokeJoin(Paint.Join.MITER)的时候，如果线长过长，MITER会被转成BEVEL，setStrokeMiter默认值是4，角度约29，如果角度小于这个，就会变为BEVEL
+         */
+        paint.setStrokeMiter(4);
         canvas.drawPath(path, paint);
 
         //水平移动400
         canvas.translate(400, 0);
-        // 第二种形状：BEVEL
+        // 第二种形状：BEVEL，平角
         paint.setStrokeJoin(Paint.Join.BEVEL);
         canvas.drawPath(path, paint);
 
         canvas.translate(400, 0);
-        // 第三种形状：ROUND
+        // 第三种形状：ROUND，圆角
         paint.setStrokeJoin(Paint.Join.ROUND);
         canvas.drawPath(path, paint);
 
