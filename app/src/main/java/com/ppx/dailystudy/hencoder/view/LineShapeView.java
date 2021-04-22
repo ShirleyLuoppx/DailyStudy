@@ -44,11 +44,11 @@ public class LineShapeView extends View {
          */
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(1);
-        canvas.drawCircle(205,400,200,paint);
+        canvas.drawCircle(205, 400, 200, paint);
         paint.setStrokeWidth(5);
-        canvas.drawCircle(630,400,200,paint);
+        canvas.drawCircle(630, 400, 200, paint);
         paint.setStrokeWidth(40);
-        canvas.drawCircle(1100,400,200,paint);
+        canvas.drawCircle(1100, 400, 200, paint);
 
         /**
          * setStrokeCap 设置线头 BUTT：平头，默认，就是普通的方直粗线；ROUND：圆头，两边多了一个半圆；SQUARE：方头，两边多了一个矩形
@@ -56,31 +56,35 @@ public class LineShapeView extends View {
         paint.setStrokeWidth(30);
 
         paint.setStrokeCap(Paint.Cap.BUTT);
-        canvas.drawLine(50,650,550,650,paint);
+        canvas.drawLine(50, 650, 550, 650, paint);
         paint.setStrokeCap(Paint.Cap.ROUND);
-        canvas.drawLine(50,700,550,700,paint);
+        canvas.drawLine(50, 700, 550, 700, paint);
         paint.setStrokeCap(Paint.Cap.SQUARE);
-        canvas.drawLine(50,750,550,750,paint);
+        canvas.drawLine(50, 750, 550, 750, paint);
 
         /**
          * setStrokeJoin：设置拐角形状
          */
-        path.rLineTo(200, 0);
-        path.rLineTo(-160, 120);
+        //先把点移动到(40,800)得位置
+        path.moveTo(40, 800);
+        //再从这个位置水平画线到x=250得位置
+        path.rLineTo(250, 0);
+        //再以这个最后画线得位置为原点，画线到(-230,130)得位置
+        path.rLineTo(-230, 130);
 
         canvas.save();
 
-        canvas.translate(100, 100);
-        // 第一种形状：MITER
+        // 第一种形状：MITER（默认得）
         paint.setStrokeJoin(Paint.Join.MITER);
         canvas.drawPath(path, paint);
 
-        canvas.translate(300, 0);
+        //水平移动400
+        canvas.translate(400, 0);
         // 第二种形状：BEVEL
         paint.setStrokeJoin(Paint.Join.BEVEL);
         canvas.drawPath(path, paint);
 
-        canvas.translate(300, 0);
+        canvas.translate(400, 0);
         // 第三种形状：ROUND
         paint.setStrokeJoin(Paint.Join.ROUND);
         canvas.drawPath(path, paint);
