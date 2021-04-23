@@ -5,13 +5,23 @@
     android:layout_height="match_parent"
     android:background="@color/colorWhite">
 
+    <TextView
+        android:id="@+id/tv_paint_lable"
+        android:layout_width="wrap_content"
+        android:layout_height="100px"
+        android:gravity="center_vertical"
+        android:text="自定义1-2 Paint"
+        android:textColor="@color/colorBlack"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Button
         android:id="@+id/btn_gradient_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="各种渐变"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/tv_paint_lable" />
 
     <Button
         android:id="@+id/btn_shader_view"
@@ -19,7 +29,7 @@
         android:layout_height="wrap_content"
         android:text="Shader着色器"
         app:layout_constraintLeft_toRightOf="@id/btn_gradient_view"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/btn_gradient_view" />
 
     <Button
         android:id="@+id/btn_line_shape"
@@ -27,7 +37,7 @@
         android:layout_height="wrap_content"
         android:text="线条形状"
         app:layout_constraintLeft_toRightOf="@id/btn_shader_view"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/btn_gradient_view" />
 
     <Button
         android:id="@+id/btn_path_effect"
@@ -35,7 +45,7 @@
         android:layout_height="wrap_content"
         android:text="路径影响"
         app:layout_constraintLeft_toRightOf="@id/btn_line_shape"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/btn_gradient_view" />
 
     <Button
         android:id="@+id/btn_shader_layout"
@@ -44,6 +54,24 @@
         android:text="文字渲染"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_gradient_view" />
+
+    <TextView
+        android:id="@+id/tv_text_label"
+        android:layout_width="match_parent"
+        android:layout_height="100px"
+        android:gravity="center_vertical"
+        android:text="自定义View 1-3 Text"
+        android:textColor="@color/colorBlack"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_shader_layout" />
+
+    <Button
+        android:id="@+id/btn_draw_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="draw_text..."
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_text_label" />
 
     <FrameLayout
         android:id="@+id/fl_paint"

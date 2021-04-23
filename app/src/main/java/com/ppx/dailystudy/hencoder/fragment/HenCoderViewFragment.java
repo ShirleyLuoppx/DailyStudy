@@ -36,6 +36,8 @@ public class HenCoderViewFragment extends Fragment {
             return LayoutInflater.from(getContext()).inflate(R.layout.fragment_hencoder_view_filltype, container, false);
         } else if (tag.equals(ViewType.PAINT.name())) {
             return LayoutInflater.from(getContext()).inflate(R.layout.fragment_hencoder_view_paint, container, false);
+        } else if (tag.equals(ViewType.TEXT.name())) {
+            return LayoutInflater.from(getContext()).inflate(R.layout.fragment_hencoder_view_paint, container, false);
         } else {
             return LayoutInflater.from(getContext()).inflate(R.layout.fragment_hencoder_view_filltype, container, false);
         }
@@ -50,6 +52,7 @@ public class HenCoderViewFragment extends Fragment {
         view.findViewById(R.id.btn_line_shape).setOnClickListener(view1 -> getChildFragmentManager().beginTransaction().replace(R.id.fl_paint,new LineShapeViewFragment()).commit());
         view.findViewById(R.id.btn_path_effect).setOnClickListener(view1 -> getChildFragmentManager().beginTransaction().replace(R.id.fl_paint,new PathEffectViewFragment()).commit());
         view.findViewById(R.id.btn_shader_layout).setOnClickListener(view1 -> getChildFragmentManager().beginTransaction().replace(R.id.fl_paint,new ShaderLayoutViewFragment()).commit());
+        view.findViewById(R.id.btn_draw_text).setOnClickListener(view1 -> getChildFragmentManager().beginTransaction().replace(R.id.fl_paint,new ViewDrawTextFragment()).commit());
     }
 
     enum ViewType{
@@ -64,6 +67,10 @@ public class HenCoderViewFragment extends Fragment {
         /**
          * 自定义view  1-2  的paint 部分
          */
-        PAINT;
+        PAINT,
+        /**
+         * 自定义View 1-3 的Text部分
+         */
+        TEXT;
     }
 }

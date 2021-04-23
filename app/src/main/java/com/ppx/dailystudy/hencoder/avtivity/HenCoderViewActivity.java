@@ -23,11 +23,12 @@ import com.ppx.dailystudy.hencoder.homework.HenCoderViewHomeWork1Fragment;
 public class HenCoderViewActivity extends AppCompatActivity implements View.OnClickListener {
 
     private FrameLayout baseFrameLayout;
-    private TextView btnHenCoderViewFillType, btnHenCoderHomework1, btnHenCoderViewDemo ,btnHenCoderViewPaint;
+    private TextView btnHenCoderViewFillType, btnHenCoderHomework1, btnHenCoderViewDemo ,btnHenCoderViewPaint,btnViewText;
     private String tag = "";
     private String FILL_TYPE = "FILL_TYPE";
     private String PAINT = "PAINT";
     private String BASE_API = "BASE_API";
+    private String TEXT = "TEXT";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -61,6 +62,10 @@ public class HenCoderViewActivity extends AppCompatActivity implements View.OnCl
                 tag = PAINT;
                 fragment = new HenCoderViewFragment(tag);
                 transaction.replace(R.id.base_framelayout, fragment);
+            case R.id.btn_view_canvas_text:
+                tag = TEXT;
+                fragment = new HenCoderViewFragment(tag);
+                transaction.replace(R.id.base_framelayout, fragment);
                 break;
             default:
                 break;
@@ -78,6 +83,8 @@ public class HenCoderViewActivity extends AppCompatActivity implements View.OnCl
         btnHenCoderViewDemo.setOnClickListener(this);
         btnHenCoderViewPaint = findViewById(R.id.btn_hencoder_view_paint);
         btnHenCoderViewPaint.setOnClickListener(this);
+        btnViewText = findViewById(R.id.btn_view_canvas_text);
+        btnViewText.setOnClickListener(this);
         baseFrameLayout = findViewById(R.id.base_framelayout);
     }
 
