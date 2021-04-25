@@ -15,8 +15,6 @@ import com.ppx.dailystudy.R
  */
 class ViewDrawTextFragment : Fragment() {
 
-
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
