@@ -63,24 +63,27 @@ class CanvasDrawTextEt(context: Context?, attrs: AttributeSet?) : View(context, 
          * 第三种方式：StaticLayout:绘制文字。既可以为文字设置宽度上限来让文字自动换行，也会在 \n 处主动换行。
          * 但是都，被废弃了！！
          */
-        val text1 = "恭喜“混子小分队”成功打进初赛"
-        val staticLayout = StaticLayout(
-            text1,
-            paint as TextPaint?, 600, Layout.Alignment.ALIGN_NORMAL, 1f, 0f, true
-        )
+//        val text1 = "恭喜“混子小分队”成功打进初赛"
+//        val staticLayout = StaticLayout(
+//            text1,
+//            paint as TextPaint?, 600, Layout.Alignment.ALIGN_NORMAL, 1f, 0f, true
+//        )
+//
+//        val text2 = "a\nbc\ndefghi\njklm\nnopqrst\nuvwx\nyz"
+//        val staticLayout2 = StaticLayout(
+//            text2, paint as TextPaint, 600,
+//            Layout.Alignment.ALIGN_NORMAL, 1f, 0f, true
+//        )
+//
+//        canvas?.save()
+//        canvas?.translate(50f, 1100f)
+//        staticLayout.draw(canvas)
+//        canvas?.translate(0f, 1200f)
+//        staticLayout2.draw(canvas)
+//        canvas?.restore()
 
-        val text2 = "a\nbc\ndefghi\njklm\nnopqrst\nuvwx\nyz"
-        val staticLayout2 = StaticLayout(
-            text2, paint as TextPaint, 600,
-            Layout.Alignment.ALIGN_NORMAL, 1f, 0f, true
-        )
 
-        canvas?.save()
-        canvas?.translate(50f, 1100f)
-        staticLayout.draw(canvas)
-        canvas?.translate(0f, 1200f)
-        staticLayout2.draw(canvas)
-        canvas?.restore()
+
     }
 
 
