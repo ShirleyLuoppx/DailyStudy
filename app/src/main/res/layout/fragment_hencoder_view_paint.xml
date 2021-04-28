@@ -81,6 +81,14 @@
         app:layout_constraintLeft_toRightOf="@id/btn_draw_text"
         app:layout_constraintTop_toBottomOf="@id/tv_text_label" />
 
+    <Button
+        android:id="@+id/btn_measure_text_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="测量文字尺寸"
+        app:layout_constraintLeft_toRightOf="@id/btn_show_text_style"
+        app:layout_constraintTop_toBottomOf="@id/tv_text_label" />
+
     <FrameLayout
         android:id="@+id/fl_paint"
         android:layout_width="match_parent"
