@@ -53,6 +53,7 @@ public class HenCoderViewFragment extends Fragment {
         view.findViewById(R.id.btn_path_effect).setOnClickListener(view1 -> getChildFragmentManager().beginTransaction().replace(R.id.fl_paint,new PathEffectViewFragment()).commit());
         view.findViewById(R.id.btn_shader_layout).setOnClickListener(view1 -> getChildFragmentManager().beginTransaction().replace(R.id.fl_paint,new ShaderLayoutViewFragment()).commit());
         view.findViewById(R.id.btn_draw_text).setOnClickListener(view1 -> getChildFragmentManager().beginTransaction().replace(R.id.fl_paint,new ViewDrawTextFragment()).commit());
+        view.findViewById(R.id.btn_show_text_style).setOnClickListener(view1 -> getChildFragmentManager().beginTransaction().replace(R.id.fl_paint,new ViewTextShowStyleFragment()).commit());
     }
 
     enum ViewType{
