@@ -84,7 +84,14 @@ class MeasureTextSizeView(context: Context?, attrs: AttributeSet?) : View(contex
         canvas?.drawText(str, 0, measureCount, 50f, 1700f, paint)
 
         /**
-         *
+         * getRunAdvance  计算光标的位置，，真是感觉好多不常用的方法哟
          */
+        val advance = paint.getRunAdvance(str, 0, str.length, 0, str.length, false, 0)
+        canvas?.drawText(str, 50f, 1800f, paint)
+
+        paint = Paint()
+        paint.style = Paint.Style.STROKE
+        paint.strokeWidth = 10f
+        canvas?.drawLine(50f + advance, 1800f - 50f, 50f + advance, 1800f + 10f, paint)
     }
 }
