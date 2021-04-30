@@ -7,6 +7,7 @@ import android.graphics.Rect
 import android.util.AttributeSet
 import android.util.Log
 import android.view.View
+import android.view.View.MeasureSpec
 
 /**
  * @Author: LuoXia
@@ -18,6 +19,16 @@ class MeasureTextSizeView(context: Context?, attrs: AttributeSet?) : View(contex
     private val TAG = "MeasureTextSizeView"
     private var paint = Paint()
     private val str = "It's cloudy. But i'm in a good."
+
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+        if (MeasureSpec.getMode(heightMeasureSpec) == MeasureSpec.UNSPECIFIED) {
+            setMeasuredDimension(
+                MeasureSpec.getSize(widthMeasureSpec),
+                MeasureSpec.getSize(widthMeasureSpec) * 2
+            )
+        }
+    }
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
@@ -86,12 +97,100 @@ class MeasureTextSizeView(context: Context?, attrs: AttributeSet?) : View(contex
         /**
          * getRunAdvance  计算光标的位置，，真是感觉好多不常用的方法哟
          */
-        val advance = paint.getRunAdvance(str, 0, str.length, 0, str.length, false, 0)
+        val advance = paint.getRunAdvance(str, 0, str.length, 0, str.length, false, str.length)
         canvas?.drawText(str, 50f, 1800f, paint)
 
-        paint = Paint()
-        paint.style = Paint.Style.STROKE
-        paint.strokeWidth = 10f
-        canvas?.drawLine(50f + advance, 1800f - 50f, 50f + advance, 1800f + 10f, paint)
+        canvas?.drawLine(50f + advance, 1800f - 100f, 50f + advance, 1800f + 10f, paint)
+
+        /**
+         * 测量表情的宽度大小
+         */
+        val advanceStr = "我心飞扬   中国最强   \uD83C\uDDE8\uD83C\uDDF3"
+
+        paint.strokeWidth = 5f
+        val advance1 = paint.getRunAdvance(
+            advanceStr,
+            0,
+            advanceStr.length,
+            0,
+            advanceStr.length,
+            false,
+            advanceStr.length
+        )
+        canvas?.drawText(advanceStr, 50f, 1900f, paint)
+        canvas?.drawLine(50f + advance1, 1900f - 100f, 50f + advance1, 1900f + 10f, paint)
+
+        val advance2 = paint.getRunAdvance(
+            advanceStr,
+            0,
+            advanceStr.length,
+            0,
+            advanceStr.length,
+            false,
+            advanceStr.length - 1
+        )
+        canvas?.drawText(advanceStr, 50f, 2000f, paint)
+        canvas?.drawLine(50f + advance2, 2000f - 100f, 50f + advance2, 2000f + 10f, paint)
+
+        val advance3 = paint.getRunAdvance(
+            advanceStr,
+            0,
+            advanceStr.length,
+            0,
+            advanceStr.length,
+            false,
+            advanceStr.length - 2
+        )
+        canvas?.drawText(advanceStr, 50f, 2100f, paint)
+        canvas?.drawLine(50f + advance3, 2100f - 100f, 50f + advance3, 2100f + 10f, paint)
+
+        val advance4 = paint.getRunAdvance(
+            advanceStr,
+            0,
+            advanceStr.length,
+            0,
+            advanceStr.length,
+            false,
+            advanceStr.length - 3
+        )
+        canvas?.drawText(advanceStr, 50f, 2200f, paint)
+        canvas?.drawLine(50f + advance4, 2200f - 100f, 50f + advance4, 2200f + 10f, paint)
+
+        val advance5 = paint.getRunAdvance(
+            advanceStr,
+            0,
+            advanceStr.length,
+            0,
+            advanceStr.length,
+            false,
+            advanceStr.length - 4
+        )
+        canvas?.drawText(advanceStr, 50f, 2300f, paint)
+        canvas?.drawLine(50f + advance5, 2300f - 100f, 50f + advance5, 2300f + 10f, paint)
+
+        val advance6 = paint.getRunAdvance(
+            advanceStr,
+            0,
+            advanceStr.length,
+            0,
+            advanceStr.length,
+            false,
+            advanceStr.length - 5
+        )
+        canvas?.drawText(advanceStr, 50f, 2400f, paint)
+        canvas?.drawLine(50f + advance6, 2400f - 100f, 50f + advance6, 2400f + 10f, paint)
+
+        /**
+         * getOffsetForAdvance  给出一个位置的像素值，计算出文字中最接近这个位置的字符偏移量（即第几个字符最接近这个坐标）。
+         * getOffsetForAdvance() 配合上 getRunAdvance() 一起使用，就可以实现「获取用户点击处的文字坐标」的需求。
+         */
+
+        /**
+         * hasGlyph 检查指定字符串是否是一个单独的字形(glyph）
+         */
+        val isAGlyph = paint.hasGlyph("a")
+        val isABGlyph = paint.hasGlyph("ab")
+        val isEmotionGlyph = paint.hasGlyph("\uD83C\uDDE8\uD83C\uDDF3")
+        Log.d(TAG, "onDraw: $isAGlyph----$isABGlyph-------$isEmotionGlyph")
     }
 }
