@@ -12,7 +12,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.ppx.dailystudy.R;
-import com.ppx.dailystudy.hencoder.fragment.HenCoderViewFragment;
+import com.ppx.dailystudy.hencoder.fragment.ViewPaintFragment;
+import com.ppx.dailystudy.hencoder.fragment.ViewTextFragment;
 import com.ppx.dailystudy.hencoder.homework.HenCoderViewHomeWork1Fragment;
 
 /**
@@ -29,6 +30,7 @@ public class HenCoderViewActivity extends AppCompatActivity implements View.OnCl
     private String PAINT = "PAINT";
     private String BASE_API = "BASE_API";
     private String TEXT = "TEXT";
+    private String CANVAS = "CANVAS";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,12 +49,12 @@ public class HenCoderViewActivity extends AppCompatActivity implements View.OnCl
         switch (view.getId()) {
             case R.id.btn_hencoder_view_demo:
                 tag = BASE_API;
-                fragment = new HenCoderViewFragment(tag);
+                fragment = new ViewTextFragment(tag);
                 transaction.add(R.id.base_framelayout, fragment);
                 break;
             case R.id.btn_hencoder_view_fill_type:
                 tag = FILL_TYPE;
-                fragment = new HenCoderViewFragment(tag);
+                fragment = new ViewTextFragment(tag);
                 transaction.add(R.id.base_framelayout, fragment);
                 break;
             case R.id.btn_hencoder_homework1:
@@ -60,12 +62,14 @@ public class HenCoderViewActivity extends AppCompatActivity implements View.OnCl
                 break;
             case R.id.btn_hencoder_view_paint:
                 tag = PAINT;
-                fragment = new HenCoderViewFragment(tag);
+                fragment = new ViewPaintFragment(tag);
                 transaction.replace(R.id.base_framelayout, fragment);
             case R.id.btn_view_canvas_text:
                 tag = TEXT;
-                fragment = new HenCoderViewFragment(tag);
+                fragment = new ViewTextFragment(tag);
                 transaction.replace(R.id.base_framelayout, fragment);
+                break;
+            case R.id.btn_view_canvas_clip:
                 break;
             default:
                 break;
