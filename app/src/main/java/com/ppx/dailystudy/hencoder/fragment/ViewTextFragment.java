@@ -16,6 +16,7 @@ import com.ppx.dailystudy.hencoder.ViewType;
  * @Author: LuoXia
  * @Date: 2021/4/6 18:58
  * @Description: 自定义View 1-3 Text 相关的api的fragment
+ * 这是第二个提交
  */
 public class ViewTextFragment extends Fragment {
     /**
