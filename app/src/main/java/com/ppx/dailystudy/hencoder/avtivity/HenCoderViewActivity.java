@@ -22,8 +22,6 @@ import com.ppx.dailystudy.hencoder.homework.HenCoderViewHomeWork1Fragment;
  * @Description:自定义view的main类
  * test 只提交某一个提交
  * 测试提交的amend
- *
- * 测试   git --amend 命令？？？？？
  */
 public class HenCoderViewActivity extends AppCompatActivity implements View.OnClickListener {
 
