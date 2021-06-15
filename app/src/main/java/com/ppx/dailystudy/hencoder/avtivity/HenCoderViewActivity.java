@@ -20,8 +20,6 @@ import com.ppx.dailystudy.hencoder.homework.HenCoderViewHomeWork1Fragment;
  * @Author: LuoXia
  * @Date: 2021/3/31 16:51
  * @Description:自定义view的main类
- * test 只提交某一个提交
- * 测试提交的amend
  */
 public class HenCoderViewActivity extends AppCompatActivity implements View.OnClickListener {
 
