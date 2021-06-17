@@ -15,6 +15,8 @@ import com.ppx.dailystudy.R
  */
 class ViewCanvasClipFragment : Fragment() {
 
+    private val TAG = "ViewCanvasClipFragment"
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -22,5 +24,10 @@ class ViewCanvasClipFragment : Fragment() {
     ): View? {
         return LayoutInflater.from(context)
             .inflate(R.layout.fragment_canvas_clip, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        Log.d(TAG, "onViewCreated: okin-----范围裁切和几何变化的fragment")
     }
 }

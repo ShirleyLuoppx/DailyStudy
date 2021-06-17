@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.ppx.dailystudy.R;
+import com.ppx.dailystudy.hencoder.fragment.ViewCanvasClipFragment;
 import com.ppx.dailystudy.hencoder.fragment.ViewPaintFragment;
 import com.ppx.dailystudy.hencoder.fragment.ViewTextFragment;
 import com.ppx.dailystudy.hencoder.homework.HenCoderViewHomeWork1Fragment;
@@ -24,7 +25,7 @@ import com.ppx.dailystudy.hencoder.homework.HenCoderViewHomeWork1Fragment;
 public class HenCoderViewActivity extends AppCompatActivity implements View.OnClickListener {
 
     private FrameLayout baseFrameLayout;
-    private TextView btnHenCoderViewFillType, btnHenCoderHomework1, btnHenCoderViewDemo ,btnHenCoderViewPaint,btnViewText;
+    private TextView btnHenCoderViewFillType, btnHenCoderHomework1, btnHenCoderViewDemo, btnHenCoderViewPaint, btnViewText ,btnViewCanvasClip;
     private String tag = "";
     private String FILL_TYPE = "FILL_TYPE";
     private String PAINT = "PAINT";
@@ -70,6 +71,7 @@ public class HenCoderViewActivity extends AppCompatActivity implements View.OnCl
                 transaction.replace(R.id.base_framelayout, fragment);
                 break;
             case R.id.btn_view_canvas_clip:
+                transaction.replace(R.id.base_framelayout, new ViewCanvasClipFragment());
                 break;
             default:
                 break;
@@ -89,11 +91,14 @@ public class HenCoderViewActivity extends AppCompatActivity implements View.OnCl
         btnHenCoderViewPaint.setOnClickListener(this);
         btnViewText = findViewById(R.id.btn_view_canvas_text);
         btnViewText.setOnClickListener(this);
+        btnViewCanvasClip = findViewById(R.id.btn_view_canvas_clip);
+        btnViewCanvasClip.setOnClickListener(this);
         baseFrameLayout = findViewById(R.id.base_framelayout);
     }
 
     /**
      * 隐藏fragment
+     *
      * @param transaction
      * @param hideFragment
      */
