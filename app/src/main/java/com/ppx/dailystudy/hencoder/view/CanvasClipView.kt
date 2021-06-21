@@ -69,6 +69,14 @@ class CanvasClipView(context: Context?, attrs: AttributeSet?) :
         canvas?.drawBitmap(BitmapFactory.decodeResource(context.resources,R.mipmap.girlpic),10f,1100f,mPaint)
         canvas?.restore()
 
+        canvas?.save()
+        val path1 = Path()
+        path1.addCircle(1050f, 1500f, 200f, Path.Direction.CW)
+//        canvas?.clipRect(1050f, 400f, 1250f, 1000f)
+        canvas?.clipPath(path1)
+        canvas?.drawBitmap(BitmapFactory.decodeResource(context.resources,R.mipmap.girlpic),800f,1100f,mPaint)
+        canvas?.restore()
+
 
     }
 }
