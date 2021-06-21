@@ -193,4 +193,8 @@ class MeasureTextSizeView(context: Context?, attrs: AttributeSet?) : View(contex
         val isEmotionGlyph = paint.hasGlyph("\uD83C\uDDE8\uD83C\uDDF3")
         Log.d(TAG, "onDraw: $isAGlyph----$isABGlyph-------$isEmotionGlyph")
     }
+
+    public fun testMergeConflict(){
+        Log.d(TAG, "testMergeConflict: 测试使用git merge命令的时候 发生冲突")
+    }
 }
