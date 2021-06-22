@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?><!--    CoordinatorLayout ： 作用于ToolBar基础之上的，由design support库提供的，只能作为AppBarLayout的直接子布局来使用 -->
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/coordinator_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <!--    水果标题栏-->
+    <!--    AppBarLayout 必须是CoordinatorLayout的子布局-->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:fitsSystemWindows="true">
+
+        <!--        contentScrim : 指 CollapsingToolbarLayout滑动折叠的时候的背景色-->
+        <!--        layout_scrollFlags: scroll:随着内容一起滚动；exitUntilCollapsed 滚动完成就随着内容保存在屏幕上-->
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsing_layout"
+            style="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:contentScrim="@color/colorDarkBG354"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <!--        layout_collapseMode:是指在CollapsingToolbarLayout滚动过程中，该控件的折叠方式。-->
+            <!--            pin：表示 在折叠过程中保持位置不变；parallax：表示会随着滚动有一个错位平移的效果-->
+            <ImageView
+                android:id="@+id/iv_fruit"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true"
+                android:scaleType="centerCrop"
+                app:layout_collapseMode="parallax" />
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin" />
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!--    水果内容详情部分-->
+    <!--    NestedScrollView 只能允许有一个直接子布局-->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nest_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:elevation="@dimen/dp_4"
+                android:padding="15dp"
+                app:cardCornerRadius="6dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/tv_card_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp" />
+            </androidx.cardview.widget.CardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!--    app:layout_anchor="@id/appbar_layout"  设置一个锚点为appbatlayout,这样这个悬浮按钮就会出现在这个appbarlayout区域内，-->
+    <!--    app:layout_anchorGravity="bottom|end"  设置悬浮区域在右下角-->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:src="@mipmap/my_collection"
+        app:layout_anchor="@id/appbar_layout"
+        app:layout_anchorGravity="bottom|end" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

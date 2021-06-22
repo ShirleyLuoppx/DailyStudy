@@ -1,7 +1,6 @@
 package com.ppx.dailystudy
 
 import android.content.*
-import android.net.ConnectivityManager
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -11,6 +10,8 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.ppx.dailystudy.bluetooth.BlueToothMainActivity
 import com.ppx.dailystudy.broadcast.SelfDefinedBroadCastReceiver
 import com.ppx.dailystudy.fragment.FragmentDemo
+import com.ppx.dailystudy.test.activity.TestFinishFunction
+import com.ppx.dailystudy.test.fragment.TestFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 /**
