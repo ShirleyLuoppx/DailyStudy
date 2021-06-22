@@ -14,5 +14,6 @@ class GITTestClass {
      * 5、添加远端仓库到本地：git remote add originName url
      * 6、拉取远端仓库的代码到本地：git fetch originName
      * 7、推送提交记录到远端仓库：git push <remote> <branch>
+     * 8、git merge 解决冲突的 时候
      */
 }
