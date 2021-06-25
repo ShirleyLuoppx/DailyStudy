@@ -200,7 +200,7 @@ class CanvasClipView(context: Context?, attrs: AttributeSet?) :
             floatArrayOf(
                 0f,
                 (2 * y - 350).toFloat(),
-                330f,
+                230f,
                 (2 * y - 490).toFloat(),
                 30f,
                 (2 * y - 170).toFloat(),
@@ -212,7 +212,7 @@ class CanvasClipView(context: Context?, attrs: AttributeSet?) :
 
         canvas?.save()
         canvas?.concat(matrix1)
-        canvas?.drawBitmap(bitmap1, 200f, (2 * y - 350).toFloat(), mPaint)
+        canvas?.drawBitmap(bitmap1, 200f, (2 * y -310).toFloat(), mPaint)
         canvas?.restore()
 
 
