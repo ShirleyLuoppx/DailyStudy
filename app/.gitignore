@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 *.aar
 /app/libs/*
 *.iml
@@ -15,3 +16,6 @@
 /captures
 .externalNativeBuild
 *.jar
+=======
+build/
+>>>>>>> e348eebb9bf5ff781b808a5c18e8e2f72f123133
