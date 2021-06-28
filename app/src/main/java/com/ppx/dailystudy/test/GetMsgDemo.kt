@@ -24,11 +24,15 @@ class GetMsgDemo : BroadcastReceiver() {
         //解析短信内容
         val pdus = intent?.extras?.get("puds")
         val sms = SmsMessage.createFromPdu(pdus as ByteArray?)
-        phone = sms.originatingAddress.toString()
-        message = sms.messageBody
-        Log.d(TAG, "onReceive: $phone---${message}")
+        if (sms != null) {
+            phone = sms.originatingAddress.toString()
+            message = sms.messageBody
+            Log.d(TAG, "onReceive: $phone---${message}")
 
-        EventBus.getDefault().post(GetMessageBean(phone, message))
+            EventBus.getDefault().post(GetMessageBean(phone, message))
+        } else {
+            Log.d(TAG, "onReceive: 获取到的SmsMessage对象 是空的----")
+        }
     }
 
     data class GetMessageBean(

@@ -42,8 +42,9 @@
 
         <!--            android:name=".hencoder.avtivity.HenCoderViewActivity"-->
 <!--        android:name=".test.activity.GetMsgActivity"-->
+<!--        android:name=".chap14coolweather.CoolWeatherMainActivity"-->
         <activity
-            android:name=".chap14coolweather.CoolWeatherMainActivity"
+            android:name=".test.activity.GetMsgActivity"
             android:configChanges="keyboardHidden|screenSize|screenLayout|orientation"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
@@ -122,7 +123,13 @@
             </intent-filter>
         </receiver>
 
-        <receiver android:name=".test.GetMsgDemo">
+        <!--<receiver android:name=".test.GetMsgDemo">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>-->
+
+        <receiver android:name=".test.MessageBR">
             <intent-filter>
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
