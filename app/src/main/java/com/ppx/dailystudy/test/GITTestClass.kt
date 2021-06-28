@@ -17,5 +17,6 @@ class GITTestClass {
      * 8、git merge branchName 将branchName的代码合并到当前分支
      * 9、git branch --merged  查看已合并的分支
      * 10、git branch --no-merged 查看还未合并的分支
+     * 11、git commit --amend   将本次本地提交操作合并到上一次本地提交一起作为一次提交
      */
 }
