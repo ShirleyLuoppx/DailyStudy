@@ -9,7 +9,7 @@ import com.ppx.dailystudy.chap14coolweather.db.City
 import com.ppx.dailystudy.chap14coolweather.db.County
 import com.ppx.dailystudy.chap14coolweather.db.Province
 import org.json.JSONArray
-import java.lang.Exception
+import java.lang.reflect.Type
 
 /**
  * Author: LuoXia
@@ -26,13 +26,21 @@ object JsonUtil {
     fun handleProvinceResponse(response: String): Boolean {
         if (!TextUtils.isEmpty(response)) {
             try {
-                val array = JsonParser().parse(response).asJsonArray
-                for (jsonElement in array) {
-                    val pro = Gson().fromJson(jsonElement, Province::class.java)
-                    pro.save()
-                    Log.d(TAG, "handleProvinceResponse: 从服务器查询到的数据${pro.provinceName}--$pro")
-                }
+                Log.d(TAG, "handleProvinceResponse: "+response)
+//                val array = JsonParser().parse(response).asJsonArray
+//                for (jsonElement in array) {
+//                    val pro = Gson().fromJson(jsonElement, Province::class.java)
+//                    pro.save()
+//                    Log.d(TAG, "handleProvinceResponse: 从服务器查询到的数据${pro.provinceName}--$pro")
+//                }
 
+                val type: Type = object : TypeToken<ArrayList<Province?>?>() {}.type
+
+                val childInfoList: ArrayList<Province> = Gson().fromJson(response, type)
+                for (province in childInfoList) {
+                    province.save()
+//                    Log.d(TAG, "handleProvinceResponse: $province")
+                }
 
 //                val jsonArr = Gson().fromJson(response, TypeToken<List<Province>>(){}.type()
 //                val allProvinces = JSONArray(response)

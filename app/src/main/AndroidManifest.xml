@@ -38,7 +38,7 @@
         android:theme="@style/Theme.AppCompat.NoActionBar">
 
         <activity
-            android:name=".hencoder.avtivity.HenCoderViewActivity"
+            android:name=".chap14coolweather.CoolWeatherMainActivity"
             android:configChanges="keyboardHidden|screenSize|screenLayout|orientation"
             android:label="@string/app_name"
             android:screenOrientation="portrait"

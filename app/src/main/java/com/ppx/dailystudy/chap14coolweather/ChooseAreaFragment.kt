@@ -59,7 +59,6 @@ class ChooseAreaFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         initRV()
         initEvent()
         queryProvince()
@@ -106,11 +105,11 @@ class ChooseAreaFragment : Fragment() {
         tv_title.text = "中国"
         bt_back.visibility = View.GONE
         provinceList = LitePal.findAll(Province::class.java)
-//        provinceList.clear()
+        provinceList.clear()
         if (provinceList.size > 0) {
             dataList.clear()
             for (data in provinceList) {
-                dataList.add(data.provinceName)
+                dataList.add(data.name)
                 Log.d(TAG, "queryProvince: 省数据：$data")
             }
             weatherAdapter.notifyDataSetChanged()
@@ -127,10 +126,10 @@ class ChooseAreaFragment : Fragment() {
      * 查询全国的市，优先从数据库查，没有就去服务器查
      */
     private fun queryCity() {
-        tv_title.text = selectedProvince.provinceName
+        tv_title.text = selectedProvince.name
         bt_back.visibility = View.VISIBLE
 
-        cityList = LitePal.where("provinceid=?", selectedProvince.provinceId.toString())
+        cityList = LitePal.where("provinceid=?", selectedProvince.id.toString())
             .find(City::class.java)
 
         if (cityList.size > 0) {
@@ -198,7 +197,7 @@ class ChooseAreaFragment : Fragment() {
                                 result =
                                     JsonUtil.handleCityResponse(
                                         it,
-                                        selectedProvince.provinceId
+                                        selectedProvince.id
                                     )
                             }
                         }
