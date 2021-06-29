@@ -14,8 +14,8 @@ import org.litepal.exceptions.DataSupportException
  * 省id、省名称、省代号
  */
 data class Province(
-    var provinceId: Int = -1,
-    var provinceName: String = "",
+    var id: Int = -1,
+    var name: String = "",
     var provinceCode: Int = -1
 ) : LitePalSupport()
 
