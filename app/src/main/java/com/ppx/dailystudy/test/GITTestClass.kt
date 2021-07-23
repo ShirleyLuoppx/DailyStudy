@@ -19,4 +19,10 @@ class GITTestClass {
      * 10、git branch --no-merged 查看还未合并的分支
      * 11、git commit --amend   将本次本地提交操作合并到上一次本地提交一起作为一次提交
      */
+
+    /**
+     * 练习rebase
+     * 1、创建server分支并提交两次 C3、C4
+     * 2、在server分支的C3提交上创建  client分支并提交C8
+     */
 }
