@@ -22,15 +22,7 @@ class GITTestClass {
 
     /**
      * 练习rebase
-<<<<<<< HEAD
-<<<<<<< HEAD
      * 1、创建server分支并提交两次 C3、C4
      * 2、在server分支的C3提交上创建  client分支并提交C8、C9
-=======
-     * 1、创建server分支并提交两次
->>>>>>> 测试rebase提交第一次
-=======
-     * 1、创建server分支并提交两次 提交第二次
->>>>>>> 测试rebase第二次提交
      */
 }
