@@ -141,6 +141,12 @@
             </intent-filter>
         </receiver>
 
+        <receiver android:name=".broadcast.BaseActivity$ForceOffLineBroadCastReceiver">
+            <intent-filter>
+                <action android:name="com.ppx.static.broadcast"/>
+            </intent-filter>
+        </receiver>
+
         <service android:name=".test.service.BCReceiverService">
 
         </service>
