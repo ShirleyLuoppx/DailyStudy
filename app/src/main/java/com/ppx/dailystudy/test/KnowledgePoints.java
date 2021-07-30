@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.os.Handler;
 import android.os.Message;
 import android.util.SparseArray;
+import android.util.SparseBooleanArray;
+import android.util.SparseIntArray;
 
 /**
  * @Author: LuoXia
@@ -25,8 +27,23 @@ public class KnowledgePoints {
         sparseArray.put(4, 4);
     }
 
+    private final SparseIntArray sparseIntArray = new SparseIntArray();
+
+    {
+        sparseIntArray.put(1, 1);
+        sparseIntArray.put(2, 2);
+    }
+
+    private final SparseBooleanArray sparseBooleanArray = new SparseBooleanArray();
+
+    {
+        sparseBooleanArray.append(0, true);
+        sparseBooleanArray.append(1, true);
+    }
+
+
     private void test() {
-        Handler handler = new Handler(){
+        Handler handler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);

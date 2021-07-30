@@ -12,22 +12,22 @@ import com.baidu.mapapi.SDKInitializer
  * Date: 2020/8/19 13:58
  * Description: DESCRIPTION
  */
-class MyApplication : Application() {
+object MyApplication : Application() {
     private val TAG = "MyApplication"
 
 
     /**
      * 获取全局的context
      */
-    companion object {
+//    companion object {
 
-        private var context: Context? = null
+    private var context: Context? = null
 
-        fun getContext(): Context? {
+    fun getContext(): Context? {
 
-            return context
-        }
+        return context
     }
+//    }
 
     override fun onCreate() {
         super.onCreate()
