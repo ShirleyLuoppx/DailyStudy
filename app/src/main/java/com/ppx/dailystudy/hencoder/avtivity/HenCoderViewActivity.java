@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.ppx.dailystudy.R;
+import com.ppx.dailystudy.hencoder.fragment.PaintingSequenceFragment;
 import com.ppx.dailystudy.hencoder.fragment.ViewCanvasClipFragment;
 import com.ppx.dailystudy.hencoder.fragment.ViewPaintFragment;
 import com.ppx.dailystudy.hencoder.fragment.ViewTextFragment;
@@ -72,6 +73,9 @@ public class HenCoderViewActivity extends AppCompatActivity implements View.OnCl
                 break;
             case R.id.btn_view_canvas_clip:
                 transaction.replace(R.id.base_framelayout, new ViewCanvasClipFragment());
+                break;
+            case R.id.btn_paint_sequence:
+                transaction.replace(R.id.base_framelayout, new PaintingSequenceFragment());
                 break;
             default:
                 break;
