@@ -64,7 +64,7 @@
         android:text="自定义View1-5：绘画顺序"
         android:textSize="25sp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_view_canvas_text" />
+        app:layout_constraintTop_toBottomOf="@id/btn_view_canvas_clip" />
 
     <FrameLayout
         android:id="@+id/base_framelayout"
