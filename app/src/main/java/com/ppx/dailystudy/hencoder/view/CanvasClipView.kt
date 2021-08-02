@@ -35,7 +35,7 @@ class CanvasClipView(context: Context?, attrs: AttributeSet?) :
         if (MeasureSpec.getMode(heightMeasureSpec) == MeasureSpec.UNSPECIFIED) {
             setMeasuredDimension(
                 MeasureSpec.getSize(widthMeasureSpec),
-                MeasureSpec.getSize(widthMeasureSpec) * 10
+                MeasureSpec.getSize(widthMeasureSpec) * 5
             )
         }
     }
@@ -69,7 +69,7 @@ class CanvasClipView(context: Context?, attrs: AttributeSet?) :
         /**
          * 原图
          */
-        canvas?.drawBitmap(bitmap, x / 4.toFloat(), 100f, mPaint)
+        canvas?.drawBitmap(bitmap, x / 2 - 50.toFloat(), 100f, mPaint)
 
         canvas?.drawText("this is the picture after clipRect", 10f, girlHeight + 200f, mPaint)
         /**
@@ -209,19 +209,37 @@ class CanvasClipView(context: Context?, attrs: AttributeSet?) :
          * 3.3：使用Camera来做三维变换
          */
         /**
-         * 3.3.1 三维旋转
-         */
+         * 3.3.1 三维旋转，大概因为是三维旋转，所以距离越大的旋转后投影出来的图片就越大，所以这里把图片画在最上面了，要不然距离y轴太远了会导致投影后的view贼大然后屏幕根本就放不下了
+         * */
         canvas?.save()
 
-        val camara = Camera()
-        camara.save()
-        camara.rotateX(30f)
-        camara.applyToCanvas(canvas)
-        camara.restore()
+        //camera 在做修改之前也是需要save状态的
+        val camera = Camera()
+        camera.save()
+        camera.rotateX(30f)
+        camera.applyToCanvas(canvas)
+        camera.restore()
 
-        canvas?.drawBitmap(bitmap1, x.toFloat(), y.toFloat(), mPaint)
+        canvas?.drawBitmap(bitmap1, 10f, 100f, mPaint)
         canvas?.restore()
 
 
+        /**
+         * 修正糊脸效果，但是貌似没啥用？？？
+         */
+        canvas?.save()
+        canvas?.translate(0f, 500f)
+
+        //camera 在做修改之前也是需要save状态的
+        val camera1 = Camera()
+
+        camera1.save()
+        camera1.setLocation(0f, 0f, -600f)
+        camera1.rotateX(40f)
+        camera1.applyToCanvas(canvas)
+        camera1.restore()
+
+        canvas?.drawBitmap(bitmap1, 100f, 2 * y +800, mPaint)
+        canvas?.restore()
     }
 }
