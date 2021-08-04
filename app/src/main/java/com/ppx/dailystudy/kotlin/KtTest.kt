@@ -29,7 +29,10 @@ open class KtTest : AppCompatActivity() {
     private val KtTest.Companion.no: Int
         get() = 10
 
-    private fun KtTest.Companion.testCompanionExtendingFunction(){
+    /**
+     * 伴生对象的扩展方法
+     */
+    private fun KtTest.Companion.testCompanionExtendingFunction() {
         Log.d(TAG, "testCompanionExtendingFunction: 伴生对象的扩展方法")
     }
 
@@ -47,6 +50,17 @@ open class KtTest : AppCompatActivity() {
 
         Log.d(TAG, "testCompanionExtendingFunction:no : $no")
         KtTest.testCompanionExtendingFunction()
+
+        useCopy()
+    }
+
+    /**
+     * 调用copy改变实体类的参数
+     */
+    fun useCopy() {
+        val bean = DataBean("ppx", 1)
+        val newBean = bean.copy(age = 2)
+        Log.d(TAG, "useCopy: $bean \n $newBean")
     }
 
 
