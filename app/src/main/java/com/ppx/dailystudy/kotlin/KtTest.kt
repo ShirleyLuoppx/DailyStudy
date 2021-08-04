@@ -13,7 +13,14 @@ import androidx.appcompat.app.AppCompatActivity
 //在这里constructor可以省略
 open class KtTest : AppCompatActivity() {
 
+    var name = "菜鸟教程"
 
+    object DeskTop {
+        var url = "www.runoob.com"
+        fun showName() {
+//            print { "desk legs $name" } // 错误，不能访问到外部类的方法和变量
+        }
+    }
 
     init {
         //初始化代码块可以放在这里
@@ -52,6 +59,12 @@ open class KtTest : AppCompatActivity() {
         KtTest.testCompanionExtendingFunction()
 
         useCopy()
+
+
+        var site = KtTest()
+//        site.DeskTop.url // 错误，不能通过外部类的实例访问到该对象
+        KtTest.DeskTop.url // 正确
+
     }
 
     /**
