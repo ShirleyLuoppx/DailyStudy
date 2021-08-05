@@ -1,4 +1,4 @@
-package com.ppx.dailystudy.test;
+package com.ppx.dailystudy.autoclick;
 
 import android.app.Activity;
 import android.content.ComponentName;
