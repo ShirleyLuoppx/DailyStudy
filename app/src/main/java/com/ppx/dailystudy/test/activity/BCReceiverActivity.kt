@@ -1,7 +1,9 @@
 package com.ppx.dailystudy.test.activity
 
+import android.content.ComponentName
 import android.content.Intent
 import android.content.IntentFilter
+import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.ppx.dailystudy.R
@@ -31,7 +33,32 @@ class BCReceiverActivity : AppCompatActivity() {
         sendStaticBroadCast()
         sendDynamicBroadCast()
 
-        startService(Intent(this, BCReceiverService::class.java))
+
+        /**
+         * android 5 Lollipop 版本  sdk 21 以后启动服务只能通过显示启动，隐式启动会报错：Service Intent  must be explitict
+         */
+        /*//google官方推荐android 5 以后隐式启动的方式
+        val intent = Intent()
+        intent.action = "com.study.startserver"
+        //应用包名
+        intent.setPackage("com.ppx.dailystudy")
+        startService(intent)
+
+        //或者使用ComponentName的方式
+        //应用包名 --  service服务类名
+        val componentName = ComponentName("com.ppx.dailystudy", "com.ppx.dailystudy.test.service.BCReceiverService")
+        val cpnIntent = Intent()
+        cpnIntent.component = componentName
+        startService(cpnIntent)
+
+        //或者直接指定类名
+        startService(Intent(this, BCReceiverService::class.java))*/
+
+        if (Build.VERSION.SDK_INT >= 26) {
+            startForegroundService(Intent(this, BCReceiverService::class.java))
+        } else {
+            startService(Intent(this, BCReceiverService::class.java))
+        }
     }
 
     /**
