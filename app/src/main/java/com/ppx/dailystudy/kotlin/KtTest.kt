@@ -26,8 +26,9 @@ open class KtTest : AppCompatActivity() {
         //初始化代码块可以放在这里
     }
 
+    //伴生对象
     companion object {
-
+        val ktTest: KtTest = KtTest()
     }
 
     /**
@@ -65,6 +66,7 @@ open class KtTest : AppCompatActivity() {
 //        site.DeskTop.url // 错误，不能通过外部类的实例访问到该对象
         KtTest.DeskTop.url // 正确
 
+        Log.d(TAG, "onCreate: ${KtTest.ktTest}  --------   如果没有声明伴生对象实例也可以用：${KtTest.Companion}")
     }
 
     /**
