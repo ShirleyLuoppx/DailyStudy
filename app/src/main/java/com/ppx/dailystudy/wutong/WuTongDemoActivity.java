@@ -36,10 +36,27 @@ public class WuTongDemoActivity extends AppCompatActivity {
         testSystemCopy();
 //        testSystemCopyErr();
     }
-//
-//    public static void main(String[] args) {
-//        testSystemCopy();
-//    }
+
+    public static void main(String[] args) {
+        shiftPlace();
+    }
+
+    /**
+     * 关于java移位
+     * 之前在kotlin里面写了移位 ： value.shl/shr (3) --> value 乘以/除以 2的3次方
+     */
+    private static void shiftPlace() {
+        //3 * 2的3次方 == 24
+        int a = 3 << 3;
+        //24 / 2的3次方 == 3
+        int b = 24 >> 3;
+
+        int c = (byte) (2 ^ 24 >> 24 & 0xFF);
+        int d = (byte) (2 ^ 16 >> 16 & 0xFF);
+        int e = (byte) (256 >> 8 & 0xFF);
+
+        System.out.println("移位后的值：\n" + a + "\n" + b + "\n" + c + "---" + d + "---" + e);
+    }
 
     public static void testSystemCopy() {
         /**
