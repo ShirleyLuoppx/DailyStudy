@@ -43,7 +43,7 @@
 <!--        android:name=".test.activity.GetMsgActivity"-->
 <!--        android:name=".chap14coolweather.CoolWeatherMainActivity"-->
         <activity
-            android:name=".test.activity.BCReceiverActivity"
+            android:name=".wutong.WuTongDemoActivity"
             android:configChanges="keyboardHidden|screenSize|screenLayout|orientation"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
@@ -64,7 +64,7 @@
             android:name=".test.activity.TestLifeCircleActivityB"
             android:launchMode="singleInstance" />
         <activity android:name=".test.activity.TestLifeCircleActivityC" />
-        <activity android:name=".wutong.WuTongDemoActivity" />
+        <!--<activity android:name=".wutong.WuTongDemoActivity" />-->
         <activity android:name=".test.activity.ThreadTestB" />
 
         <service
