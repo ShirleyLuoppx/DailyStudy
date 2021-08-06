@@ -1,12 +1,13 @@
 package com.ppx.dailystudy.test.activity
 
-import android.content.ComponentName
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.ppx.dailystudy.R
+import com.ppx.dailystudy.designmode.SingletonSynchronizedTest
 import com.ppx.dailystudy.test.receiver.DynamicBCReceiver
 import com.ppx.dailystudy.test.receiver.StaticBCReceiver
 import com.ppx.dailystudy.test.service.BCReceiverService
@@ -21,6 +22,7 @@ import kotlinx.android.synthetic.main.activity_bc_receiver.*
  */
 class BCReceiverActivity : AppCompatActivity() {
 
+    private val TAG = "BCReceiverActivity"
     private val staticReceiver = StaticBCReceiver()
     private val staticBroadCastAction = "com.ppx.static.broadcast"
     private val dynamicReceiver = DynamicBCReceiver()
@@ -29,6 +31,8 @@ class BCReceiverActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bc_receiver)
+
+        Log.d(TAG, "onCreate:SingletonSynchronizedTestInstance： ${SingletonSynchronizedTest().instance}")
 
         sendStaticBroadCast()
         sendDynamicBroadCast()
