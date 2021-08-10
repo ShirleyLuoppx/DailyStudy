@@ -53,7 +53,7 @@ public class WuTongDemoActivity extends AppCompatActivity {
 
         int c = (byte) (2 ^ 24 >> 24 & 0xFF);
         int d = (byte) (2 ^ 16 >> 16 & 0xFF);
-        int e = (byte) (256 >> 8 & 0xFF);
+        int e = (byte) (256 >> 8 & 0xFF);// 256/2^8 =1    1-->0000 0001   0xFF
 
         System.out.println("移位后的值：\n" + a + "\n" + b + "\n" + c + "---" + d + "---" + e);
     }
