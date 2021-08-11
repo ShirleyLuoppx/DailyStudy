@@ -16,5 +16,6 @@ class PaintingSequenceView(context: Context?, attrs: AttributeSet?) :
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
 
+
     }
 }
