@@ -38,7 +38,19 @@ public class WuTongDemoActivity extends AppCompatActivity {
     }
 
     public static void main(String[] args) {
-        shiftPlace();
+        testBinary();
+    }
+
+    /**
+     * 进制测试
+     */
+    private static void testBinary() {
+        int a = 25;
+        System.out.println(Integer.toBinaryString(a));
+        System.out.println(Integer.toHexString(a));
+
+        System.out.println(Long.toBinaryString(a));
+        System.out.println(Long.toHexString(a));
     }
 
     /**
@@ -53,7 +65,8 @@ public class WuTongDemoActivity extends AppCompatActivity {
 
         int c = (byte) (2 ^ 24 >> 24 & 0xFF);
         int d = (byte) (2 ^ 16 >> 16 & 0xFF);
-        int e = (byte) (256 >> 8 & 0xFF);// 256/2^8 =1    1-->0000 0001   0xFF
+        // 256/2^8 =1    1-->0000 0001   0xFF=1111 1111        0000 0001 & 1111 1111 （同true才true）= 0000 0001
+        int e = (byte) (256 >> 8 & 0xFF);
 
         System.out.println("移位后的值：\n" + a + "\n" + b + "\n" + c + "---" + d + "---" + e);
     }
