@@ -44,11 +44,17 @@ open class KtTest : AppCompatActivity() {
         Log.d(TAG, "testCompanionExtendingFunction: 伴生对象的扩展方法")
     }
 
+    val list = listOf("a", "b", "c")
 
     private val TAG = "KtTest"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        /**
+         * 输出范围：    0..2
+         */
+        Log.d(TAG, "onCreate: ${list.indices}")
 
         test(1, 2, 3)
 
@@ -67,7 +73,57 @@ open class KtTest : AppCompatActivity() {
         KtTest.DeskTop.url // 正确
 
         Log.d(TAG, "onCreate: ${KtTest.ktTest}  --------   如果没有声明伴生对象实例也可以用：${KtTest.Companion}")
+
+        testForFun()
     }
+
+    /**
+     * 各种for
+     */
+    private fun testForFun() {
+        for (x in 1..5) {
+            Log.d(TAG, "testForFun: $x")//打印 1,2,3,4,5
+        }
+        Log.d(TAG, "testForFun: ----------------------------")
+
+        for (x in 1..10 step 2) {
+            Log.d(TAG, "testForFun: $x")//打印：1，3，5，7，9
+        }
+        Log.d(TAG, "testForFun: ----------------------------")
+
+        for (x in 9 downTo 0 step 3) {
+            Log.d(TAG, "testForFun: $x")//打印9，6，3，0
+        }
+        Log.d(TAG, "testForFun: ----------------------------")
+
+        for (x in 0 until 3) {
+            Log.d(TAG, "testForFun: $x")//打印0，1，2
+        }
+        Log.d(TAG, "testForFun: ----------------------------")
+
+        val fruits = listOf("banana", "avocado", "apple", "kiwifruit")
+        fruits
+            .filter { it.startsWith("a") }
+            .sortedBy { it }
+            .map { it.toUpperCase() }
+            .forEach { Log.d(TAG, "testForFun: $it") }//打印 APPLE，AVOCADO
+        Log.d(TAG, "testForFun: ----------------------------")
+    }
+
+    private fun mapTest() {
+        //可读写map
+        val map = mutableMapOf("a" to 1, "b" to 2, "c" to 3)
+        map["a"] = 1
+
+        //只读
+        val map1 = mapOf("a" to 1, "b" to 2, "c" to 3)
+        Log.d(TAG, "mapTest: ${map1["a"]}")
+    }
+
+    private fun String.expandFun(){
+
+    }
+
 
     /**
      * 调用copy改变实体类的参数
