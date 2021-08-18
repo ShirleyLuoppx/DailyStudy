@@ -18,5 +18,22 @@
         <!--声明我们的属性，名称为default_size,取值类型为尺寸类型（dp,px等）-->
         <attr name="default_size" format="dimension" />
     </declare-styleable>
+
+    <style name="ToastDialogTheme" parent="@android:style/Theme.Dialog">
+        <!--        其实这些都不要也是可以的 start-->
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <!--        其实这些都不要也是可以的 end-->
+
+        <item name="android:windowAnimationStyle">@style/DialogAnimation</item>
+    </style>
+
+    <style name="DialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/show_toast_anim</item>
+        <item name="android:windowExitAnimation">@anim/hide_toast_anim</item>
+    </style>
 </resources>
 

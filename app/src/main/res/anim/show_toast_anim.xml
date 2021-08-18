@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--    interpolator：进入动画的速率，有先慢后快，先快后慢等等，不写就是默认的匀速-->
+    <translate
+        android:duration="300"
+        android:fromXDelta="-100%p"
+        android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+        android:toXDelta="0%p" />
+</set>

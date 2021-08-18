@@ -40,13 +40,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
 
-<!--        android:name=".test.activity.GetMsgActivity"-->
-<!--        android:name=".chap14coolweather.CoolWeatherMainActivity"-->
+        <!--        android:name=".test.activity.GetMsgActivity"-->
+        <!--        android:name=".chap14coolweather.CoolWeatherMainActivity"-->
+        <!--        android:screenOrientation="portrait"-->
         <activity
-            android:name=".kotlin.KtTest"
+            android:name=".test.GlideToastTest"
             android:configChanges="keyboardHidden|screenSize|screenLayout|orientation"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"
             android:theme="@style/FruitActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -137,19 +137,21 @@
 
         <receiver android:name=".test.receiver.StaticBCReceiver">
             <intent-filter>
-                <action android:name="com.ppx.static.broadcast"/>
+                <action android:name="com.ppx.static.broadcast" />
             </intent-filter>
         </receiver>
 
         <receiver android:name=".broadcast.BaseActivity$ForceOffLineBroadCastReceiver">
             <intent-filter>
-                <action android:name="com.ppx.static.broadcast"/>
+                <action android:name="com.ppx.static.broadcast" />
             </intent-filter>
         </receiver>
 
-        <service android:name=".test.service.BCReceiverService" android:exported="true" >
+        <service
+            android:name=".test.service.BCReceiverService"
+            android:exported="true">
             <intent-filter>
-                <action android:name="com.study.startserver"/>
+                <action android:name="com.study.startserver" />
             </intent-filter>
         </service>
     </application>
