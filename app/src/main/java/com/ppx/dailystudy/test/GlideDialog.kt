@@ -2,6 +2,7 @@ package com.ppx.dailystudy.test
 
 import android.app.Dialog
 import android.os.Bundle
+import android.view.Gravity
 import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -26,6 +27,7 @@ class GlideDialog : AppCompatActivity() {
     private fun glideFun() {
         val dialog = Dialog(this,R.style.GlideTheme)
         dialog.setContentView(R.layout.item_glide)
+        dialog.window?.setGravity(Gravity.BOTTOM)
         dialog.setCancelable(true)
         dialog.window?.setLayout(ConstraintLayout.LayoutParams.MATCH_PARENT, ConstraintLayout.LayoutParams.WRAP_CONTENT)
         dialog.show()
