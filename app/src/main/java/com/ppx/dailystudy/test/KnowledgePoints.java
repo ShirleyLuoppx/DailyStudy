@@ -1,18 +1,40 @@
 package com.ppx.dailystudy.test;
 
 import android.annotation.SuppressLint;
+import android.content.res.TypedArray;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.util.SparseArray;
 import android.util.SparseBooleanArray;
 import android.util.SparseIntArray;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.ppx.dailystudy.R;
 
 /**
  * @Author: LuoXia
  * @Date: 2021/7/29 18:04
  * @Description: 知识点测试类
  */
-public class KnowledgePoints {
+public class KnowledgePoints extends AppCompatActivity {
+
+    public static void main(String[] args) {
+
+    }
+
+    /**
+     * 测试从自定义样式的xml里面获取数值？
+     */
+    private void getDataFromXml() {
+        //获取自定义属性的xml文件
+        TypedArray array = getApplicationContext().obtainStyledAttributes(null, R.styleable.BubbleView);
+        //从array中获取自定义属性的值
+        float mArrowWidth = array.getDimension(R.styleable.BubbleView_arrowWidth, 25);
+        //用完及时回收
+        array.recycle();
+    }
 
     /**
      * 新建一个SparseArray
