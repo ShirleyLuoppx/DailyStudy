@@ -13,6 +13,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.ppx.dailystudy.R;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * @Author: LuoXia
  * @Date: 2021/7/29 18:04
@@ -21,11 +24,22 @@ import com.ppx.dailystudy.R;
 public class KnowledgePoints extends AppCompatActivity {
 
     public static void main(String[] args) {
+        getTime();
+    }
 
+    public static void getTime() {
+        try {
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Long second = format.parse("2021-7-24 00:00:00").getTime();
+            System.out.println(second);
+        } catch (Exception e) {
+            System.out.println("error:"+e.toString());
+        }
     }
 
     /**
      * 测试从自定义样式的xml里面获取数值？
+     * 不是的，他应该是在xml布局页面里面使用自定义view的时候使用了自定义属性且赋了值
      */
     private void getDataFromXml() {
         //获取自定义属性的xml文件
