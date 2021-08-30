@@ -10,45 +10,46 @@ import java.util.concurrent.locks.ReentrantLock
  * @Author: LuoXia
  * @Date: 2021/8/30 15:09
  * @Description: 学习新建线程的三种方式，同步线程的四种方式
+ * https://www.cnblogs.com/whoislcj/p/5603277.html
  */
 
 /**
  *
 Thread主要函数
-run()//包含线程运行时所执行的代码
+    run()//包含线程运行时所执行的代码
 
-start()//用于启动线程
+    start()//用于启动线程
 
-sleep()/sleep(long millis)//线程休眠，交出CPU，让CPU去执行其他的任务，然后线程进入阻塞状态，sleep方法不会释放锁
+    sleep()/sleep(long millis)//线程休眠，交出CPU，让CPU去执行其他的任务，然后线程进入阻塞状态，sleep方法不会释放锁
 
-yield()//使当前线程交出CPU，让CPU去执行其他的任务，但不会是线程进入阻塞状态，而是重置为就绪状态，yield方法不会释放锁
+    yield()//使当前线程交出CPU，让CPU去执行其他的任务，但不会是线程进入阻塞状态，而是重置为就绪状态，yield方法不会释放锁
 
-join()/join(long millis)/join(long millis,int nanoseconds)//等待线程终止，直白的说 就是发起该子线程的线程 只有等待该子线程运行结束才能继续往下运行
+    join()/join(long millis)/join(long millis,int nanoseconds)//等待线程终止，直白的说 就是发起该子线程的线程 只有等待该子线程运行结束才能继续往下运行
 
-wait()//交出cpu，让CPU去执行其他的任务，让线程进入阻塞状态，同时也会释放锁
+    wait()//交出cpu，让CPU去执行其他的任务，让线程进入阻塞状态，同时也会释放锁
 
-interrupt()//中断线程，自stop函数过时之后，我们通过interrupt方法和isInterrupted()方法来停止正在运行的线程，注意只能中断已经处于阻塞的线程
+    interrupt()//中断线程，自stop函数过时之后，我们通过interrupt方法和isInterrupted()方法来停止正在运行的线程，注意只能中断已经处于阻塞的线程
 
-getId()//获取当前线程的ID
+    getId()//获取当前线程的ID
 
-getName()/setName()//获取和设置线程的名字
+    getName()/setName()//获取和设置线程的名字
 
-getPriority()/setPriority()//获取和这是线程的优先级 一般property用1-10的整数表示，默认优先级是5，优先级最高是10，优先级高的线程被执行的机率高
+    getPriority()/setPriority()//获取和这是线程的优先级 一般property用1-10的整数表示，默认优先级是5，优先级最高是10，优先级高的线程被执行的机率高
 
-setDaemon()/isDaemo()//设置和判断是否是守护线程
+    setDaemon()/isDaemo()//设置和判断是否是守护线程
 
-currentThread()//静态函数获取当前线程
+    currentThread()//静态函数获取当前线程
 
 Thread线程主要状态
-（1） New  一旦被实例化之后就处于new状态
+    （1） New  一旦被实例化之后就处于new状态
 
-（2） Runnable 调用了start函数之后就处于Runnable状态
+    （2） Runnable 调用了start函数之后就处于Runnable状态
 
-（3） Running 线程被cpu执行 调用run函数之后 就处于Running状态
+    （3） Running 线程被cpu执行 调用run函数之后 就处于Running状态
 
-(4)   Blocked 调用join()、sleep()、wait()使线程处于Blocked状态
+    (4)   Blocked 调用join()、sleep()、wait()使线程处于Blocked状态
 
-(5)   Dead    线程的run()方法运行完毕或被中断或被异常退出，线程将会到达Dead状态
+    (5)   Dead    线程的run()方法运行完毕或被中断或被异常退出，线程将会到达Dead状态
  */
 class ThreadDemo {
 
