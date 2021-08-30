@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
+import com.ppx.dailystudy.R
 
 /**
  * @Author: LuoXia
@@ -19,12 +20,17 @@ class BubbleView(context: Context?, attrs: AttributeSet?) : View(context, attrs)
      */
     private var rectFCorner: Float = 5F
 
+    /**
+     * 气泡背景色
+     */
+    private var bubbleColor: Int = resources.getColor(R.color.colorBlack)
+
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
 
         //抗锯齿
         paint.isAntiAlias = true
-        paint.color = Color.BLACK
+        paint.color = bubbleColor
         paint.style = Paint.Style.FILL
 
         drawLHorn(0, canvas)
@@ -49,6 +55,7 @@ class BubbleView(context: Context?, attrs: AttributeSet?) : View(context, attrs)
                 path.lineTo(200F, 60F)
                 path.lineTo(200F, 45F)
                 path.lineTo((200 - 20).toFloat(), 50F)
+                path.close()
 
                 //来，我们再一拼接就形成了一个聊天气泡框
                 canvas?.drawPath(path, paint)

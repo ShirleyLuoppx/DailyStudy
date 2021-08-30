@@ -24,7 +24,9 @@ import java.util.Date;
 public class KnowledgePoints extends AppCompatActivity {
 
     public static void main(String[] args) {
-        getTime();
+//        getTime();
+
+        KotlinDemo.INSTANCE.filterTest();
     }
 
     public static void getTime() {
