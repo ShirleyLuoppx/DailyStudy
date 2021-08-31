@@ -1,11 +1,13 @@
 package com.ppx.dailystudy.test.activity
 
+import android.os.AsyncTask
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.ppx.dailystudy.R
+import com.ppx.dailystudy.thread.AsyncTaskDemo
 import kotlinx.android.synthetic.main.activiyu_timepicker_test.*
 
 /**
@@ -17,7 +19,7 @@ class TestDemo : AppCompatActivity() {
 
     private val TAG: String = "TestDemo"
     private lateinit var mHandler: Handler
-
+    private val asyncTaskDemo = AsyncTaskDemo()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,16 +34,18 @@ class TestDemo : AppCompatActivity() {
          *
          * 结论：延迟第一个postDelayed()的时间去调用run()里面的内容，然后run()里面的内容延迟循环调用
          */
-        Log.d(TAG, "onCreate: 111111111111")
-        testDoublePostDelay()
-        mHandler = Handler(Looper.getMainLooper())
-        mHandler.postDelayed(object : Runnable {
-            override fun run() {
-                Log.d(TAG, "run: 3333333")
-                testDoublePostDelay()
-                mHandler.postDelayed(this, 5 * 1000)
-            }
-        }, 10 * 1000)
+//        Log.d(TAG, "onCreate: 111111111111")
+//        testDoublePostDelay()
+//        mHandler = Handler(Looper.getMainLooper())
+//        mHandler.postDelayed(object : Runnable {
+//            override fun run() {
+//                Log.d(TAG, "run: 3333333")
+//                testDoublePostDelay()
+//                mHandler.postDelayed(this, 5 * 1000)
+//            }
+//        }, 10 * 1000)
+
+        asyncTaskDemo.test()
     }
 
     private fun testDoublePostDelay() {

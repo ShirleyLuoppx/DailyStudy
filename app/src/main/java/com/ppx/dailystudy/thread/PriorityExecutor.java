@@ -13,7 +13,7 @@ import java.util.concurrent.atomic.AtomicLong;
 /**
  * @Author: LuoXia
  * @Date: 2021/8/31 15:59
- * @Description:
+ * @Description:  https://www.cnblogs.com/whoislcj/p/5610903.html
  */
 public class PriorityExecutor extends ThreadPoolExecutor {
     private static final int CORE_POOL_SIZE = 5;//核心线程池大小
