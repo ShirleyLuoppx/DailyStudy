@@ -1,5 +1,6 @@
 package com.ppx.dailystudy.thread
 
+import android.annotation.SuppressLint
 import android.os.AsyncTask
 
 /**
@@ -14,7 +15,8 @@ class AsyncTaskDemo {
     //模拟下载
     fun test() {
 
-        var asyncTask : AsyncTask<String, Int, String> = object : AsyncTask<String, Int, String>() {
+        var asyncTask: AsyncTask<String, Int, String> = @SuppressLint("StaticFieldLeak")
+        object : AsyncTask<String, Int, String>() {
 
             //此函数是在任务没被线程池执行之前调用 运行在UI线程中 比如现在一个等待下载进度Progress
             override fun onPreExecute() {
@@ -24,16 +26,23 @@ class AsyncTaskDemo {
 
             //此函数是在任务被线程池执行时调用 运行在子线程中，在此处理比较耗时的操作 比如执行下载
             override fun doInBackground(vararg params: String?): String {
-                var url = params[0]
+                val url = params[0]
                 println("doInBackground  url-->$url")
 
                 for (i in 0..100 step 20) {
+                    if (isCancelled) {
+                        return ""
+                    }
                     try {
                         Thread.sleep(1000)
                     } catch (e: Exception) {
                         e.printStackTrace()
                     }
+                    publishProgress(i)
                     println("doInBackground progress -->  $i")
+                }
+                if (isCancelled) {
+                    return "download cancel"
                 }
                 return "downLoad end"
             }
@@ -63,7 +72,13 @@ class AsyncTaskDemo {
             }
         }
 
+
+
         asyncTask.execute(url)
+        if (!asyncTask.isCancelled) {
+            val isCancel = asyncTask.cancel(true)
+            println("AsyncTask isCancel---->$isCancel")
+        }
     }
 }
 
