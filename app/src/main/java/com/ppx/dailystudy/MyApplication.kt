@@ -24,7 +24,7 @@ object MyApplication : Application() {
     private var context: Context? = null
 
     fun getContext(): Context? {
-
+        context = getContext()
         return context
     }
 //    }
