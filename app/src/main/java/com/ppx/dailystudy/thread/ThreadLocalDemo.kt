@@ -6,6 +6,8 @@ import java.util.*
  * @Author: LuoXia
  * @Date: 2021/9/13 11:19
  * @Description: ThreadLocal线程本地变量demo
+ *
+ * test
  */
 class ThreadLocalDemo {
     lateinit var a: PriorityQueue<Int>
