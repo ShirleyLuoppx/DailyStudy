@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.ppx.dailystudy.R;
 
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 
 /**
@@ -23,10 +24,36 @@ import java.util.Date;
  */
 public class KnowledgePoints extends AppCompatActivity {
 
+    private static final String TAG = "KnowledgePoints";
+
     public static void main(String[] args) {
 //        getTime();
 
-        KotlinDemo.INSTANCE.filterTest();
+//        KotlinDemo.INSTANCE.filterTest();
+
+        testArraysFillFun();
+    }
+
+    /**
+     * 测试 java原生接口 Arrays.fill()
+     * Arrays.fill(int[] a, int val)：用val的指去覆盖a数组中的每一个数据。其他重载方法含义类似
+     * 重写override和重载overload
+     * 重写override：重写是子类对父类的允许访问的方法的实现过程进行重新编写, 返回值和形参都不能改变。即外壳不变，核心重写！
+     * 重载overload：方法名一致，参数不一致（参数个数，参数类型，参数顺序）
+     */
+    public static void testArraysFillFun() {
+        int[] intArrays = new int[]{5, 1, 0, 9, 7};
+
+        for (int index : intArrays) {
+            System.out.println("testArraysFillFun  intArrays = " + index);
+        }
+
+        System.out.println("---------------------------------");
+        Arrays.fill(intArrays, 66);
+
+        for (int index : intArrays) {
+            System.out.println("testArraysFillFun  intArrays = " + index);
+        }
     }
 
     public static void getTime() {
@@ -35,7 +62,7 @@ public class KnowledgePoints extends AppCompatActivity {
             Long second = format.parse("2021-7-24 00:00:00").getTime();
             System.out.println(second);
         } catch (Exception e) {
-            System.out.println("error:"+e.toString());
+            System.out.println("error:" + e.toString());
         }
     }
 
