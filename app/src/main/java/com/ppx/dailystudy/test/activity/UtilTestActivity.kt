@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.ppx.dailystudy.R
+import com.ppx.dailystudy.test.MessageBR
 import com.ppx.dailystudy.test.utils.DataAndFileUtils
 
 /**
@@ -19,6 +20,9 @@ class UtilTestActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         testInt2ByteArray1()
+
+        var test = MessageBR()
+        Log.d(TAG, "onCreate: "+test)
     }
 
     fun testInt2ByteArray1() {

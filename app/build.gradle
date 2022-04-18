@@ -3,6 +3,9 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
+
+    ndkVersion '22.1.7171670'
+
     // 签名证书配置
     signingConfigs {
         config4 {
@@ -71,6 +74,7 @@ dependencies {
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4'
 
 //    implementation(name: 'flyaudiosdk_lib', ext: 'aar')
+    implementation(name: 'openos_sdk', ext: 'aar')
     implementation 'org.litepal.guolindev:core:3.2.1'
 
     implementation 'com.squareup.okhttp3:okhttp:4.7.2'

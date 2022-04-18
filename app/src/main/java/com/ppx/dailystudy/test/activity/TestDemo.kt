@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.ppx.dailystudy.R
 import com.ppx.dailystudy.thread.AsyncTaskDemo
 import kotlinx.android.synthetic.main.activiyu_timepicker_test.*
+import java.util.concurrent.atomic.AtomicInteger
 
 /**
  * Author: LuoXia
@@ -46,9 +47,21 @@ class TestDemo : AppCompatActivity() {
 //        }, 10 * 1000)
 
         asyncTaskDemo.test()
+
+        testAtomicInteger()
     }
 
     private fun testDoublePostDelay() {
         Log.d(TAG, "testDoublePostDelay: 22222222222")
+    }
+
+    private fun testAtomicInteger() {
+        var atomicInteger: AtomicInteger = AtomicInteger(2)
+        atomicInteger.incrementAndGet()
+        var incrementAndGetValue = atomicInteger.incrementAndGet()
+        Log.d(TAG, "testAtomicInteger: $incrementAndGetValue")
+        atomicInteger.decrementAndGet()
+        var decrementAndGet = atomicInteger.decrementAndGet()
+        Log.d(TAG, "testAtomicInteger: $decrementAndGet")
     }
 }

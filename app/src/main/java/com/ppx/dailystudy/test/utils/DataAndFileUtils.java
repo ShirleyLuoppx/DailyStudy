@@ -1,6 +1,8 @@
 package com.ppx.dailystudy.test.utils;
 
-public class DataAndFileUtils {
+import android.util.Log;
+
+public class DataAndFileUtils implements Runnable{
     public static void main(String[] args){
         intToByteArray1(2);
     }
@@ -53,4 +55,8 @@ public class DataAndFileUtils {
         return date[start] & 0xFF | date[(start + 1)] << 8 & 0xFF00 | date[(start + 2)] << 16 & 0xFF0000 | date[(start + 3)] << 24 & 0xFF000000;
     }
 
+    @Override
+    public void run() {
+        Log.d("TAG", "run: okin------run()");
+    }
 }
