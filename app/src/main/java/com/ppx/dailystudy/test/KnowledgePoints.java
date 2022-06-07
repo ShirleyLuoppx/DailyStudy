@@ -19,7 +19,9 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -39,24 +41,59 @@ public class KnowledgePoints extends AppCompatActivity {
 //        testArraysFillFun();
 //        singletonListTest();
         AtomicIntegerSet();
+
+        covert("11");
+    }
+
+    public static int covert(String content) {
+        int number = 0;
+        String[] HighLetter = {"A", "B", "C", "D", "E", "F"};
+        Map<String, Integer> map = new HashMap<>();
+        for (int i = 0; i <= 9; i++) {
+            map.put(i + "", i);
+        }
+        for (int j = 10; j < HighLetter.length + 10; j++) {
+            map.put(HighLetter[j - 10], j);
+        }
+        String[] str = new String[content.length()];
+        for (int i = 0; i < str.length; i++) {
+            str[i] = content.substring(i, i + 1);
+        }
+
+        System.out.println("map:" + map.toString() + ",str:" + Arrays.toString(str));
+        try {
+            if (map.size() > 0 && str.length > 0) {
+                for (int i = 0; i < str.length; i++) {
+                    System.out.println("str[i]:" + str[i] + ", map.get(str[i]):" + map.get(str[i]));
+                    number += map.get(str[i]) * Math.pow(16, str.length - 1 - i);
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e.toString());
+        }
+
+        System.out.println("----number:" + number);
+        return number;
     }
 
     /**
      * 测试 AtomicInteger.set(1|3)
      * 需要注意的是：这里的重点并不是AtomicInteger.set，而是set里面参数的  |  ,表示“或”，是需要将对应的十进制转换成二进制后，列竖式，有1 则为1 ，最终再转成十进制的结果
-     *
+     * <p>
      * eg：
-     *  AtomicInteger.set(1 | 22);
-     *  1         0001
-     *  22      1 0110
-     *  --------------
-     *  result  1 0111   -->对应的十进制则为23
-     *
-     *  总结：
-     *  | 或  ，有1则为1；
-     *  & 与  ，同为1则为1；
-     *  ^ 异或  ，不同为1则为1；
-     *  ~ 取反，这个有补码啥的，先记前三个吧
+     * AtomicInteger.set(1 | 22);
+     * 1         0001
+     * 22      1 0110
+     * --------------
+     * result  1 0111   -->对应的十进制则为23
+     * <p>
+     * 总结：
+     * | 或  ，有1则为1；
+     * & 与  ，同为1则为1；
+     * ^ 异或  ，不同为1则为1；
+     * ~ 取反，这个有补码啥的，先记前三个吧
      */
     @TestOnly
     public static void AtomicIntegerSet() {
