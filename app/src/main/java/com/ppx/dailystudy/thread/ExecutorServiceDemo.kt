@@ -229,8 +229,8 @@ class ExecutorServiceDemo {
 }
 
 
-fun main() {
-    println("main -----")
+//fun main() {
+//    println("main -----")
 //    ExecutorServiceDemo().newFixedThreadPoolTest()
 //    ExecutorServiceDemo().newCachedThreadPoolTest()
 //    ExecutorServiceDemo().newScheduledThreadPoolOneTimeTest()
@@ -239,5 +239,5 @@ fun main() {
 //    ExecutorServiceDemo().newSingleThreadScheduledExecutorTest()
 //    ExecutorServiceDemo().newSingleThreadScheduledExecutorCircleTest()
 
-    ExecutorServiceDemo().test()
-}
+//    ExecutorServiceDemo().test()
+//}

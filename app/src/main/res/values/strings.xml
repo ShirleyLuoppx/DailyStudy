@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">DailyStudy</string>
+    <string name="main_process_txt">this is a view of main process</string>
+    <string name="second_process_txt">this is a view of the second process</string>
+    <string name="third_process_txt">this is a view of the third process</string>
+    <string name="show_second_activity">click this button to show the second activity</string>
+    <string name="show_third_activity">click this button to show the third activity</string>
+    <string name="back_btn">BACK</string>
 </resources>
