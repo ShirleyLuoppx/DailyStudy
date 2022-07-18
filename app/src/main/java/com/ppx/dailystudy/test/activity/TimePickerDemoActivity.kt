@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.ppx.dailystudy.R
-import com.ppx.dailystudy.chap13advancedtechniques.LongRunningService
+import com.ppx.dailystudy.firstlinecode.chap13advancedtechniques.LongRunningService
 import kotlinx.android.synthetic.main.activity_timepicker_demo.*
 
 /**

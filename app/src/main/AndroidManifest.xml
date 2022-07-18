@@ -30,7 +30,7 @@
     <uses-permission android:name="android.permission.READ_SMS" /> <!-- 读取短信权限 -->
 
     <application
-        android:name="org.litepal.LitePalApplication"
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -44,7 +44,7 @@
         <!--        android:name=".chap14coolweather.CoolWeatherMainActivity"-->
         <!--        android:screenOrientation="portrait"-->
         <activity
-            android:name=".androiddevelopartisticexplorations.binderipc.MainProcessActivity"
+            android:name=".androiddevelopartisticexplorations.chap02ipc.MainProcessActivity"
             android:configChanges="keyboardHidden|screenSize|screenLayout|orientation"
             android:label="@string/app_name"
             android:theme="@style/FruitActivity">
@@ -55,13 +55,13 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".androiddevelopartisticexplorations.binderipc.SecondActivity" android:process=":process"/>
-        <activity android:name=".androiddevelopartisticexplorations.binderipc.ThirdActivity" android:process="com.ppx.dailystudy.binderipc.process"/>
+        <activity android:name=".androiddevelopartisticexplorations.chap02ipc.SecondActivity" android:process=":process"/>
+        <activity android:name=".androiddevelopartisticexplorations.chap02ipc.ThirdActivity" android:process="com.ppx.dailystudy.binderipc.process"/>
         <activity android:name=".test.activity.MenuResourcesActivity" />
         <activity android:name=".test.activity.TestFinishFunction" />
         <activity android:name=".broadcast.ForceOffLineActivity" />
         <activity android:name=".multimedia.NotificationLayoutActivity" />
-        <activity android:name=".chap12materialdesign.CollaspcingToobarActivity" />
+        <activity android:name="com.ppx.dailystudy.firstlinecode.chap12materialdesign.CollaspcingToobarActivity" />
         <activity
             android:name=".test.activity.TestLifeCircleActivityB"
             android:launchMode="singleInstance" />
@@ -70,19 +70,19 @@
         <activity android:name=".test.activity.ThreadTestB" />
 
         <service
-            android:name=".chap10service.DownLoadService"
+            android:name="com.ppx.dailystudy.firstlinecode.chap10service.DownLoadService"
             android:enabled="true"
             android:exported="true" />
         <service
-            android:name=".chap10service.MyService"
+            android:name="com.ppx.dailystudy.firstlinecode.chap10service.MyService"
             android:enabled="true"
             android:exported="true" />
         <service
-            android:name=".chap10service.ForeService"
+            android:name="com.ppx.dailystudy.firstlinecode.chap10service.ForeService"
             android:enabled="true"
             android:exported="true" />
         <service
-            android:name=".chap10service.MyIntentService"
+            android:name="com.ppx.dailystudy.firstlinecode.chap10service.MyIntentService"
             android:enabled="true"
             android:exported="true" /> <!-- 百度地图的service -->
         <service
@@ -91,7 +91,7 @@
             android:process=":remote" />
 
         <service
-            android:name=".chap13advancedtechniques.LongRunningService"
+            android:name="com.ppx.dailystudy.firstlinecode.chap13advancedtechniques.LongRunningService"
             android:enabled="true"
             android:exported="true" /> <!-- 添加一个百度地方的API_KEY -->
         <!-- 这里需要注意一下，在申请AK的时候，一定要项目名称和报名和申请填入的一致，要不然地图显示不出来 -->
