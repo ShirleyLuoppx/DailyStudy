@@ -7,7 +7,7 @@ import java.io.Serializable;
  * @CreateDate: 2022/7/18 22:46
  * @Description: 用于   用Serializable实现序列化和反序列化
  */
-public class User implements Serializable {
+public class UserSerializable implements Serializable {
 
     /**
      * serialVersionUID用于标识类的序列化
@@ -18,7 +18,7 @@ public class User implements Serializable {
     private String name;
     private String project;
 
-    public User(int id, String name, String project) {
+    public UserSerializable(int id, String name, String project) {
         this.id = id;
         this.name = name;
         this.project = project;

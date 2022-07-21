@@ -33,6 +33,7 @@ public class MainProcessActivity extends AppCompatActivity {
 
         click();
         verifyMultiProcess();
+        serializableUser();
     }
 
     /**
@@ -41,15 +42,18 @@ public class MainProcessActivity extends AppCompatActivity {
     private void serializableUser() {
         try {
             //序列化
-            User user = new User(1, "ppx", "大数据");
+            UserSerializable userSerializable = new UserSerializable(1, "ppx", "大数据");
+
             ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("cache.txt"));
-            outputStream.writeObject(user);
+            outputStream.writeObject(userSerializable);
             outputStream.close();
+            Log.d(TAG, "serializableUser: user" + userSerializable + "," + userSerializable.toString());
 
             //反序列化
             ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("cache.txt"));
-            User newUser = (User) inputStream.readObject();
+            UserSerializable newUserSerializable = (UserSerializable) inputStream.readObject();
             inputStream.close();
+            Log.d(TAG, "serializableUser: newUser" + newUserSerializable + "," + newUserSerializable.toString());
 
         } catch (IOException e) {
             e.printStackTrace();
