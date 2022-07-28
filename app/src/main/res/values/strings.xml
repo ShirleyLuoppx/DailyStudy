@@ -6,4 +6,6 @@
     <string name="show_second_activity">click this button to show the second activity</string>
     <string name="show_third_activity">click this button to show the third activity</string>
     <string name="back_btn">BACK</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

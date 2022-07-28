@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="MissingClass">
+
+<!--    includeFontPadding : 安卓textView有默认的内边距，此属性阔以去掉这个内边距 -->
+    <TextView
+        android:id="@+id/tv_test"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="666666666666666666666666666"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/colorRedFF55"
+        android:includeFontPadding="false"/>
+
+    <Button
+        android:id="@+id/btn_show_fragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_test"
+        android:text="show_fragment"/>
+
+    <Button
+        android:id="@+id/btn_run_on_ui_thread"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_show_fragment"
+        android:text="btn_run_on_ui_thread"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/colorGrayE1"
+        app:layout_constraintTop_toBottomOf="@id/btn_run_on_ui_thread"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
