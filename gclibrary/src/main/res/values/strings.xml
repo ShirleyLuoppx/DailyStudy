@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">gcLibrary</string>
+    <string name="net_fail">请求失败</string>
+    <string name="net_break_fail">网络中断，请检查您的网络状态!</string>
+    <string name="net_data_fail">数据加载失败</string>
+    <string name="exit_once">再按一次退出程序</string>
+</resources>

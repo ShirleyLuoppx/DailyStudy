@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="percentLayout_layout">
+        <!-- 百分比布局-->
+        <attr name="lw" format="string" />
+        <attr name="lh" format="string" />
+        <attr name="lm" format="string" />
+        <attr name="lml" format="string" />
+        <attr name="lmt" format="string" />
+        <attr name="lmr" format="string" />
+        <attr name="lmb" format="string" />
+        <attr name="lms" format="string" />
+        <attr name="lme" format="string" />
+        <attr name="lts" format="string" />
+        <attr name="lmaxw" format="string" />
+        <attr name="lmaxh" format="string" />
+        <attr name="lminw" format="string" />
+        <attr name="lminh" format="string" />
+        <attr name="lp" format="string" />
+        <attr name="lpt" format="string" />
+        <attr name="lpb" format="string" />
+        <attr name="lpl" format="string" />
+        <attr name="lpr" format="string" />
+    </declare-styleable>
+
+    <!--linearlayout-->
+    <declare-styleable name="linearlayout_bg">
+        <attr name="ll_bg_press" format="color|reference" />
+        <attr name="ll_bg_normal" format="color|reference" />
+        <attr name="ll_bg_distance" format="integer|reference" />
+        <attr name="ll_bg_radius" format="integer|reference" />
+        <attr name="ll_bg_click" format="boolean|reference" />
+    </declare-styleable>
+
+    <!--textView-->
+    <declare-styleable name="textview_bg">
+        <attr name="tv_drawable_padding" format="integer" />
+        <attr name="tv_drawable_height" format="integer" />
+        <attr name="tv_drawable_width" format="integer" />
+    </declare-styleable>
+
+    <!--floationgtab-->
+    <declare-styleable name="PagerSlidingTabStrip">
+        <attr name="pstsIndicatorColor" format="color" />
+        <attr name="pstsUnderlineColor" format="color" />
+        <attr name="pstsDividerColor" format="color" />
+        <attr name="pstsTextColor" format="color" />
+        <attr name="pstsIndicatorHeight" format="integer" />
+        <attr name="pstsUnderlineHeight" format="integer" />
+        <attr name="pstsDividerPadding" format="integer" />
+        <attr name="pstsTabPaddingLeftRight" format="integer" />
+        <attr name="pstsTabIndicatorMarginLeft" format="integer" />
+        <attr name="pstsTabTextSize" format="integer" />
+        <attr name="pstsScrollOffset" format="integer" />
+        <attr name="pstsTabBackground" format="reference" />
+        <attr name="pstsShouldExpand" format="boolean" />
+        <attr name="pstsTextAllCaps" format="boolean" />
+    </declare-styleable>
+
+    <!--评分-->
+    <declare-styleable name="RatingView">
+        <attr name="drawable_margin" format="integer" />
+        <attr name="drawable_size" format="integer" />
+        <attr name="max_count" format="integer" />
+        <attr name="rating" format="float" />
+        <attr name="is_indicator" format="boolean" />
+        <attr name="drawable_empty" format="reference" />
+        <attr name="drawable_filled" format="reference" />
+        <attr name="drawable_half" format="reference" />
+    </declare-styleable>
+
+    <!--无限滚动-->
+    <declare-styleable name="SwitcherView">
+        <attr name="switcherTextColor" format="reference|color" />
+        <attr name="switcherTextSize" format="integer" />
+        <attr name="switcherRollingTime" format="integer" />
+    </declare-styleable>
+
+</resources>

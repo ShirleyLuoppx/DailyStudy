@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <!--<files-path-->
+    <!--name="captured_media"-->
+    <!--path="captured_media/" />-->
+    <!--<external-path-->
+    <!--name="data"-->
+    <!--path="Android" />-->
+    <!--<cache-path-->
+    <!--name="cache"-->
+    <!--path="appCache" />-->
+    <external-files-path
+        name="umeng_cache"
+        path="umeng_cache/" />
+
+    <external-path
+        name="external_files"
+        path="." />
+
+</paths>
