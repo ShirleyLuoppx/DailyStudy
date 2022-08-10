@@ -1,7 +1,5 @@
 package com.ppx.dailystudy
 
-import android.util.Log
-import com.ppx.dailystudy.kotlin.KtTest
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -27,7 +25,6 @@ class ExampleUnitTest {
         println("changeText")
     }
 
-    val ktTest = KtTest()
     @Test
     fun testExtendFun() {
         changeText()

@@ -47,7 +47,7 @@
         <!--        android:name=".chap14coolweather.CoolWeatherMainActivity"-->
         <!--        android:screenOrientation="portrait"-->
         <activity
-            android:name=".test.activity.TestMainActivity"
+            android:name=".MainActivity"
             android:configChanges="keyboardHidden|screenSize|screenLayout|orientation"
             android:label="@string/app_name"
             android:theme="@style/FruitActivity">
@@ -58,111 +58,7 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".androiddevelopartisticexplorations.chap02ipc.SecondActivity"
-            android:process=":process" />
-        <activity
-            android:name=".androiddevelopartisticexplorations.chap02ipc.ThirdActivity"
-            android:process="com.ppx.dailystudy.binderipc.process" />
-        <activity android:name=".test.activity.MenuResourcesActivity" />
-        <activity android:name=".test.activity.TestFinishFunction" />
-        <activity android:name=".broadcast.ForceOffLineActivity" />
-        <activity android:name=".multimedia.NotificationLayoutActivity" />
-        <activity android:name="com.ppx.dailystudy.firstlinecode.chap12materialdesign.CollaspcingToobarActivity" />
-        <activity
-            android:name=".test.activity.TestLifeCircleActivityB"
-            android:launchMode="singleInstance" />
-        <activity android:name=".test.activity.TestLifeCircleActivityC" />
-        <!--<activity android:name=".wutong.WuTongDemoActivity" />-->
-        <activity android:name=".test.activity.ThreadTestB" />
 
-        <service
-            android:name="com.ppx.dailystudy.firstlinecode.chap10service.DownLoadService"
-            android:enabled="true"
-            android:exported="true" />
-        <service
-            android:name="com.ppx.dailystudy.firstlinecode.chap10service.MyService"
-            android:enabled="true"
-            android:exported="true" />
-        <service
-            android:name="com.ppx.dailystudy.firstlinecode.chap10service.ForeService"
-            android:enabled="true"
-            android:exported="true" />
-        <service
-            android:name="com.ppx.dailystudy.firstlinecode.chap10service.MyIntentService"
-            android:enabled="true"
-            android:exported="true" /> <!-- 百度地图的service -->
-        <service
-            android:name="com.baidu.location.f"
-            android:enabled="true"
-            android:process=":remote" />
-
-        <service
-            android:name="com.ppx.dailystudy.firstlinecode.chap13advancedtechniques.LongRunningService"
-            android:enabled="true"
-            android:exported="true" /> <!-- 添加一个百度地方的API_KEY -->
-        <!-- 这里需要注意一下，在申请AK的时候，一定要项目名称和报名和申请填入的一致，要不然地图显示不出来 -->
-        <meta-data
-            android:name="com.baidu.lbsapi.API_KEY"
-            android:value="WhkwAHAopYX9hDh9HecpHiqvX58GpIKj" />
-
-        <provider
-            android:name=".contentprovider.MyContentProvider"
-            android:authorities="com.ppx.dailystudy.contentprovider"
-            android:enabled="true"
-            android:exported="true" /> <!-- 拍照片用的哟 -->
-        <!-- name固定值，authorities就是FileProvider.getUriForFile的第二个参数，要一直，他才知道是在这里provider里面找数据 -->
-        <!-- exported，是否可导出，grantUriPermissions，授权uri -->
-        <provider
-            android:name="androidx.core.content.FileProvider"
-            android:authorities="com.ppx.dailystudy.multimedia.takecameraorphoto"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths" />
-        </provider>
-
-        <receiver
-            android:name=".broadcast.MyReceiver"
-            android:enabled="true"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-            </intent-filter>
-        </receiver>
-
-        <!--<receiver android:name=".test.GetMsgDemo">
-            <intent-filter>
-                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
-            </intent-filter>
-        </receiver>-->
-
-        <receiver android:name=".test.MessageBR">
-            <intent-filter>
-                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
-            </intent-filter>
-        </receiver>
-
-        <receiver android:name=".test.receiver.StaticBCReceiver">
-            <intent-filter>
-                <action android:name="com.ppx.static.broadcast" />
-            </intent-filter>
-        </receiver>
-
-        <receiver android:name=".broadcast.BaseActivity$ForceOffLineBroadCastReceiver">
-            <intent-filter>
-                <action android:name="com.ppx.static.broadcast" />
-            </intent-filter>
-        </receiver>
-
-        <service
-            android:name=".test.service.BCReceiverService"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="com.study.startserver" />
-            </intent-filter>
-        </service>
     </application>
 
 </manifest>
