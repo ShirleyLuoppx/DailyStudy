@@ -14,6 +14,6 @@ interface IBookManager {
     void basicTypes(int anInt, long aLong, boolean aBoolean, float aFloat,
             double aDouble, String aString);
 
-     List<Book> getBookLst();
-     void addNook(in Book book);
+//     List<Book> getBookLst();
+//     void addNook(in Book book);
 }

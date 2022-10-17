@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.ppx.dailystudy.R;
+import com.ppx.dailystudy.test.service.TestService;
 
 public class TestMainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -21,6 +22,7 @@ public class TestMainActivity extends AppCompatActivity implements View.OnClickL
 
         findViewById(R.id.btn_update_ui_in_child_thread).setOnClickListener(this::onClick);
         findViewById(R.id.btn_copy_to_clipboard).setOnClickListener(this::onClick);
+        findViewById(R.id.btn_test_service).setOnClickListener(this::onClick);
     }
 
 
@@ -32,6 +34,12 @@ public class TestMainActivity extends AppCompatActivity implements View.OnClickL
                 break;
             case R.id.btn_copy_to_clipboard:
                 copyDataToClipBoard("clip data111");
+                break;
+            case R.id.btn_test_service:
+                Intent intent = new Intent();
+                intent.setPackage("com.wt.phonelink");
+                intent.setAction("com.wt.phonelink.service_wake");
+                startService(intent);
                 break;
         }
     }

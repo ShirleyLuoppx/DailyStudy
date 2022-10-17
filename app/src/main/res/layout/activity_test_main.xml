@@ -22,5 +22,13 @@
         app:layout_constraintTop_toBottomOf="@id/btn_update_ui_in_child_thread"
         android:text="拷贝到粘贴板"/>
 
+    <Button
+        android:id="@+id/btn_test_service"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_copy_to_clipboard"
+        android:text="启动服务"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
