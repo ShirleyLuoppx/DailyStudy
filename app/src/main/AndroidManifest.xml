@@ -72,10 +72,10 @@
         </receiver>
 
         <activity
-            android:name=".androiddevelopartisticexplorations.chap02ipc.SecondActivity"
+            android:name=".ipctest.SecondActivity"
             android:process=":process" />
         <activity
-            android:name=".androiddevelopartisticexplorations.chap02ipc.ThirdActivity"
+            android:name=".ipctest.ThirdActivity"
             android:process="com.ppx.dailystudy.binderipc.process" />
         <activity android:name=".test.activity.MenuResourcesActivity" />
         <activity android:name=".test.activity.TestFinishFunction" />
@@ -125,6 +125,17 @@
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="WhkwAHAopYX9hDh9HecpHiqvX58GpIKj" />
+
+        <service
+            android:name=".ipctest.BookAidlService"
+            android:enabled="true"
+            android:exported="true">
+
+            <intent-filter>
+                <action android:name="com.ppx.ipctest" />
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </service>
 
         <provider
             android:name=".contentprovider.MyContentProvider"

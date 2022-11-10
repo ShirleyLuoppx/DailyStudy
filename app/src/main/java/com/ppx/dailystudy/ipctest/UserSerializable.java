@@ -1,4 +1,4 @@
-package com.ppx.dailystudy.androiddevelopartisticexplorations.chap02ipc;
+package com.ppx.dailystudy.ipctest;
 
 import java.io.Serializable;
 

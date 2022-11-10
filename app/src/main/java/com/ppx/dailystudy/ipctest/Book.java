@@ -1,4 +1,4 @@
-package com.ppx.dailystudy.androiddevelopartisticexplorations.chap02ipc.aidl;
+package com.ppx.dailystudy.ipctest;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -12,6 +12,10 @@ public class Book implements Parcelable {
 
     private int bookId;
     private String bookName;
+
+    public Book() {
+
+    }
 
     public Book(int bookId, String bookName) {
         this.bookId = bookId;
@@ -60,5 +64,16 @@ public class Book implements Parcelable {
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeInt(bookId);
         parcel.writeString(bookName);
+    }
+
+    /**
+     * 参数是一个Parcel,用它来存储与传输数据
+     *
+     * @param dest
+     */
+    public void readFromParcel(Parcel dest) {
+        //注意，此处的读值顺序应当是和writeToParcel()方法中一致的
+        bookId = dest.readInt();
+        bookName = dest.readString();
     }
 }

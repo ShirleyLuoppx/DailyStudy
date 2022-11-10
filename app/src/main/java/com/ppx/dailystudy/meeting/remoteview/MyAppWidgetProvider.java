@@ -114,7 +114,7 @@ public class MyAppWidgetProvider extends AppWidgetProvider {
         intent.setAction(ACTION);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         remoteViews.setOnClickPendingIntent(R.id.iv_icon, pendingIntent);
-        remoteViews.setTextViewTextSize();
+//        remoteViews.setTextViewTextSize();
         manager.updateAppWidget(id, remoteViews);
     }
 
