@@ -1,21 +1,17 @@
 package com.ppx.dailystudy.meeting.remoteview;
 
-import android.annotation.SuppressLint;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Matrix;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
+import com.ppx.dailystudy.MyApplication;
 import com.ppx.dailystudy.R;
 
 /**
@@ -29,19 +25,19 @@ import com.ppx.dailystudy.R;
  * PendingIntent.getActivity(Context context, int requestCode,Intent intent, @Flags int flags);     相当于startActivity
  * PendingIntent.getService(Context context, int requestCode,Intent intent, @Flags int flags);      相当于startService
  * PendingIntent.getBroadcast(Context context, int requestCode,Intent intent, @Flags int flags);    相当于startBroadcast
- *  参数解释：
- *          context：上下文
- *          requestCode：一般传0
- *          intent：意图
- *          flags：
- *              FLAG_ONE_SHOT：当前描述的PendingIntent只能被使用一次，然后它就会被自动cancel
- *              FLAG_UPDATE_CURRENT：如果当前描述的pendingIntent已经存在，他们会被更新
- *              FLAG_CANCEL_CURRENT：如果描述的PendingIntent已经存在，那么他们会被cancel掉，然后系统会创建一个新的pendingIntent
- *              FLAG_NO_CREATE：不常用，不介绍
- *              所谓描述，就是说当intent的ComponentName和intent-filter都相同既可以视为是相同的intent
+ * 参数解释：
+ * context：上下文
+ * requestCode：一般传0
+ * intent：意图
+ * flags：
+ * FLAG_ONE_SHOT：当前描述的PendingIntent只能被使用一次，然后它就会被自动cancel
+ * FLAG_UPDATE_CURRENT：如果当前描述的pendingIntent已经存在，他们会被更新
+ * FLAG_CANCEL_CURRENT：如果描述的PendingIntent已经存在，那么他们会被cancel掉，然后系统会创建一个新的pendingIntent
+ * FLAG_NO_CREATE：不常用，不介绍
+ * 所谓描述，就是说当intent的ComponentName和intent-filter都相同既可以视为是相同的intent
  */
 public class MyAppWidgetProvider extends AppWidgetProvider {
-    private String TAG = "AppWidgetProvider";
+    private String TAG = "MyAppWidgetProvider";
     private String ACTION = "CLICK_REMOTE_VIEW";
 
     public MyAppWidgetProvider() {
@@ -54,29 +50,15 @@ public class MyAppWidgetProvider extends AppWidgetProvider {
         Log.d(TAG, "onReceive: action  :" + intent.getAction());
 
         if (ACTION.equals(intent.getAction())) {
+            Log.d(TAG, "onReceive: action  ------------------   click in");
             Toast.makeText(context, "点击桌面小部件", Toast.LENGTH_SHORT).show();
 
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), R.mipmap.apple);
-                    AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
-
-                    for (int i = 0; i < 37; i++) {
-                        float degree = (i * 37) % 360;
-
-                        @SuppressLint("RemoteViewLayout")
-                        RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.widget);
-                        remoteViews.setImageViewBitmap(R.id.iv_icon, rotateMatrix(bitmap, degree));
-
-                        Intent intent1 = new Intent();
-                        intent1.setAction(ACTION);
-                        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent1, 0);
-                        remoteViews.setOnClickPendingIntent(R.id.iv_icon, pendingIntent);
-
-                        appWidgetManager.updateAppWidget(new ComponentName(context, MyAppWidgetProvider.class), remoteViews);
-                        SystemClock.sleep(30);
-                    }
+                    Intent intent1 = new Intent(MyApplication.getContext(), PendingIntentActivity.class);
+                    intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent1);
                 }
             }).start();
         }
@@ -94,43 +76,15 @@ public class MyAppWidgetProvider extends AppWidgetProvider {
         super.onUpdate(context, appWidgetManager, appWidgetIds);
         Log.d(TAG, "onUpdate: " + appWidgetIds.length);
 
-        for (int i = 0; i < appWidgetIds.length; i++) {
-            int id = appWidgetIds[i];
-            onWidgetUpdate(context, appWidgetManager, id);
-        }
-    }
-
-    /**
-     * 更新桌面小部件
-     *
-     * @param context
-     * @param manager
-     * @param id
-     */
-    private void onWidgetUpdate(Context context, AppWidgetManager manager, int id) {
-        @SuppressLint("RemoteViewLayout")
-        RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.widget);
-        Intent intent = new Intent();
+        RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.widget_content);
+        Intent intent = new Intent();//context,PendingIntentActivity.class
         intent.setAction(ACTION);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-        remoteViews.setOnClickPendingIntent(R.id.iv_icon, pendingIntent);
-//        remoteViews.setTextViewTextSize();
-        manager.updateAppWidget(id, remoteViews);
-    }
+        //8.0 以上必须加这个，要不然收不到广播
+        intent.setComponent(new ComponentName(context, MyAppWidgetProvider.class));
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
+        remoteViews.setOnClickPendingIntent(R.id.forward_button, pendingIntent);
 
-    /**
-     * 旋转
-     *
-     * @param bitmap
-     * @param degree 角度
-     * @return
-     */
-    public Bitmap rotateMatrix(Bitmap bitmap, float degree) {
-        Matrix matrix = new Matrix();
-        matrix.reset();
-        matrix.setRotate(degree);
-
-        return Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+        appWidgetManager.updateAppWidget(appWidgetIds[0], remoteViews);
     }
 
     /**
