@@ -35,9 +35,6 @@ public class BookAidlService extends Service {
         @Override
         public List<Book> getBooks() throws RemoteException {
             synchronized (this) {
-                if (bookList.size() == 0) {
-                    bookList.add(new Book(2, "《嫌疑人X的献身》"));
-                }
                 return bookList;
             }
         }
@@ -48,6 +45,7 @@ public class BookAidlService extends Service {
                 if (bookList == null) {
                     bookList = new ArrayList<>();
                 }
+                Log.d(TAG, "addBook: 从客户端传来的数据：" + book + "--" + book.getBookName());
                 if (book == null) {
                     book = new Book();
                     book.setBookId(3);
@@ -55,6 +53,10 @@ public class BookAidlService extends Service {
                 }
 
                 bookList.add(book);
+                bookList.add(new Book(6, "《秘密》"));
+                for (Book book1 : bookList) {
+                    Log.d(TAG, "最终添加完的数据：addBook: " + book1.getBookName());
+                }
                 //打印mBooks列表，观察客户端传过来的值
                 Log.e(TAG, "invoking addBook() method , now the list is : " + bookList.toString());
             }
@@ -64,7 +66,7 @@ public class BookAidlService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        Book book = new Book(1, "《Android开发艺术探索》");
-        bookList.add(book);
+//        Book book = new Book(1, "《Android开发艺术探索》");
+//        bookList.add(book);
     }
 }
