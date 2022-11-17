@@ -1,14 +1,17 @@
 package com.ppx.dailystudy.test.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ppx.dailystudy.R;
@@ -21,6 +24,8 @@ import org.json.JSONObject;
 import java.util.Arrays;
 
 public class TestMainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    private TextView tvTestShadow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +41,18 @@ public class TestMainActivity extends AppCompatActivity implements View.OnClickL
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+        tvTestShadow = findViewById(R.id.tv_shadow);
+
+        //实现view的2种以上颜色的背景渐变
+        GradientDrawable gradientDrawable = new GradientDrawable(
+                GradientDrawable.Orientation.TOP_BOTTOM,
+                new int[]{ContextCompat.getColor(this, R.color.colorWhite),
+                        ContextCompat.getColor(this, R.color.colorWhite60),
+                        ContextCompat.getColor(this, R.color.colorBlack),
+                        ContextCompat.getColor(this, R.color.color80Black),
+                        ContextCompat.getColor(this, R.color.colorBlue)});
+        findViewById(R.id.cl_bg).setBackground(gradientDrawable);
     }
 
     //解析  analysis byte数组类型的json串

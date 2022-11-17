@@ -36,7 +36,9 @@
     <color name="colorRedFF55">#FF5555</color>
     <color name="colorAsGreen">#3DDC84</color>
 
-
+    <color name="colorWhite60">#99FFFFFF</color>
+    <color name="color80Black">#80000000</color>
+    <color name="colorBlue">#72ddd0</color>
 
 
     <color name="colorGrayDialog">#D1D5D9</color>
