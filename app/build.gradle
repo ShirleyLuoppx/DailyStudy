@@ -89,4 +89,7 @@ dependencies {
     //百度地图
     implementation 'com.baidu.lbsyun:BaiduMapSDK_Map:7.4.0'
     implementation 'com.baidu.lbsyun:BaiduMapSDK_Location:9.1.8'
+    //butterknife
+    implementation 'com.jakewharton:butterknife:10.2.3'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
 }
