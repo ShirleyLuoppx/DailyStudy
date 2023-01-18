@@ -2,6 +2,7 @@ package com.ppx.dailystudy.hencoder.animation;
 
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -24,6 +25,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.interpolator.view.animation.FastOutLinearInInterpolator;
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
 import androidx.interpolator.view.animation.LinearOutSlowInInterpolator;
+import androidx.vectordrawable.graphics.drawable.ArgbEvaluator;
 
 import com.ppx.dailystudy.R;
 
@@ -34,10 +36,9 @@ import butterknife.OnClick;
 /**
  * @Author: LuoXia
  * @Date: 2022/12/25 21:57
- * @Description:
- * 动画：
- *      属性动画：ViewPropertyAnimator，利用这些属性来完成平移、旋转、缩放、透明度以及速度模型的动画
- *      自定义属性动画：
+ * @Description: 动画：
+ * 属性动画：ViewPropertyAnimator，利用这些属性来完成平移、旋转、缩放、透明度以及速度模型的动画
+ * 自定义属性动画：
  */
 public class HCAnimationActivity extends AppCompatActivity {
 
@@ -50,8 +51,14 @@ public class HCAnimationActivity extends AppCompatActivity {
     Button btnTranslateY;
     @BindView(R.id.btnAnimation)
     Button btnAnimation;
+    @BindView(R.id.btn_rwx_test)
+    Button btnRwxTest;
+    @BindView(R.id.test_view)
+    Sample08ObjectAnimatorView testView;
     @BindView(R.id.pv_objAnimation)
     ProgressView pbView;
+    @BindView(R.id.view_argb)
+    ArgbGradientView argbGradientView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -136,8 +143,28 @@ public class HCAnimationActivity extends AppCompatActivity {
     }
 
     @OnClick(R.id.btnObjAnimator)
-    void objectAnimator(){
-        //TODO ObjectAnimator
-//        ObjectAnimator.ofFloat(pbView,"progress",0,500).start();
+    void objectAnimator() {
+        pbView.setProgress(50);
+    }
+
+    @OnClick(R.id.btn_rwx_test)
+    void testRWXView() {
+        testView.setProgress(70);
+    }
+
+    /**
+     * 需要注意的是：
+     * 1、自定义view 里面需要定义一个color属性并写出他的set/get方法，用于渐变的时候ObjectAnimator去设置颜色值
+     * 2、ObjectAnimator需要调用start方法才能开始执行
+     * 3、setColor 需要调用invalidate();  才能实现重绘效果
+     */
+    @SuppressLint("RestrictedApi")
+    @OnClick(R.id.btn_argb_gredient)
+    void testArgbGradient() {
+        Log.d(TAG, "testArgbGradient: okin--------");
+        ObjectAnimator animator = ObjectAnimator.ofInt(argbGradientView, "color", 0xffff0000, 0xff00ff00);
+        animator.setEvaluator(new HsvTypeEvaluator());
+        animator.setDuration(5000);
+        animator.start();
     }
 }

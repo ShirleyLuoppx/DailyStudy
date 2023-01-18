@@ -50,11 +50,42 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btnAnimation" />
 
-  <!--  <com.ppx.dailystudy.hencoder.animation.ProgressView
+    <com.ppx.dailystudy.hencoder.animation.ProgressView
         android:id="@+id/pv_objAnimation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnObjAnimator" />-->
+        app:layout_constraintTop_toBottomOf="@id/btnObjAnimator" />
 
+    <Button
+        android:id="@+id/btn_rwx_test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintLeft_toLeftOf="@id/pv_objAnimation"
+        app:layout_constraintTop_toBottomOf="@id/pv_objAnimation" />
+
+    <com.ppx.dailystudy.hencoder.animation.Sample08ObjectAnimatorView
+        android:id="@+id/test_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_rwx_test" />
+
+    <Button
+        android:id="@+id/btn_argb_gredient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="160dp"
+        android:text="gredient"
+        app:layout_constraintLeft_toLeftOf="@id/pv_objAnimation"
+        app:layout_constraintTop_toBottomOf="@id/btnObjAnimator" />
+
+    <com.ppx.dailystudy.hencoder.animation.ArgbGradientView
+        android:id="@+id/view_argb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="@id/pv_objAnimation"
+        app:layout_constraintTop_toBottomOf="@id/btn_argb_gredient" />
 </androidx.constraintlayout.widget.ConstraintLayout>
