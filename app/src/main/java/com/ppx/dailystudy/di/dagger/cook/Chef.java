@@ -1,10 +1,10 @@
-package com.ppx.dailystudy.di.dagger;
+package com.ppx.dailystudy.di.dagger.cook;
 
 import java.util.Map;
 
 import javax.inject.Inject;
 
-class Chef implements Cook {
+public class Chef implements Cook {
     private Menu menu;
 
     @Inject

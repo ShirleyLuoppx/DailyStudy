@@ -1,4 +1,4 @@
-package com.ppx.dailystudy.di.dagger;
+package com.ppx.dailystudy.di.dagger.cook;
 
 import java.util.Map;
 
