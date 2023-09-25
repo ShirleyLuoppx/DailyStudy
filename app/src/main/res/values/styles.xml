@@ -6,10 +6,73 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-    
-    <style name="roundStyle">
+
+    <!--    圆形样式-->
+    <style name="circleStyle">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">50%</item>
+    </style>
+
+    <!--圆角样式-->
+    <style name="roundStyle">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
+
+    <!--切角样式，多边形那样的-->
+    <style name="cutStyle">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">12dp</item>
+    </style>
+
+    <!--菱形样式，在切角的样式基础上，将cornersize加大到50%-->
+    <style name="diamondStyle">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <!--在圆角样式的基础上，可以单独为四角之一、之二、之三、之四... 设置圆弧度数-->
+    <!--右上角扇形-->
+    <style name="topRightRoundStyle">
+        <item name="cornerFamilyTopRight">rounded</item>
+        <item name="cornerSizeTopRight">100%</item>
+    </style>
+
+    <!--弧形拱门-->
+    <style name="topLeftRightRoundStyle">
+        <item name="cornerFamilyTopLeft">rounded</item>
+        <item name="cornerSizeTopLeft">50dp</item>
+        <item name="cornerFamilyTopRight">rounded</item>
+        <item name="cornerSizeTopRight">50dp</item>
+    </style>
+
+    <!--小船形状-->
+    <style name="groupRoundStyle">
+        <item name="cornerFamilyTopRight">rounded</item>
+        <item name="cornerSizeTopRight">50dp</item>
+        <item name="cornerFamilyBottomLeft">rounded</item>
+        <item name="cornerSizeBottomLeft">50dp</item>
+    </style>
+
+    <!--tips形状-->
+    <style name="tipsGroupRoundStyle">
+        <item name="cornerFamilyTopLeft">rounded</item>
+        <item name="cornerSizeTopLeft">10dp</item>
+        <item name="cornerFamilyBottomLeft">rounded</item>
+        <item name="cornerSizeBottomLeft">10dp</item>
+
+        <item name="cornerFamilyTopRight">cut</item>
+        <item name="cornerSizeTopRight">50%</item>
+        <item name="cornerFamilyBottomRight">cut</item>
+        <item name="cornerSizeBottomRight">50%</item>
+    </style>
+
+    <!--酒杯形状-->
+    <style name="cupsRoundStyle">
+        <item name="cornerFamilyBottomRight">rounded</item>
+        <item name="cornerSizeBottomRight">100%</item>
+        <item name="cornerFamilyBottomLeft">rounded</item>
+        <item name="cornerSizeBottomLeft">100%</item>
     </style>
 
     <style name="FruitActivity" parent="AppTheme" />
