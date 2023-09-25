@@ -66,6 +66,7 @@ public class DrawerLayoutMainActivity extends BaseActivity implements View.OnCli
                 break;
             case R.id.btn_simple_navigation_imitate_qq:
                 Log.d(TAG, "onClick: clickkkkkkkkkkkkk5");
+                startActivity(new Intent(this, DrawerNaviToolBarQqActivity.class));
                 break;
         }
     }

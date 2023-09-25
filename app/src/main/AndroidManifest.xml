@@ -63,6 +63,7 @@
         <activity android:name=".material.drawerlayout.DrawerLayoutToolBarActivity" />
         <activity android:name=".material.drawerlayout.DrawerLayoutNavigationToolbarActivity" />
         <activity android:name=".material.drawerlayout.DrawerNavToolbarImmersiveActivity" />
+        <activity android:name=".material.drawerlayout.DrawerNaviToolBarQqActivity" />
 
 
         <activity android:name=".meeting.remoteview.PendingIntentActivity" />
