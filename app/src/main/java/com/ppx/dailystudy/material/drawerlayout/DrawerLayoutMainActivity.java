@@ -62,6 +62,7 @@ public class DrawerLayoutMainActivity extends BaseActivity implements View.OnCli
                 break;
             case R.id.btn_simple_navigation_toolbar_immersive:
                 Log.d(TAG, "onClick: clickkkkkkkkkkkkk4");
+                startActivity(new Intent(this, DrawerNavToolbarImmersiveActivity.class));
                 break;
             case R.id.btn_simple_navigation_imitate_qq:
                 Log.d(TAG, "onClick: clickkkkkkkkkkkkk5");
