@@ -104,4 +104,7 @@ dependencies {
     annotationProcessor 'com.google.dagger:dagger-compiler:2.15'
     annotationProcessor 'com.google.dagger:dagger-android-processor:2.15'
 
+    implementation 'com.h6ah4i.android.widget.verticalseekbar:verticalseekbar:1.0.0'
+    implementation 'com.jaywei:PureVerticalSeekBar:1.0.0'
+
 }

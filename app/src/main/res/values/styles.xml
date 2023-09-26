@@ -7,6 +7,17 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!--seekbar style-->
+    <style name="CustomSeekbarStyle" >
+        <item name="android:maxHeight">5dp</item>
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:indeterminateDrawable">@color/colorAccent</item>
+        <item name="android:progressDrawable">@drawable/seekbar_progress_drawable</item>
+        <item name="android:minHeight">5dp</item>
+        <item name="android:thumb">@mipmap/ic_simle_face</item>
+        <item name="android:thumbOffset">0dp</item>
+    </style>
+
     <!--    圆形样式-->
     <style name="circleStyle">
         <item name="cornerFamily">rounded</item>
