@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="20dp"
+    android:orientation="vertical">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="username"
+        android:textColorHint="@color/xp_find_new_version_dialog_notify"
+        app:hintAnimationEnabled="true"
+        app:hintEnabled="true"
+        app:hintTextColor="@color/xp_find_new_version_dialog_notify">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/baseline_account_circle_24"
+            android:drawablePadding="10dp"
+            android:textSize="15sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <!--
+    textColorHint:设置编辑框里面的hint的文本颜色
+    hintTextColor：设置悬浮起来的hint的文本颜色
+    counterEnabled：计数功能是否开启
+    counterMaxLength：最大长度
+    hintAnimationEnabled：悬浮hint的动画是否开启
+    hintEnabled：hint功能是否开启
+    passwordToggleEnabled:pwd的功能是否开启
+    -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/user_text_input_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="password"
+        android:textColorHint="@color/colorGrayDialog"
+        app:counterEnabled="true"
+        app:counterMaxLength="11"
+        app:counterOverflowTextColor="@color/colorRedFF55"
+        app:counterTextColor="@color/colorAsGreen"
+        app:hintAnimationEnabled="false"
+        app:hintEnabled="true"
+        app:hintTextColor="@color/colorGrayDialog"
+        app:passwordToggleEnabled="true">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/baseline_lock_24"
+            android:drawablePadding="10dp"
+            android:textSize="15sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+</LinearLayout>
