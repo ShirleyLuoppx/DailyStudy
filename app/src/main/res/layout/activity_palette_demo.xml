@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="20dp"
+    android:orientation="vertical"
+    app:layout_scrollFlags="scroll|enterAlways">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:src="@mipmap/meizi_2" />
+
+    <TextView
+        android:id="@+id/tv_palette1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="darkMutedColor"
+        android:textColor="@color/bg_light_white"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tv_palette2"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="lightMutedColor"
+        android:textColor="@color/bg_light_white"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tv_palette3"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="darkVibrantColor"
+        android:textColor="@color/bg_light_white"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tv_palette4"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="lightVibrantColor"
+        android:textColor="@color/bg_light_white"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tv_palette5"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="lightVibrantColor"
+        android:textColor="@color/bg_light_white"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tv_palette6"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="vibrantColor"
+        android:textColor="@color/bg_light_white"
+        android:textSize="20sp" />
+
+</LinearLayout>

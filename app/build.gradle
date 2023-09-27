@@ -106,5 +106,7 @@ dependencies {
 
     implementation 'com.h6ah4i.android.widget.verticalseekbar:verticalseekbar:1.0.0'
     implementation 'com.jaywei:PureVerticalSeekBar:1.0.0'
+    //palette 相当于取色器吧
+    implementation 'androidx.palette:palette:1.0.0'
 
 }
