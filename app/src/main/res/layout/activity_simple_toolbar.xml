@@ -4,10 +4,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!--
+    layout_scrollFlags：设置scroll滚动跟随界面
+    logo：设置toolbar的 logo
+    logoDescription：设置toolbar的logo的描述
+    menu：设置toolbar的右侧的菜单布局
+    navigationIcon：设置toolbar左侧的返回按钮图标
+    subtitle：设置toolbar的子标题的内容
+    subtitleTextColor：设置子标题的颜色
+    title：设置toolbar的主标题
+    titleTextColor：主标题的颜色
+    titleTextAppearance：主标题的样式，例如颜色、字体大小、字体样式 等，需要在style里面去声明
+    -->
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_simple"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/colorDarkBG1F2"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_scrollFlags="enterAlways|scroll"
         app:logo="@drawable/baseline_star_purple500_24"
@@ -18,7 +32,6 @@
         app:subtitleTextColor="@color/colorAsGreen"
         app:title="ToolBar Simple Demo"
         app:titleTextAppearance="@style/CustomToolbarTitleStyle"
-        app:titleTextColor="@color/colorBlueAEAC"
-        android:background="@color/colorDarkBG1F2"/>
+        app:titleTextColor="@color/colorBlueAEAC" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

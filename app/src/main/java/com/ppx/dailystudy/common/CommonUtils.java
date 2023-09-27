@@ -2,17 +2,28 @@ package com.ppx.dailystudy.common;
 
 import android.app.Activity;
 import android.os.Build;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * @Author Shirley
  * @Date：2023/9/25
- * @Desc：
+ * @Desc： 工具类
  */
 public class CommonUtils {
 
+    /**
+     * 设置状态栏透明
+     *
+     * @param activity
+     * @param color
+     */
     public static void setBarColor(Activity activity, int color) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             Window win = activity.getWindow();
@@ -31,6 +42,54 @@ public class CommonUtils {
             }
         }
     }
+
+    /**
+     * @param size 数组大小
+     * @return 生成一个从1到size的 内容数字随机的int数组
+     */
+    private static List<Integer> generateRandomNumbers(int size) {
+        List<Integer> numbers = new ArrayList<>();
+
+        for (int i = 0; i < size; i++) {
+            numbers.add(i + 1);
+        }
+
+        Collections.shuffle(numbers);
+
+        return numbers;
+    }
+
+
+        public static void getRandomIntArray(int size) {
+            int[] numbers = new int[size];
+
+            for (int i = 0; i < size; i++) {
+                numbers[i] = i + 1;
+            }
+
+            shuffleArray(numbers);
+
+            for (int i = 0; i < size; i++) {
+                System.out.print(numbers[i] + " ");
+
+                if ((i + 1) % 5 == 0) {
+                    System.out.println();
+                }
+            }
+        }
+
+        // Fisher-Yates shuffle algorithm
+        private static void shuffleArray(int[] array) {
+            int n = array.length;
+
+            for (int i = 0; i < n - 1; i++) {
+                int j = i + (int) (Math.random() * (n - i));
+                //原来这种叫洗牌算法..
+                int temp = array[j];
+                array[j] = array[i];
+                array[i] = temp;
+            }
+        }
 
 }
 
