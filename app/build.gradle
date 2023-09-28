@@ -108,5 +108,8 @@ dependencies {
     implementation 'com.jaywei:PureVerticalSeekBar:1.0.0'
     //palette 相当于取色器吧
     implementation 'androidx.palette:palette:1.0.0'
+    //badgeview 底部导航栏的消息角标
+    implementation 'q.rorbin:badgeview:1.1.3'
+
 
 }

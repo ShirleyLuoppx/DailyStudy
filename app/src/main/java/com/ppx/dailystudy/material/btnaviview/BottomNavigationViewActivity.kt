@@ -1,15 +1,21 @@
 package com.ppx.dailystudy.material.btnaviview
 
 import android.util.Log
+import android.view.Gravity
+import android.view.View
 import android.widget.Toast
+import androidx.core.view.size
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
+import com.google.android.material.bottomnavigation.BottomNavigationMenuView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomnavigation.LabelVisibilityMode
 import com.ppx.dailystudy.MyApplication
 import com.ppx.dailystudy.R
 import com.ppx.dailystudy.common.BaseActivity
-import com.ppx.dailystudy.material.btnaviview.*
 import kotlinx.android.synthetic.main.activity_bottom_navigation_view.*
+import q.rorbin.badgeview.Badge
+import q.rorbin.badgeview.Badge.OnDragStateChangedListener
+import q.rorbin.badgeview.QBadgeView
 import java.util.*
 
 /**
@@ -86,6 +92,52 @@ class BottomNavigationViewActivity : BaseActivity() {
                 }
             }
         })
+
+        var bottomNavigationMenuView: BottomNavigationMenuView =
+            (bt_navigation_view?.getChildAt(0) as BottomNavigationMenuView)
+
+        var badgeView = QBadgeView(this)
+
+        Log.d(TAG, "initView: " + bottomNavigationMenuView.size)
+        QBadgeView(this).bindTarget(bottomNavigationMenuView.getChildAt(0)).setBadgeNumber(9)
+            .setBadgeGravity(Gravity.TOP or Gravity.END)
+            .setOnDragStateChangedListener(object : OnDragStateChangedListener {
+                override fun onDragStateChanged(dragState: Int, badge: Badge?, targetView: View?) {
+                }
+            })
+
+        QBadgeView(this).bindTarget(bottomNavigationMenuView.getChildAt(1)).setBadgeNumber(1000)
+            .setExactMode(false).setBadgeTextColor(resources.getColor(R.color.colorAsGreen))
+            .setBadgeGravity(Gravity.BOTTOM or Gravity.START)
+            .setOnDragStateChangedListener(object : OnDragStateChangedListener {
+                override fun onDragStateChanged(dragState: Int, badge: Badge?, targetView: View?) {
+                }
+            })
+
+        QBadgeView(this).bindTarget(bottomNavigationMenuView.getChildAt(2)).setBadgeNumber(1001)
+            .setExactMode(true).setBadgeTextColor(resources.getColor(R.color.colorBlue))
+            .setBadgeGravity(Gravity.TOP or Gravity.START)
+            .setOnDragStateChangedListener(object : OnDragStateChangedListener {
+                override fun onDragStateChanged(dragState: Int, badge: Badge?, targetView: View?) {
+                }
+            })
+
+        QBadgeView(this).bindTarget(bottomNavigationMenuView.getChildAt(3)).setBadgeNumber(5)
+            .setBadgeGravity(Gravity.BOTTOM or Gravity.END)
+            .setBadgeBackgroundColor(R.color.colorBlack)
+            .setOnDragStateChangedListener(object : OnDragStateChangedListener {
+                override fun onDragStateChanged(dragState: Int, badge: Badge?, targetView: View?) {
+                }
+            })
+
+        QBadgeView(this).bindTarget(bottomNavigationMenuView.getChildAt(4)).setBadgeNumber(88)
+            .setBadgeGravity(Gravity.TOP or Gravity.END)
+            .setOnDragStateChangedListener { dragState, badge, targetView ->
+                Log.d(
+                    TAG,
+                    "onDragStateChanged: $dragState"
+                )
+            }
     }
 
 }
