@@ -47,7 +47,7 @@
         <!--        android:name=".chap14coolweather.CoolWeatherMainActivity"-->
         <!--        android:screenOrientation="portrait"  协程-->
         <activity
-            android:name=".material.btnaviview.BottomNavigationViewActivity"
+            android:name=".material.SearchActivity"
             android:configChanges="keyboardHidden|screenSize|screenLayout|orientation"
             android:label="@string/app_name"
             android:theme="@style/FruitActivity">

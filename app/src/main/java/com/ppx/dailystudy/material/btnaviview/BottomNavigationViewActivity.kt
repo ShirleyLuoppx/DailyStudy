@@ -22,7 +22,7 @@ import java.util.*
  *
  * @Author Shirley
  * @Date：2023/9/27
- * @Desc：BottomNavigationView + Toolbar + ViewPager + Fragment 的简单使用
+ * @Desc：BottomNavigationView + Toolbar + ViewPager + Fragment + QBadgeView(消息数量提醒的那个角标) 的简单使用
  */
 class BottomNavigationViewActivity : BaseActivity() {
 
