@@ -1,6 +1,7 @@
 package com.ppx.dailystudy.material;
 
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
@@ -27,13 +28,12 @@ public class ToolBarDemoActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        toolbar_simple.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                Toast.makeText(ToolBarDemoActivity.this, item.getTitle(), Toast.LENGTH_SHORT).show();
-                return false;
-            }
+        toolbar_simple.setOnMenuItemClickListener(item -> {
+            Toast.makeText(ToolBarDemoActivity.this, item.getTitle(), Toast.LENGTH_SHORT).show();
+            return false;
         });
+
+        toolbar_simple.setNavigationOnClickListener(v -> finish());
     }
 }
 

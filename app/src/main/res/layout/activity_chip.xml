@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <com.google.android.material.chip.ChipGroup
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:checkedChip="@id/chip_filter"
+        app:chipSpacing="20dp"
+        app:chipSpacingHorizontal="40dp"
+        app:chipSpacingVertical="10dp"
+        app:singleLine="false"
+        app:singleSelection="false">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_nothing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chip Noting"
+            app:chipBackgroundColor="@color/xp_find_new_version_dialog_notify"
+            app:chipCornerRadius="5dp"
+            app:chipStrokeColor="@color/colorRedFF55"
+            app:chipStrokeWidth="2dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_action"
+            style="@style/Widget.MaterialComponents.Chip.Action"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chip Action" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_filter"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chip Filter" />
+
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_entry"
+            style="@style/Widget.MaterialComponents.Chip.Entry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chip Entry"
+            app:chipIcon="@drawable/baseline_house_24"
+            app:chipIconVisible="false"
+            app:closeIcon="@drawable/baseline_house_24"
+            app:closeIconVisible="true" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_choice"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:checked="true"
+            android:text="Chip Choice"
+            app:chipEndPadding="50dp"
+            app:chipStartPadding="50dp" />
+    </com.google.android.material.chip.ChipGroup>
+
+
+</LinearLayout>

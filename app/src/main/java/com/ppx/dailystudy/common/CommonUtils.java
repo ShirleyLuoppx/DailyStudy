@@ -6,6 +6,9 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
+
+import com.ppx.dailystudy.MyApplication;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,6 +20,13 @@ import java.util.List;
  * @Desc： 工具类
  */
 public class CommonUtils {
+
+    public static void showShortMsg(String msg){
+        Toast.makeText(MyApplication.getContext(), msg, Toast.LENGTH_SHORT).show();
+    }
+    public static void showLongMsg(String msg){
+        Toast.makeText(MyApplication.getContext(), msg, Toast.LENGTH_LONG).show();
+    }
 
     /**
      * 设置状态栏透明

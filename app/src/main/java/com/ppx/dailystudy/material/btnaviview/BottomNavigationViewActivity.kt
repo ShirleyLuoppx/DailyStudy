@@ -138,6 +138,8 @@ class BottomNavigationViewActivity : BaseActivity() {
                     "onDragStateChanged: $dragState"
                 )
             }
+
+        toolbar.setNavigationOnClickListener { finish() }
     }
 
 }
