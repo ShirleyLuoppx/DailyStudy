@@ -30,6 +30,8 @@ class ChipActivity : BaseActivity() {
     }
 
     override fun initView() {
+
+
         chip_nothing.setOnClickListener {
             CommonUtils.showShortMsg("click chip_nothing ....")
         }

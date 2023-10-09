@@ -47,7 +47,7 @@
         <!--        android:name=".chap14coolweather.CoolWeatherMainActivity"-->
         <!--        android:screenOrientation="portrait"  协程-->
         <activity
-            android:name=".material.MaterialWidgetMainActivity"
+            android:name=".test.vrandgif.GifMainActivity"
             android:configChanges="keyboardHidden|screenSize|screenLayout|orientation"
             android:label="@string/app_name"
             android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">
@@ -58,6 +58,9 @@
             </intent-filter>
         </activity>
 
+
+        <activity android:name=".test.vrandgif.VrActivity" />
+        <activity android:name=".test.vrandgif.VoiceGifActivity" />
 
         <activity android:name=".material.drawerlayout.DrawerLayoutSimpleActivity" />
         <activity android:name=".material.drawerlayout.DrawerLayoutToolBarActivity" />
