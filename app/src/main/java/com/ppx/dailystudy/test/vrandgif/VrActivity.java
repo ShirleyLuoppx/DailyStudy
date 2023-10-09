@@ -6,6 +6,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.ppx.dailystudy.R;
+import com.study.xuan.gifshow.gif.VrGifView;
 
 public class VrActivity extends AppCompatActivity {
     private VrGifView mGif;

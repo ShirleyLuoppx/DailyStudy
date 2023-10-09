@@ -58,9 +58,9 @@
             </intent-filter>
         </activity>
 
-
         <activity android:name=".test.vrandgif.VrActivity" />
         <activity android:name=".test.vrandgif.VoiceGifActivity" />
+        <activity android:name=".test.vrandgif.StlActivity" />
 
         <activity android:name=".material.drawerlayout.DrawerLayoutSimpleActivity" />
         <activity android:name=".material.drawerlayout.DrawerLayoutToolBarActivity" />

@@ -23,5 +23,8 @@ class GifMainActivity : BaseActivity() {
         bt_voice_ball.setOnClickListener {
             startActivity(Intent(this, VoiceGifActivity::class.java))
         }
+        btn_stl.setOnClickListener {
+            startActivity(Intent(this, StlActivity::class.java))
+        }
     }
 }
