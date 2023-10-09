@@ -25,4 +25,11 @@
         android:text="STL View"
         android:textSize="30sp" />
 
+    <Button
+        android:id="@+id/btn_car_3d"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="360 Car 3D"
+        android:textSize="30sp" />
+
 </LinearLayout>

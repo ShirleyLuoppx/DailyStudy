@@ -26,5 +26,8 @@ class GifMainActivity : BaseActivity() {
         btn_stl.setOnClickListener {
             startActivity(Intent(this, StlActivity::class.java))
         }
+        btn_car_3d.setOnClickListener {
+            startActivity(Intent(this, Car3DActivity::class.java))
+        }
     }
 }
