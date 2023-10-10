@@ -32,4 +32,19 @@
         android:text="360 Car 3D"
         android:textSize="30sp" />
 
+    <Button
+        android:id="@+id/btn_stl_render"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="stl render"
+        android:textSize="30sp" />
+
+
+    <Button
+        android:id="@+id/btn_webview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="webview"
+        android:textSize="30sp" />
+
 </LinearLayout>

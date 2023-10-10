@@ -42,7 +42,7 @@ class StlActivity : BaseActivity() {
 
     override fun initView() {
         mContext = this
-        mStl = findViewById(R.id.stl) as STLView
+        mStl = findViewById(R.id.stl)
         mBar = prepareProgressDialog(mContext as StlActivity)
         mStl?.setOnReadCallBack(object : OnReadCallBack() {
             override fun onStart() {
@@ -62,7 +62,7 @@ class StlActivity : BaseActivity() {
                 mBar!!.dismiss()
             }
         })
-        STLViewBuilder.init(mStl).Assets(this, "bai.stl").build()
+        STLViewBuilder.init(mStl).Assets(this, "BelleBook_Big.stl").build()
         mStl?.setTouch(true)
         mStl?.setScale(true)
         mStl?.setRotate(true)

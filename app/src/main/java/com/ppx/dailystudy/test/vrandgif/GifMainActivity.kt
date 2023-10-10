@@ -3,6 +3,7 @@ package com.ppx.dailystudy.test.vrandgif
 import android.content.Intent
 import com.ppx.dailystudy.R
 import com.ppx.dailystudy.common.BaseActivity
+import com.ppx.dailystudy.test.vrandgif.stlrender.home.StlRenderMainActivity
 import kotlinx.android.synthetic.main.activity_gif_main.*
 
 /**
@@ -28,6 +29,12 @@ class GifMainActivity : BaseActivity() {
         }
         btn_car_3d.setOnClickListener {
             startActivity(Intent(this, Car3DActivity::class.java))
+        }
+        btn_stl_render.setOnClickListener {
+            startActivity(Intent(this, StlRenderMainActivity::class.java))
+        }
+        btn_webview.setOnClickListener {
+            startActivity(Intent(this, WebViewActivity::class.java))
         }
     }
 }

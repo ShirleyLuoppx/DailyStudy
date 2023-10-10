@@ -62,6 +62,8 @@
         <activity android:name=".test.vrandgif.VoiceGifActivity" />
         <activity android:name=".test.vrandgif.StlActivity" />
         <activity android:name=".test.vrandgif.Car3DActivity" />
+        <activity android:name=".test.vrandgif.stlrender.home.StlRenderMainActivity" />
+        <activity android:name=".test.vrandgif.WebViewActivity" />
 
         <activity android:name=".material.drawerlayout.DrawerLayoutSimpleActivity" />
         <activity android:name=".material.drawerlayout.DrawerLayoutToolBarActivity" />
