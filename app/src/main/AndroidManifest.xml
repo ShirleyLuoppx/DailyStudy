@@ -47,7 +47,7 @@
         <!--        android:name=".chap14coolweather.CoolWeatherMainActivity"-->
         <!--        android:screenOrientation="portrait"  协程-->
         <activity
-            android:name=".opengl.MyGLSurfaceViewActivity"
+            android:name=".opengl.OpenGLSurfaceViewMainActivity"
             android:configChanges="keyboardHidden|screenSize|screenLayout|orientation"
             android:label="@string/app_name"
             android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">
@@ -57,6 +57,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".opengl.MyGLSurfaceViewActivity" />
+        <activity android:name=".opengl.CustomGLSurfaceViewActivity" />
+        <activity android:name=".opengl.york.YorkActivity" />
 
         <activity android:name=".test.vrandgif.VrActivity" />
         <activity android:name=".test.vrandgif.VoiceGifActivity" />
