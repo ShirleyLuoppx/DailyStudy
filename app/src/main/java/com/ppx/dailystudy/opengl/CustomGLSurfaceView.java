@@ -7,8 +7,6 @@ import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
-import com.ppx.dailystudy.opengl.york.YEglHelper;
-
 import java.lang.ref.WeakReference;
 
 import javax.microedition.khronos.egl.EGLContext;
@@ -29,7 +27,7 @@ public class CustomGLSurfaceView extends SurfaceView implements SurfaceHolder.Ca
     private int mRenderMode = RENDERMODE_CONTINUOUSLY;
 
     public CustomGLSurfaceView(Context context) {
-        super(context);
+        this(context, null);
     }
 
     public CustomGLSurfaceView(Context context, AttributeSet attrs) {
@@ -108,7 +106,7 @@ public class CustomGLSurfaceView extends SurfaceView implements SurfaceHolder.Ca
 
         private String TAG = "MyEGLThread";
         private WeakReference<CustomGLSurfaceView> myGlSurfaceViewWeakReference;
-        private YEglHelper eglHelper = null;
+        private MyEglHelper eglHelper = null;
         private Object object = null;//主要是做阻塞用
 
         private boolean isExit = false;
@@ -129,7 +127,7 @@ public class CustomGLSurfaceView extends SurfaceView implements SurfaceHolder.Ca
             isExit = false;
             isStart = false;
             object = new Object();
-            eglHelper = new YEglHelper();
+            eglHelper = new MyEglHelper();
             eglHelper.initEgl(myGlSurfaceViewWeakReference.get().surface, myGlSurfaceViewWeakReference.get().eglContext);
 
 //            while (true) {

@@ -60,7 +60,7 @@
 
         <activity android:name=".opengl.MyGLSurfaceViewActivity" />
         <activity android:name=".opengl.CustomGLSurfaceViewActivity" />
-        <activity android:name=".opengl.york.YorkActivity" />
+        <activity android:name=".opengl.MyTriangleActivity" />
 
         <activity android:name=".test.vrandgif.VrActivity" />
         <activity android:name=".test.vrandgif.VoiceGifActivity" />

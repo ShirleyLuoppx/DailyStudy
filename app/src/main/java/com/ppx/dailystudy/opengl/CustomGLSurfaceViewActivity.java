@@ -6,7 +6,6 @@ import android.view.SurfaceView;
 
 import com.ppx.dailystudy.R;
 import com.ppx.dailystudy.common.BaseActivity;
-import com.ppx.dailystudy.opengl.york.YEglHelper;
 
 /**
  * @Author Shirley
