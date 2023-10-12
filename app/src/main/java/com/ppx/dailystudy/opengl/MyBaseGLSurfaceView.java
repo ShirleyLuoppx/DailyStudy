@@ -9,16 +9,16 @@ import android.util.AttributeSet;
  * @Date：2023/10/11
  * @Desc： 最简单的opengl的使用
  */
-public class MyGLSurfaceView extends GLSurfaceView {
+public class MyBaseGLSurfaceView extends GLSurfaceView {
 
-    public MyGLSurfaceView(Context context) {
+    public MyBaseGLSurfaceView(Context context) {
         super(context);
     }
 
-    public MyGLSurfaceView(Context context, AttributeSet attrs) {
+    public MyBaseGLSurfaceView(Context context, AttributeSet attrs) {
         super(context, attrs);
 
-        MyRender myRender = new MyRender();
+        MyBaseRender myRender = new MyBaseRender();
         setRenderer(myRender);
     }
 }

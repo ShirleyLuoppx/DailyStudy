@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.ppx.dailystudy.opengl.MyGLSurfaceView
+    <com.ppx.dailystudy.opengl.MyBaseGLSurfaceView
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </RelativeLayout>

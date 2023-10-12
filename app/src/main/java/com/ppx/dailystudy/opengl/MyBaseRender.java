@@ -12,9 +12,9 @@ import javax.microedition.khronos.opengles.GL10;
  * @Date：2023/10/11
  * @Desc： Render中使用红色清屏
  */
-public class MyRender implements GLSurfaceView.Renderer {
+public class MyBaseRender implements GLSurfaceView.Renderer {
 
-    private String TAG = "MyRender";
+    private String TAG = "MyBaseRender";
 
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
