@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 /**
  * @Author Shirley
  * @Date：2023/10/13
- * @Desc：
+ * @Desc： 简单四边形的surfaceview
  */
 public class MyQuadrilateralSurface extends CustomGLSurfaceView {
 
