@@ -17,7 +17,6 @@ public class MyTriangleActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-
     }
 }
 

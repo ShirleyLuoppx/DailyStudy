@@ -2,6 +2,7 @@ package com.ppx.dailystudy.opengl;
 
 import android.content.Context;
 import android.opengl.GLES20;
+import android.util.Log;
 
 import com.ppx.dailystudy.R;
 import com.ppx.dailystudy.utils.ShaderUtils;
@@ -17,6 +18,7 @@ import java.nio.FloatBuffer;
  */
 public class MyTriangleRender implements CustomGLSurfaceView.MyGLRender {
 
+    private String TAG = "MyTriangleRender";
     private Context mContext;
     private FloatBuffer verTexBuffer;
     //渲染程序
@@ -33,7 +35,8 @@ public class MyTriangleRender implements CustomGLSurfaceView.MyGLRender {
         //顶点数据
         float[] vertexData = {0f, 1f, -1f, -1f, 1f, -1f};
         //读取顶点数据
-        verTexBuffer = ByteBuffer.allocateDirect(vertexData.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer().put(vertexData);
+        verTexBuffer = ByteBuffer.allocateDirect(vertexData.length * 4)
+                .order(ByteOrder.nativeOrder()).asFloatBuffer().put(vertexData);
         //TODO：嘛意思？？？？
         verTexBuffer.position(0);
     }
@@ -45,6 +48,8 @@ public class MyTriangleRender implements CustomGLSurfaceView.MyGLRender {
         String vertexSource = ShaderUtils.getRawResource(mContext, R.raw.screen_vert);
         //获取片元着色器shader  资源
         String fragmentSource = ShaderUtils.getRawResource(mContext, R.raw.screen_frag_color);
+        Log.d(TAG, "onSurfaceCreated: vertexSource = " + vertexSource);
+//        Log.d(TAG, "onSurfaceCreated: fragmentSource = " + fragmentSource);
         //获取 源程序
         program = ShaderUtils.createProgram(vertexSource, fragmentSource);
         //从渲染程序中得到顶点着色器中的属性

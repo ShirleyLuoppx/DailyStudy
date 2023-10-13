@@ -29,9 +29,12 @@ public class ShaderUtils {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
         StringBuffer sb = new StringBuffer();
 
+        String line = "";
         try {
-            while (null != bufferedReader.readLine()) {
-                sb.append(bufferedReader.readLine()).append("\n");
+            // 注意 readLine是读一行少一行，调用之后需要将数据 拿出来赋值，不用数据就少了...
+            while ((line = bufferedReader.readLine()) != null) {
+                Log.d(TAG, "getRawResource1: " + line);
+                sb.append(line).append("\n");
             }
             bufferedReader.close();
         } catch (IOException e) {
@@ -44,7 +47,7 @@ public class ShaderUtils {
      * 创建源程序
      *
      * @param vertexSource 顶点数据
-     * @param fragSource 片元数据
+     * @param fragSource   片元数据
      * @return 源程序
      */
     public static int createProgram(String vertexSource, String fragSource) {
