@@ -14,7 +14,7 @@ import java.nio.FloatBuffer;
 /**
  * @Author Shirley
  * @Date：2023/10/12
- * @Desc：
+ * @Desc：三角形render
  */
 public class MyTriangleRender implements CustomGLSurfaceView.MyGLRender {
 
@@ -66,13 +66,13 @@ public class MyTriangleRender implements CustomGLSurfaceView.MyGLRender {
 
     @Override
     public void onDrawFrame() {
-        //红色清屏
+        //黑色清屏
         GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT);
-        GLES20.glClearColor(0f, 1f, 0f, 1f);
+        GLES20.glClearColor(0f, 0f, 0f, 1f);
         //使用 着色器源程序
         GLES20.glUseProgram(program);
-        //绘制绿色
-        GLES20.glUniform4f(fPosition, 1f, 0f, 1f, 1f);
+        //给三角形绘制颜色
+        GLES20.glUniform4f(fPosition, 0f, 0.4f, 0.8f, 1f);
         //使能顶点属性数组，使之有效
         GLES20.glEnableVertexAttribArray(vPosition);
         //为顶点属性赋值，绑定顶点坐标

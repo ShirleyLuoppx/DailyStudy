@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 /**
  * @Author Shirley
  * @Date：2023/10/12
- * @Desc：
+ * @Desc： 简单的二维三角形的surfaceview
  */
 public class MyTriangleSurface extends CustomGLSurfaceView {
 

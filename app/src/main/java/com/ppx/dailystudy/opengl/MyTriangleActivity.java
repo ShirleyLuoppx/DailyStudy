@@ -6,7 +6,7 @@ import com.ppx.dailystudy.common.BaseActivity;
 /**
  * @Author Shirley
  * @Date：2023/10/12
- * @Desc：
+ * @Desc： 简单的三角形
  */
 public class MyTriangleActivity extends BaseActivity {
 
