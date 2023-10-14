@@ -1,4 +1,4 @@
-package com.ppx.dailystudy.opengl;
+package com.ppx.dailystudy.opengl.shape;
 
 import android.content.Context;
 import android.opengl.GLES20;
@@ -28,6 +28,7 @@ public class MyCircularRender implements CustomGLSurfaceView.MyGLRender {
         //圆形的顶点数据
         float[] circularData = new float[720];
         for (int i = 0; i < 720; i += 2) {
+            //在百度了一波之后，还是不知道cos跟sin 与坐标有啥关系。
             circularData[i] = (float) Math.cos(i);
             circularData[i + 1] = (float) Math.sin(i);
         }

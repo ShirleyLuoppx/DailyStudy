@@ -1,4 +1,4 @@
-package com.ppx.dailystudy.opengl;
+package com.ppx.dailystudy.opengl.shape;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+
+import com.ppx.dailystudy.opengl.MyEglHelper;
 
 import java.lang.ref.WeakReference;
 

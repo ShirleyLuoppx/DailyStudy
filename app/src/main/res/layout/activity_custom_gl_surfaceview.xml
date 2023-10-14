@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.ppx.dailystudy.opengl.CustomGLSurfaceView
+    <com.ppx.dailystudy.opengl.shape.CustomGLSurfaceView
         android:id="@+id/custom_gl_surfaceview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

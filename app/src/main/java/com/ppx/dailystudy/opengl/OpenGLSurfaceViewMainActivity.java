@@ -5,6 +5,7 @@ import android.view.View;
 
 import com.ppx.dailystudy.R;
 import com.ppx.dailystudy.common.BaseActivity;
+import com.ppx.dailystudy.opengl.shape.MyTriangleActivity;
 
 /**
  * @Author Shirley

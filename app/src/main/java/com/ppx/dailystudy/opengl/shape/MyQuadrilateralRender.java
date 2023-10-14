@@ -1,4 +1,4 @@
-package com.ppx.dailystudy.opengl;
+package com.ppx.dailystudy.opengl.shape;
 
 import android.content.Context;
 import android.opengl.GLES20;
@@ -6,7 +6,6 @@ import android.opengl.GLES20;
 import com.ppx.dailystudy.R;
 import com.ppx.dailystudy.utils.ShaderUtils;
 
-import java.io.BufferedReader;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;

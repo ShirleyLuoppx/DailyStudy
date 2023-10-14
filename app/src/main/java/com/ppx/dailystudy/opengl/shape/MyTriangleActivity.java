@@ -1,4 +1,4 @@
-package com.ppx.dailystudy.opengl;
+package com.ppx.dailystudy.opengl.shape;
 
 import com.ppx.dailystudy.R;
 import com.ppx.dailystudy.common.BaseActivity;

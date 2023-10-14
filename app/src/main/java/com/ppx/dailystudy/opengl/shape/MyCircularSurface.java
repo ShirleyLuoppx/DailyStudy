@@ -1,4 +1,4 @@
-package com.ppx.dailystudy.opengl;
+package com.ppx.dailystudy.opengl.shape;
 
 import android.content.Context;
 import android.util.AttributeSet;
