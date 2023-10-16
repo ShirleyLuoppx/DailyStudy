@@ -15,7 +15,7 @@ import java.io.InputStreamReader;
  * @Desc：
  */
 public class ShaderUtils {
-    private static String TAG = "RenderUtils";
+    private static String TAG = "ShaderUtils";
 
     /**
      * 根据rawId 加载对应着色器 shader 内容
@@ -33,7 +33,6 @@ public class ShaderUtils {
         try {
             // 注意 readLine是读一行少一行，调用之后需要将数据 拿出来赋值，不用数据就少了...
             while ((line = bufferedReader.readLine()) != null) {
-                Log.d(TAG, "getRawResource1: " + line);
                 sb.append(line).append("\n");
             }
             bufferedReader.close();
