@@ -61,6 +61,7 @@
         <activity android:name=".opengl.CustomGLSurfaceViewActivity" />
         <activity android:name=".opengl.shape.MyTriangleActivity" />
         <activity android:name=".opengl.bitmap.GLBitmapActivity" />
+        <activity android:name=".opengl.rajawali.RajawaliActivity" />
 
         <activity android:name=".test.vrandgif.VrActivity" />
         <activity android:name=".test.vrandgif.VoiceGifActivity" />

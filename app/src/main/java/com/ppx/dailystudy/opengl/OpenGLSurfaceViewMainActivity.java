@@ -6,6 +6,7 @@ import android.view.View;
 import com.ppx.dailystudy.R;
 import com.ppx.dailystudy.common.BaseActivity;
 import com.ppx.dailystudy.opengl.bitmap.GLBitmapActivity;
+import com.ppx.dailystudy.opengl.rajawali.RajawaliActivity;
 import com.ppx.dailystudy.opengl.shape.MyTriangleActivity;
 
 /**
@@ -36,6 +37,10 @@ public class OpenGLSurfaceViewMainActivity extends BaseActivity {
     }
     public void clickBitmap(View view) {
         startActivity(new Intent(this, GLBitmapActivity.class));
+    }
+
+    public void clickRajawali(View view) {
+        startActivity(new Intent(this, RajawaliActivity.class));
     }
 
 
