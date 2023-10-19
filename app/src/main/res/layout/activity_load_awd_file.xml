@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
     android:orientation="vertical"
-    android:padding="20dp">
+    android:padding="10dp">
 
     <TextView
         android:id="@+id/tv_load_awd"
@@ -14,7 +15,9 @@
         android:onClick="loadAwdModel"
         android:padding="10dp"
         android:text="加载awd模型"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_load_animation_model"
@@ -25,7 +28,58 @@
         android:onClick="loadAnimationModel"
         android:padding="10dp"
         android:text="加载动画模型"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_load_awd" />
+
+    <TextView
+        android:id="@+id/tv_idel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:background="@color/colorBlack"
+        android:padding="5dp"
+        android:text="IDEL"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toRightOf="@id/tv_load_awd"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_walk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorBlack"
+        android:padding="5dp"
+        android:text="WALK"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toRightOf="@id/tv_idel"
+        app:layout_constraintRight_toLeftOf="@id/tv_bend"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_bend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorBlack"
+        android:padding="5dp"
+        android:text="BEND"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toRightOf="@id/tv_walk"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_idel" />
+
+    <TextView
+        android:id="@+id/tv_arm_stretch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:background="@color/colorBlack"
+        android:padding="5dp"
+        android:text="ARM STRETCH"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toRightOf="@id/tv_load_awd"
+        app:layout_constraintTop_toTopOf="@id/tv_load_animation_model" />
+
 
     <include layout="@layout/fragment_empty" />
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -37,6 +37,7 @@ public class RajawaliActivity extends BaseActivity {
     }
 
     public void loadAnimationModel(View view) {
+        getSupportFragmentManager().beginTransaction().replace(R.id.fl_empty, new SkeletalAnimationFragment()).commit();
     }
 }
 
