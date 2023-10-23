@@ -39,7 +39,7 @@ public class FbxSkeletalAnimFragment extends AExampleFragment {
                 light.setPower(2);
                 getCurrentScene().addLight(light);
 
-                LoaderFBX loaderFBX = new LoaderFBX(this, R.raw.fbx_file);
+                LoaderFBX loaderFBX = new LoaderFBX(this, R.raw.suzuki_carry);
                 Log.d("TAG", "initScene: "+loaderFBX);
                 loaderFBX.parse();
                 SkeletalAnimationObject3D skeletalAnimationObject3D = (SkeletalAnimationObject3D) loaderFBX.getParsedObject();

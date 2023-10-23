@@ -44,5 +44,18 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_load_animation_model" />
 
+    <TextView
+        android:id="@+id/tv_load_obj_model"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorDarkBG354"
+        android:onClick="loadObjModel"
+        android:padding="10dp"
+        android:text="加载obj模型"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_load_fbx_animation_model" />
+
     <include layout="@layout/fragment_empty" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -113,7 +113,7 @@ dependencies {
     //gif
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.8'
     //Rajawali 3d引擎
-    implementation 'org.rajawali3d:rajawali:1.1.970'
+    implementation 'org.rajawali3d:rajawali:1.2.1970'
 
     implementation project(':vrlibrary')
 

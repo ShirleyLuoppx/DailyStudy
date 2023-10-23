@@ -43,5 +43,8 @@ public class RajawaliActivity extends BaseActivity {
     public void loadFbxAnimationModel(View view) {
         getSupportFragmentManager().beginTransaction().replace(R.id.fl_empty, new FbxSkeletalAnimFragment()).commit();
     }
+    public void loadObjModel(View view) {
+        getSupportFragmentManager().beginTransaction().replace(R.id.fl_empty, new ObjFragment()).commit();
+    }
 }
 
