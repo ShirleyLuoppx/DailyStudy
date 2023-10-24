@@ -27,6 +27,9 @@ import org.rajawali3d.renderer.ISurfaceRenderer;
  * @Author Shirley
  * @Date：2023/10/23
  * @Desc： 基础 加载.obj 类型3d模型文件
+ * //加载obj文件需要注意的点：
+ * //一、加载obj文件的时候，如果有纹理文件.mtl ，mtl文件里面的png 图片需要放在drawable 里面才能被识别到，如果放到mipmap的话是识别不到的。
+ * //二、mtl文件的命名格式为xxx_mtl，是没有后缀的，而在.obj文件里面引用mtl文件的时候则是需要   xxx.mtl
  */
 public class ObjFragment extends AExampleFragment {
 
@@ -62,7 +65,9 @@ public class ObjFragment extends AExampleFragment {
                 //如果设置了新的相机参数的话，原本的相机的信息是不生效的
 //                getCurrentCamera().setZ(22);
 
-                //加载obj文件的时候，如果有纹理文件.mtl ，mtl文件里面的png 图片需要放在drawable 里面才能被识别到，如果放到mipmap的话是识别不到的。
+                //加载obj文件需要注意的点：
+                //一、加载obj文件的时候，如果有纹理文件.mtl ，mtl文件里面的png 图片需要放在drawable 里面才能被识别到，如果放到mipmap的话是识别不到的。
+                //二、mtl文件的命名格式为xxx_mtl，是没有后缀的，而在.obj文件里面引用mtl文件的时候则是需要   xxx.mtl
                 LoaderOBJ loaderOBJ = new LoaderOBJ(getResources(), mTextureManager, R.raw.freigther_bi_export_obj);//multiobjects_obj
                 loaderOBJ.parse();
                 Object3D object3D = loaderOBJ.getParsedObject();
