@@ -1,6 +1,10 @@
 package com.ppx.dailystudy.utils;
 
+import static android.opengl.GLUtils.texImage2D;
+
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.opengl.GLES20;
 import android.util.Log;
 
@@ -97,6 +101,35 @@ public class ShaderUtils {
         } else {
             return 0;
         }
+    }
+
+    /**
+     * 加载图片为 2D纹理
+     *
+     * @param context 上下文
+     * @param rawID   资源ID
+     * @return 生成的纹理
+     */
+    public static int createImageTexture(Context context, int rawID) {
+        //生产一个纹理
+        int[] textureIds = new int[1];
+        GLES20.glGenTextures(1, textureIds, 0);
+        //绑定为 2D纹理
+        GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, textureIds[0]);
+        //设置环绕模式
+        GLES20.glTexParameteri(GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_WRAP_S, GLES20.GL_REPEAT);
+        GLES20.glTexParameteri(GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_WRAP_T, GLES20.GL_REPEAT);
+        //设置过滤模式
+        GLES20.glTexParameteri(GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_MIN_FILTER, GLES20.GL_LINEAR);
+        GLES20.glTexParameteri(GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_MAG_FILTER, GLES20.GL_LINEAR);
+
+        Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), rawID);
+        //绑定 bitmap到 textureIds[0] 这个2D纹理上
+        texImage2D(GLES20.GL_TEXTURE_2D, 0, bitmap, 0);
+        //退出 纹理的设置，进入下一环节
+        GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, 0);
+        return textureIds[0];
+
     }
 
 
