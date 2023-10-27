@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 
 import com.ppx.dailystudy.opengl.FboUseRender;
+import com.ppx.dailystudy.opengl.MyBitmapOrthogonalRender;
 import com.ppx.dailystudy.opengl.shape.CustomGLSurfaceView;
 
 /**
@@ -21,7 +22,8 @@ public class VboSurfaceView extends CustomGLSurfaceView {
         super(context, attrs);
         VboRender render = new VboRender(context);
         FboUseRender fboUseRender = new FboUseRender(context,900,1920);
-        setRender(fboUseRender);
+        MyBitmapOrthogonalRender myBitmapOrthogonalRender = new MyBitmapOrthogonalRender(context);
+        setRender(myBitmapOrthogonalRender);
     }
 }
 
