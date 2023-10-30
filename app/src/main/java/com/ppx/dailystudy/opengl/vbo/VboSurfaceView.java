@@ -5,6 +5,7 @@ import android.util.AttributeSet;
 
 import com.ppx.dailystudy.opengl.FboUseRender;
 import com.ppx.dailystudy.opengl.MyBitmapOrthogonalRender;
+import com.ppx.dailystudy.opengl.WaterMarkRender;
 import com.ppx.dailystudy.opengl.shape.CustomGLSurfaceView;
 
 /**
@@ -23,7 +24,8 @@ public class VboSurfaceView extends CustomGLSurfaceView {
         VboRender render = new VboRender(context);
         FboUseRender fboUseRender = new FboUseRender(context,900,1920);
         MyBitmapOrthogonalRender myBitmapOrthogonalRender = new MyBitmapOrthogonalRender(context);
-        setRender(myBitmapOrthogonalRender);
+        WaterMarkRender waterMarkRender = new WaterMarkRender(context);
+        setRender(waterMarkRender);
     }
 }
 
