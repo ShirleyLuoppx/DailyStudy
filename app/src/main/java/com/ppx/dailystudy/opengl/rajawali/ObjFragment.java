@@ -1,7 +1,14 @@
 package com.ppx.dailystudy.opengl.rajawali;
 
 import android.content.Context;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.ppx.dailystudy.R;
@@ -16,10 +23,6 @@ import org.rajawali3d.debug.GridFloor;
 import org.rajawali3d.lights.DirectionalLight;
 import org.rajawali3d.lights.PointLight;
 import org.rajawali3d.loader.LoaderOBJ;
-import org.rajawali3d.loader.ParsingException;
-import org.rajawali3d.materials.Material;
-import org.rajawali3d.materials.methods.DiffuseMethod;
-import org.rajawali3d.materials.textures.CubeMapTexture;
 import org.rajawali3d.math.vector.Vector3;
 import org.rajawali3d.renderer.ISurfaceRenderer;
 
@@ -31,14 +34,68 @@ import org.rajawali3d.renderer.ISurfaceRenderer;
  * //一、加载obj文件的时候，如果有纹理文件.mtl ，mtl文件里面的png 图片需要放在drawable 里面才能被识别到，如果放到mipmap的话是识别不到的。
  * //二、mtl文件的命名格式为xxx_mtl，是没有后缀的，而在.obj文件里面引用mtl文件的时候则是需要   xxx.mtl
  */
-public class ObjFragment extends AExampleFragment {
+public class ObjFragment extends AExampleFragment implements View.OnClickListener {
+
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
+        inflater.inflate(R.layout.fragment_load_obj, mLayout, true);
+
+        TextView tvTop = mLayout.findViewById(R.id.btn_top);
+        tvTop.setOnClickListener(this);
+        TextView tvBottom = mLayout.findViewById(R.id.btn_bottom);
+        tvBottom.setOnClickListener(this);
+        TextView tvLeft = mLayout.findViewById(R.id.btn_left);
+        tvLeft.setOnClickListener(this);
+        TextView tvRight = mLayout.findViewById(R.id.btn_right);
+        tvRight.setOnClickListener(this);
+        TextView tvFront = mLayout.findViewById(R.id.btn_front);
+        tvFront.setOnClickListener(this);
+        TextView tvBack = mLayout.findViewById(R.id.btn_back);
+        tvBack.setOnClickListener(this);
+
+        return mLayout;
+    }
 
     @Override
     public ISurfaceRenderer createRenderer() {
         return new ObjRender(getContext(), this);
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_top:
+                ((ObjRender) mRenderer).setArcballCameraPosition(0);
+                break;
+            case R.id.btn_bottom:
+                ((ObjRender) mRenderer).setArcballCameraPosition(1);
+                break;
+            case R.id.btn_left:
+                ((ObjRender) mRenderer).setArcballCameraPosition(2);
+                break;
+            case R.id.btn_right:
+                ((ObjRender) mRenderer).setArcballCameraPosition(3);
+                break;
+            case R.id.btn_front:
+                ((ObjRender) mRenderer).setArcballCameraPosition(4);
+                break;
+            case R.id.btn_back:
+                ((ObjRender) mRenderer).setArcballCameraPosition(5);
+                break;
+            default:
+                break;
+        }
+    }
+
+
     private final class ObjRender extends AExampleRenderer {
+
+        private ArcballCamera arcballCamera;
+        private Object3D object3D;
+        double x = 0;
+        double y = 0;
+        double z = 0;
 
         public ObjRender(Context context, @Nullable AExampleFragment fragment) {
             super(context, fragment);
@@ -70,7 +127,7 @@ public class ObjFragment extends AExampleFragment {
                 //二、mtl文件的命名格式为xxx_mtl，是没有后缀的，而在.obj文件里面引用mtl文件的时候则是需要   xxx.mtl
                 LoaderOBJ loaderOBJ = new LoaderOBJ(getResources(), mTextureManager, R.raw.freigther_bi_export_obj);//multiobjects_obj
                 loaderOBJ.parse();
-                Object3D object3D = loaderOBJ.getParsedObject();
+                object3D = loaderOBJ.getParsedObject();
 //                object3D.setRotX(90);
 //                object3D.setRotY(0);
 
@@ -108,9 +165,12 @@ public class ObjFragment extends AExampleFragment {
                 object3D.setScale(0.5);
 
                 //设置拖拽功能
-                ArcballCamera arcballCamera = new ArcballCamera(getContext(), getActivity().findViewById(R.id.fl_empty));
+                arcballCamera = new ArcballCamera(getContext(), getActivity().findViewById(R.id.fl_empty));
                 //设置相机的位置
-                arcballCamera.setPosition(1, 7, 10);
+                x = 1;
+                y = 7;
+                z = 10;
+                arcballCamera.setPosition(x, y, z);
                 //替换当前场景下的相机，第一个参数的旧的相机，第二个是新的
                 getCurrentScene().replaceAndSwitchCamera(getCurrentCamera(), arcballCamera);
 
@@ -129,11 +189,56 @@ public class ObjFragment extends AExampleFragment {
                 animation3D.setTransformable3D(object3D);
                 getCurrentScene().registerAnimation(animation3D);
 //                animation3D.play();
-
             } catch (Exception e) {
                 e.printStackTrace();
             }
 
+        }
+
+        public void setArcballCameraPosition(int type) {
+            //先设置方向到最开始程序运行出来的模型的位置
+            arcballCamera.setPosition(1, 7, 10);
+            //再重置相机位置
+            arcballCamera.resetCameraOrientation();
+
+            switch (type) {
+                case 0:
+                    x = 1;
+                    y = 7;
+                    z = 0;
+                    break;
+                case 1:
+                    x = 1;
+                    y = -7;
+                    z = 0;
+                    break;
+                case 2:
+                    x = -5;
+                    y = 2;
+                    z = 1;
+                    break;
+                case 3:
+                    x = 5;
+                    y = 2;
+                    z = 1;
+                    break;
+                case 4:
+                    x = 0;
+                    y = 1;
+                    z = 5;
+                    break;
+                case 5:
+                    x = 0;
+                    y = 1;
+                    z = -5;
+                    break;
+                default:
+                    break;
+            }
+            object3D.setScale(0.3);
+            //切换视角
+            arcballCamera.setPosition(x, y, z);
+            Log.d("TAG", "setArcballCameraPosition: "+arcballCamera.getPosition().x+"-"+arcballCamera.getPosition().y+"-"+arcballCamera.getPosition().z);
         }
     }
 }
