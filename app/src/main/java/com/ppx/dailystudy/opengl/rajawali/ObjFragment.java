@@ -14,16 +14,12 @@ import androidx.annotation.Nullable;
 import com.ppx.dailystudy.R;
 
 import org.rajawali3d.Object3D;
-import org.rajawali3d.animation.Animation;
-import org.rajawali3d.animation.Animation3D;
-import org.rajawali3d.animation.RotateOnAxisAnimation;
 import org.rajawali3d.cameras.ArcballCamera;
 import org.rajawali3d.debug.DebugVisualizer;
 import org.rajawali3d.debug.GridFloor;
 import org.rajawali3d.lights.DirectionalLight;
 import org.rajawali3d.lights.PointLight;
 import org.rajawali3d.loader.LoaderOBJ;
-import org.rajawali3d.math.vector.Vector3;
 import org.rajawali3d.renderer.ISurfaceRenderer;
 
 /**
@@ -104,20 +100,8 @@ public class ObjFragment extends AExampleFragment implements View.OnClickListene
         @Override
         protected void initScene() {
             try {
-                PointLight light = new PointLight();
-                light.setPosition(0, 10, 4);
-                light.setPower(3);
-                getCurrentScene().addLight(light);
-
-                DirectionalLight directionalLight = new DirectionalLight();
-                directionalLight.setLookAt(0, 5, 10);
-                directionalLight.setPower(3);
-                getCurrentScene().addLight(directionalLight);
-
-                //网格线
-                DebugVisualizer debugViz = new DebugVisualizer(this);
-                debugViz.addChild(new GridFloor());
-                getCurrentScene().addChild(debugViz);
+                addLight();
+                addGridFloor();
 
                 //如果设置了新的相机参数的话，原本的相机的信息是不生效的
 //                getCurrentCamera().setZ(22);
@@ -147,7 +131,7 @@ public class ObjFragment extends AExampleFragment implements View.OnClickListene
 //                        R.mipmap.mustang_gt_3, R.mipmap.mustang_gt_4, R.mipmap.mustang_gt_5};
 
 
-                int[] resourceIds = new int[]{R.mipmap.posx, R.mipmap.negx, R.mipmap.posy, R.mipmap.negy, R.mipmap.posz, R.mipmap.negz};
+//                int[] resourceIds = new int[]{R.mipmap.posx, R.mipmap.negx, R.mipmap.posy, R.mipmap.negy, R.mipmap.posz, R.mipmap.negz};
 //                CubeMapTexture cubeMapTexture = new CubeMapTexture("fort_horse", mustangArray);
 //                cubeMapTexture.isEnvironmentTexture(true);
 
@@ -174,25 +158,33 @@ public class ObjFragment extends AExampleFragment implements View.OnClickListene
                 //替换当前场景下的相机，第一个参数的旧的相机，第二个是新的
                 getCurrentScene().replaceAndSwitchCamera(getCurrentCamera(), arcballCamera);
 
-                //车辆自旋转
-                Animation3D animation3D = new RotateOnAxisAnimation(Vector3.Axis.Y, 360);
-                //一圈时间
-                animation3D.setDurationMilliseconds(8000);
-               /* 设置旋转重复类型：
-                    NONE：无，转一圈后会停止
-                    INFINITE：一直旋转
-                    RESTART：转一圈后停止
-                    REVERSE：转一圈后停止
-                    REVERSE_INFINITE：顺时针一圈，逆时针一圈，如此循环
-                 */
-                animation3D.setRepeatMode(Animation.RepeatMode.INFINITE);
-                animation3D.setTransformable3D(object3D);
-                getCurrentScene().registerAnimation(animation3D);
-//                animation3D.play();
             } catch (Exception e) {
                 e.printStackTrace();
             }
+        }
 
+        /**
+         * 添加灯光
+         */
+        private void addLight() {
+            PointLight light = new PointLight();
+            light.setPosition(0, 10, 4);
+            light.setPower(3);
+            getCurrentScene().addLight(light);
+
+            DirectionalLight directionalLight = new DirectionalLight();
+            directionalLight.setLookAt(0, 5, 10);
+            directionalLight.setPower(3);
+            getCurrentScene().addLight(directionalLight);
+        }
+
+        /**
+         * 添加网格线
+         */
+        private void addGridFloor() {
+            DebugVisualizer debugViz = new DebugVisualizer(this);
+            debugViz.addChild(new GridFloor());
+            getCurrentScene().addChild(debugViz);
         }
 
         public void setArcballCameraPosition(int type) {
@@ -238,7 +230,7 @@ public class ObjFragment extends AExampleFragment implements View.OnClickListene
             object3D.setScale(0.3);
             //切换视角
             arcballCamera.setPosition(x, y, z);
-            Log.d("TAG", "setArcballCameraPosition: "+arcballCamera.getPosition().x+"-"+arcballCamera.getPosition().y+"-"+arcballCamera.getPosition().z);
+            Log.d("TAG", "setArcballCameraPosition: " + arcballCamera.getPosition().x + "-" + arcballCamera.getPosition().y + "-" + arcballCamera.getPosition().z);
         }
     }
 }
