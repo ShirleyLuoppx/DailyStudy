@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.opengl.GLES20;
 import android.opengl.GLUtils;
+import android.util.Log;
 
 import com.ppx.dailystudy.R;
 import com.ppx.dailystudy.opengl.shape.CustomGLSurfaceView;
@@ -75,6 +76,7 @@ public class WaterMarkRender implements CustomGLSurfaceView.MyGLRender {
         int[] vbo_s = new int[1];
         GLES20.glGenBuffers(1, vbo_s, 0);
         vboId = vbo_s[0];
+        Log.d("TAG", "onSurfaceCreated: vbo_s "+vbo_s[0]);
 
         GLES20.glBindBuffer(GLES20.GL_ARRAY_BUFFER, vboId);
         GLES20.glBufferData(GLES20.GL_ARRAY_BUFFER, vertexData.length * 4 + fragmentData.length * 4, null, GLES20.GL_STATIC_DRAW);
@@ -84,6 +86,7 @@ public class WaterMarkRender implements CustomGLSurfaceView.MyGLRender {
 
         textureIds = new int[1];
         GLES20.glGenTextures(1, textureIds, 0);
+        Log.d("TAG", "onSurfaceCreated: textureIds "+textureIds[0]);
         //绑定数据
         GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, textureIds[0]);
         //设置纹理环绕方式
