@@ -1,14 +1,12 @@
 package com.ppx.dailystudy.test.activity
 
-import android.os.AsyncTask
 import android.os.Bundle
 import android.os.Handler
-import android.os.Looper
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.ppx.dailystudy.R
 import com.ppx.dailystudy.thread.AsyncTaskDemo
-import kotlinx.android.synthetic.main.activiyu_timepicker_test.*
+import kotlinx.android.synthetic.main.activiyu_timepicker_test.timepicker
 import java.util.concurrent.atomic.AtomicInteger
 
 /**
@@ -46,9 +44,9 @@ class TestDemo : AppCompatActivity() {
 //            }
 //        }, 10 * 1000)
 
-        asyncTaskDemo.test()
+//        asyncTaskDemo.test()
 
-        testAtomicInteger()
+//        testAtomicInteger()
     }
 
     private fun testDoublePostDelay() {

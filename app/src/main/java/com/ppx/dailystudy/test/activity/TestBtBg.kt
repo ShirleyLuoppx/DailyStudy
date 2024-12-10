@@ -2,12 +2,9 @@ package com.ppx.dailystudy.test.activity
 
 import android.content.Context
 import android.os.Bundle
-import android.os.Handler
 import android.os.Looper
-import android.os.Message
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.ppx.dailystudy.MyApplication
 import com.ppx.dailystudy.R
 
 /**

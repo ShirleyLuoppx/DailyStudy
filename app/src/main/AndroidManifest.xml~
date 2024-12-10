@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.ppx.dailystudy">
+
+    <!-- android:sharedUserId="android.uid.system" -->
+    <!-- //所有手机需要的权限，蓝牙功能才能正常使用 -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" /> <!-- 除了BLUETOOTH和BLUETOOTH_ADMIN权限外，还将以下内容添加到您应用的清单文件中，以使用蓝牙连接和配对API： -->
+    <!-- 添加打电话的权限 -->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="com.google.android.things.permission.MANAGE_BLUETOOTH" /> <!-- //部分手机（如小米等）需要将下面两个权限添加进去，蓝牙功能才能正常使用 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- 用于收集用户的位置信息如果是Android9 API28 或更低版本 则声明ACCESS_COARSE_LOCATION权限 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> -->
+    <!-- 尝试解决车机与红米5蓝牙连接不弹框问题 -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" /> <!-- 监听系统开机的权限 -->
+    <uses-permission android:name="android.permission.READ_CONTACTS" />   <!-- 添加读取通讯录权限 -->
+    <uses-permission android:name="android.permission.VIBRATE" /><!-- 手机振动权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- 不知道这个权限在百度地图的sdk开发中的一定需要的，事实证明这个权限在百度地图的获取经纬度里面不是必须的 -->
+    <!-- <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" /> -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" /> <!-- 接收短信权限 -->
+    <uses-permission android:name="android.permission.READ_SMS" /> <!-- 读取短信权限 -->
+    <!-- 读写文件权限   -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!--相机实时预览权限-->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WEITE_EXTERNAL_STORAGE" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+
+    <application
+        android:name=".MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:persistent="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.NoActionBar">
+
+        <!--        android:name=".test.activity.GetMsgActivity"-->
+        <!--        android:name=".chap14coolweather.CoolWeatherMainActivity"-->
+        <!--        android:screenOrientation="portrait"  协程-->
+
+
+        <!--.opengl.OpenGLSurfaceViewMainActivity  .opengl.vbo.VBOTestActivity-->
+        <activity
+            android:name=".opengl.OpenGLSurfaceViewMainActivity"
+            android:configChanges="keyboardHidden|screenSize|screenLayout|orientation"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".opengl.MyGLSurfaceViewActivity" />
+        <activity android:name=".opengl.CustomGLSurfaceViewActivity" />
+        <activity android:name=".opengl.shape.MyTriangleActivity" />
+        <activity android:name=".opengl.bitmap.GLBitmapActivity" />
+        <activity android:name=".opengl.rajawali.RajawaliActivity" />
+
+        <activity android:name=".test.vrandgif.VrActivity" />
+        <activity android:name=".test.vrandgif.VoiceGifActivity" />
+        <activity android:name=".test.vrandgif.StlActivity" />
+        <activity android:name=".test.vrandgif.Car3DActivity" />
+        <activity android:name=".test.vrandgif.stlrender.home.StlRenderMainActivity" />
+        <activity android:name=".test.vrandgif.WebViewActivity" />
+
+        <activity android:name=".material.drawerlayout.DrawerLayoutSimpleActivity" />
+        <activity android:name=".material.drawerlayout.DrawerLayoutToolBarActivity" />
+        <activity android:name=".material.drawerlayout.DrawerLayoutNavigationToolbarActivity" />
+        <activity android:name=".material.drawerlayout.DrawerNavToolbarImmersiveActivity" />
+        <activity android:name=".material.drawerlayout.DrawerNaviToolBarQqActivity" />
+        <activity android:name=".material.btnaviview.BottomNavigationViewActivity" />
+        <activity android:name=".material.drawerlayout.DrawerLayoutMainActivity" />
+        <activity
+            android:name=".material.ChipActivity"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
+        <activity android:name=".material.PaletteDemoActivity" />
+        <activity android:name=".material.SearchActivity" />
+        <activity android:name=".material.ShapeImageviewDemoActivity" />
+        <activity android:name=".material.SnackBarDemoActivity" />
+        <activity android:name=".material.TextInputLayoutActivity" />
+        <activity android:name=".material.ToolBarDemoActivity" />
+
+
+        <activity android:name=".meeting.remoteview.PendingIntentActivity" />
+        <activity android:name=".meeting.remoteview.RemoteViewPendingIntentActivity" />
+
+        <receiver android:name=".meeting.remoteview.MyAppWidgetProvider">
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/appwiget_provider_info" />
+            <intent-filter>
+                <action android:name="CLICK_REMOTE_VIEW" />
+                <!--                桌面小部件必要标识-->
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+        </receiver>
+
+        <!--        <receiver android:name=".meeting.remoteview.ExampleAppWidgetProvider"-->
+        <!--            android:exported="true">-->
+        <!--            <intent-filter>-->
+        <!--                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />-->
+        <!--            </intent-filter>-->
+        <!--            <meta-data android:name="android.appwidget.provider"-->
+        <!--                android:resource="@xml/appwiget_provider_info" />-->
+        <!--        </receiver>-->
+
+        <activity
+            android:name=".ipctest.SecondActivity"
+            android:process=":process" />
+        <activity
+            android:name=".ipctest.ThirdActivity"
+            android:process="com.ppx.dailystudy.binderipc.process" />
+        <activity android:name=".test.activity.MenuResourcesActivity" />
+        <activity android:name=".test.activity.TestFinishFunction" />
+        <activity android:name=".broadcast.ForceOffLineActivity" />
+        <activity android:name=".multimedia.NotificationLayoutActivity" />
+        <activity android:name="com.ppx.dailystudy.firstlinecode.chap12materialdesign.CollaspcingToobarActivity" />
+        <activity
+            android:name=".test.activity.TestLifeCircleActivityB"
+            android:launchMode="singleInstance" />
+        <activity android:name=".test.activity.TestLifeCircleActivityC" />
+        <!--<activity android:name=".wutong.WuTongDemoActivity" />-->
+        <activity android:name=".test.activity.ThreadTestB" />
+
+        <service
+            android:name="com.ppx.dailystudy.firstlinecode.chap10service.DownLoadService"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name="com.ppx.dailystudy.firstlinecode.chap10service.MyService"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name="com.ppx.dailystudy.firstlinecode.chap10service.ForeService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <service android:name=".test.service.TestService">
+            <intent-filter>
+                <action android:name="com.test.service" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name="com.ppx.dailystudy.firstlinecode.chap10service.MyIntentService"
+            android:enabled="true"
+            android:exported="true" /> <!-- 百度地图的service -->
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" />
+
+        <service
+            android:name="com.ppx.dailystudy.firstlinecode.chap13advancedtechniques.LongRunningService"
+            android:enabled="true"
+            android:exported="true" /> <!-- 添加一个百度地方的API_KEY -->
+        <!-- 这里需要注意一下，在申请AK的时候，一定要项目名称和报名和申请填入的一致，要不然地图显示不出来 -->
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="WhkwAHAopYX9hDh9HecpHiqvX58GpIKj" />
+
+        <service
+            android:name=".ipctest.BookAidlService"
+            android:enabled="true"
+            android:exported="true">
+
+            <intent-filter>
+                <action android:name="com.ppx.ipctest" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
+
+        <provider
+            android:name=".contentprovider.MyContentProvider"
+            android:authorities="com.ppx.dailystudy.contentprovider"
+            android:enabled="true"
+            android:exported="true" /> <!-- 拍照片用的哟 -->
+        <!-- name固定值，authorities就是FileProvider.getUriForFile的第二个参数，要一直，他才知道是在这里provider里面找数据 -->
+        <!-- exported，是否可导出，grantUriPermissions，授权uri -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.ppx.dailystudy.multimedia.takecameraorphoto"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <receiver
+            android:name=".broadcast.MyReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <!--<receiver android:name=".test.GetMsgDemo">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>-->
+
+        <receiver android:name=".test.MessageBR">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".test.receiver.StaticBCReceiver">
+            <intent-filter>
+                <action android:name="com.ppx.static.broadcast" />
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".broadcast.BaseActivity$ForceOffLineBroadCastReceiver">
+            <intent-filter>
+                <action android:name="com.ppx.static.broadcast" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".test.service.BCReceiverService"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.study.startserver" />
+            </intent-filter>
+        </service>
+    </application>
+
+</manifest>
