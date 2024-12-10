@@ -14,13 +14,23 @@ import androidx.annotation.Nullable;
 import com.ppx.dailystudy.R;
 
 import org.rajawali3d.Object3D;
+import org.rajawali3d.animation.Animation;
+import org.rajawali3d.animation.SplineTranslateAnimation3D;
 import org.rajawali3d.cameras.ArcballCamera;
+import org.rajawali3d.curves.CatmullRomCurve3D;
 import org.rajawali3d.debug.DebugVisualizer;
 import org.rajawali3d.debug.GridFloor;
 import org.rajawali3d.lights.DirectionalLight;
 import org.rajawali3d.lights.PointLight;
 import org.rajawali3d.loader.LoaderOBJ;
+import org.rajawali3d.loader.ParsingException;
+import org.rajawali3d.materials.Material;
+import org.rajawali3d.math.vector.Vector3;
+import org.rajawali3d.primitives.Line3D;
+import org.rajawali3d.primitives.Sphere;
 import org.rajawali3d.renderer.ISurfaceRenderer;
+
+import java.util.Stack;
 
 /**
  * @Author Shirley
@@ -145,7 +155,6 @@ public class ObjFragment extends AExampleFragment implements View.OnClickListene
 //                object3D.setMaterial(material);
 
                 getCurrentScene().addChild(object3D);
-
                 object3D.setScale(0.5);
 
                 //设置拖拽功能
@@ -158,9 +167,89 @@ public class ObjFragment extends AExampleFragment implements View.OnClickListene
                 //替换当前场景下的相机，第一个参数的旧的相机，第二个是新的
                 getCurrentScene().replaceAndSwitchCamera(getCurrentCamera(), arcballCamera);
 
+
+                //添加箭头，就当箭头是车门了
+                addArrowAnimation();
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
+        }
+
+        Object3D arrow;
+        private void addArrowAnimation() {
+            Material material;
+            try {
+                LoaderOBJ parser = new LoaderOBJ(mContext.getResources(),
+                        mTextureManager, R.raw.arrow);
+
+                parser.parse();
+
+                material = new Material();
+                arrow = parser.getParsedObject();
+                arrow.setMaterial(material);
+                arrow.setScale(.5f);
+                arrow.setColor(0xffffff00);
+                arrow.setPosition(-1.5, 1, 1);// x = -5;y = 2;z = 1;
+                getCurrentScene().addChild(arrow);
+            } catch (ParsingException e) {
+                throw new RuntimeException(e);
+            }
+
+            // -- create a catmull-rom path. The first and the last point are control points.
+            CatmullRomCurve3D path = new CatmullRomCurve3D();
+            float r = 12;
+            float rh = r * .5f;
+
+            //轨迹点
+            for (int i = 0; i < 4; i++) {
+                Vector3 vector3 = new Vector3(-rh + (Math.random() * r), -rh
+                        + (Math.random() * r), -rh + (Math.random() * r));
+                Log.d("TAG", "addArrowAnimation: "+vector3.x + "-" + vector3.y + "-" + vector3.z);
+                path.addPoint(vector3);
+            }
+
+            //沿着轨迹动的动画
+            final SplineTranslateAnimation3D anim = new SplineTranslateAnimation3D(path);
+            anim.setDurationMilliseconds(5000);
+            anim.setRepeatMode(Animation.RepeatMode.REVERSE_INFINITE);
+            // -- orient to path
+            anim.setOrientToPath(true);
+            anim.setTransformable3D(arrow);
+            getCurrentScene().registerAnimation(anim);
+            anim.play();
+
+            int numPoints = path.getNumPoints();
+//            Log.d("TAG", "addArrowAnimation: " + numPoints);
+
+            for (int i = 0; i < numPoints; i++) {
+                Sphere s = new Sphere(.2f, 6, 6);
+                s.setMaterial(material);
+                s.setPosition(path.getPoint(i));
+
+//                if (i == 0)
+                    s.setColor(0xffff0000);
+//                else if (i == numPoints - 1)
+//                    s.setColor(0xff0066ff);
+//                else
+//                    s.setColor(0xff999999);
+                //这个是添加的路径上的点
+                getCurrentScene().addChild(s);
+            }
+
+            // -- visualize the line
+            Stack<Vector3> linePoints = new Stack<>();
+            for (int i = 0; i < 100; i++) {
+                Vector3 point = new Vector3();
+                path.calculatePoint(point, i / 100f);
+                linePoints.add(point);
+            }
+
+//            Log.d("TAG", "addArrowAnimation: linePoints.size  = "+linePoints.size());
+            //3d轨迹线
+            Line3D line = new Line3D(linePoints, 1, 0xffffffff);
+            line.setMaterial(material);
+            getCurrentScene().addChild(line);
         }
 
         /**
@@ -228,6 +317,7 @@ public class ObjFragment extends AExampleFragment implements View.OnClickListene
                     break;
             }
             object3D.setScale(0.3);
+            arrow.setScale(.5f);
             //切换视角
             arcballCamera.setPosition(x, y, z);
             Log.d("TAG", "setArcballCameraPosition: " + arcballCamera.getPosition().x + "-" + arcballCamera.getPosition().y + "-" + arcballCamera.getPosition().z);

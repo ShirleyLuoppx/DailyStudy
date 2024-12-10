@@ -56,7 +56,7 @@
 
         <!--.opengl.OpenGLSurfaceViewMainActivity  .opengl.vbo.VBOTestActivity-->
         <activity
-            android:name=".opengl.OpenGLSurfaceViewMainActivity"
+            android:name=".test.activity.TestBtBg"
             android:configChanges="keyboardHidden|screenSize|screenLayout|orientation"
             android:label="@string/app_name"
             android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">
