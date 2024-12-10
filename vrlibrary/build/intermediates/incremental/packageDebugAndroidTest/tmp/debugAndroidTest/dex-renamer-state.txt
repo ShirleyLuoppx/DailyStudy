@@ -1,0 +1,7 @@
+#Tue Oct 08 17:15:35 CST 2024
+base.0=D\:\\luoxia\\projects\\myApp\\DailyStudy\\vrlibrary\\build\\intermediates\\dex\\debugAndroidTest\\mergeExtDexDebugAndroidTest\\classes.dex
+path.1=classes.dex
+renamed.1=classes2.dex
+path.0=classes.dex
+renamed.0=classes.dex
+base.1=D\:\\luoxia\\projects\\myApp\\DailyStudy\\vrlibrary\\build\\intermediates\\dex\\debugAndroidTest\\mergeProjectDexDebugAndroidTest\\classes.dex
